@@ -1,1 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Gantari:wght@100&display=swap");
+@import "./front-page.scss";
 
+* {
+    font-family: "Gantari", sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --dark-gray: #2a2a2a;
+    --light-gray: #2a2a2a8f;
+    --lighter-gray: rgb(133, 133, 133);
+    --link-gray: rgb(140, 140, 140);
+    --main-blue: #0078f2;
+    --secondary-blue: #0062be;
+    --error-main: #de3341;
+    --error-secondary: #d54841;
+}
+
+.page-container {
+    position: relative;
+    background-color: var(--dark-gray);
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
