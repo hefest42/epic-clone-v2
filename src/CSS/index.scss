@@ -14,10 +14,11 @@ a {
 }
 
 :root {
-    --dark-gray: #2a2a2a;
-    --light-gray: #2a2a2a8f;
+    --light-gray: #2a2a2a;
+    --dark-gray: #2a2a2a8f;
     --lighter-gray: rgb(133, 133, 133);
     --link-gray: rgb(140, 140, 140);
+    --input-gray: rgb(32, 32, 32);
     --main-blue: #0078f2;
     --secondary-blue: #0062be;
     --error-main: #de3341;
@@ -26,7 +27,7 @@ a {
 
 .page-container {
     position: relative;
-    background-color: var(--dark-gray);
+    background-color: rgb(18, 18, 18);
     width: 100%;
 
     display: flex;
