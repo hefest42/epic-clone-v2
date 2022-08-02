@@ -16,7 +16,7 @@
     }
 
     &-item {
-        width: 4rem;
+        width: 4.5rem;
         height: 100%;
 
         &__text {
@@ -39,6 +39,12 @@
                 background-color: var(--secondary-blue);
                 transition: all 0.1s linear;
             }
+        }
+    }
+
+    &-active {
+        .header-item__border {
+            background-color: var(--secondary-blue);
         }
     }
 

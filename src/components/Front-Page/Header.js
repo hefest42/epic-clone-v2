@@ -12,31 +12,37 @@ const Header = () => {
                     <div className="header-logo__text"></div>
                 </div>
 
-                <NavLink to="/">
-                    <div className="header-item">
-                        <div className="header-item__text center">STORE</div>
-                        <div className="header-item__border"></div>
-                    </div>
+                <NavLink to="/" className={({ isActive }) => (isActive ? "header-item header-active" : "header-item")}>
+                    <div className="header-item__text center">STORE</div>
+                    <div className="header-item__border"></div>
                 </NavLink>
 
-                <div className="header-item">
+                <NavLink
+                    to="/faq"
+                    className={({ isActive }) => (isActive ? "header-item header-active" : "header-item")}
+                >
                     <div className="header-item__text center">FAQ</div>
                     <div className="header-item__border"></div>
-                </div>
+                </NavLink>
 
-                <div className="header-item">
+                <NavLink
+                    to="/help"
+                    className={({ isActive }) => (isActive ? "header-item header-active" : "header-item")}
+                >
                     <div className="header-item__text center">HELP</div>
                     <div className="header-item__border"></div>
-                </div>
+                </NavLink>
             </div>
 
             <div className="header-right center">
-                <div className="header-right__sign center">
-                    <div>
-                        <RiAccountCircleLine />
+                <NavLink to="/sign-in">
+                    <div className="header-right__sign center">
+                        <div>
+                            <RiAccountCircleLine />
+                        </div>
+                        <p>SIGN IN</p>
                     </div>
-                    <p>SIGN IN</p>
-                </div>
+                </NavLink>
                 <div className="header-right__download center">DOWNLOAD</div>
             </div>
         </header>
