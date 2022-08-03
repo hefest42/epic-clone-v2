@@ -81,8 +81,11 @@
 }
 
 .subHeader {
-    width: 70%;
-    height: 4.5rem;
+    position: sticky;
+    top: 0;
+    background-color: var(--background-black);
+    width: 75%;
+    height: 5rem;
 
     &-left {
         height: 100%;
@@ -118,6 +121,14 @@
         &__item {
             color: var(--link-gray);
             margin-left: 1.5rem;
+
+            &:hover {
+                color: #fff;
+            }
         }
+    }
+
+    &-active {
+        color: #fff;
     }
 }

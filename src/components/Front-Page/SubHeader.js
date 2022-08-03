@@ -1,5 +1,7 @@
 import React from "react";
 
+import { NavLink } from "react-router-dom";
+
 import { FiSearch } from "react-icons/fi";
 
 const SubHeader = () => {
@@ -12,9 +14,30 @@ const SubHeader = () => {
                         <input type="text" placeholder="Search the store" />
                     </form>
                 </div>
-                <div className="subHeader-left__item">Discover</div>
-                <div className="subHeader-left__item">Browse</div>
-                <div className="subHeader-left__item">News</div>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
+                    }
+                >
+                    Discover
+                </NavLink>
+                <NavLink
+                    to="/browse"
+                    className={({ isActive }) =>
+                        isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
+                    }
+                >
+                    Browse
+                </NavLink>
+                <NavLink
+                    to="/news"
+                    className={({ isActive }) =>
+                        isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
+                    }
+                >
+                    News
+                </NavLink>
             </div>
 
             <div className="subHeader-right"></div>
