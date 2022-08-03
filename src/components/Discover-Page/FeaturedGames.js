@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -96,7 +96,15 @@ const DUMMY_GAMES = [
 ];
 
 const FeaturedGames = () => {
-    const [activeListItem, setActiveListItem] = useState(3);
+    const [activeListItem, setActiveListItem] = useState(0);
+
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         setActiveListItem((state) => (state === 5 ? 0 : state + 1));
+    //     }, 7000);
+
+    //     return () => clearTimeout(timer);
+    // }, [activeListItem]);
 
     return (
         <div className="featured space-between">
@@ -106,7 +114,7 @@ const FeaturedGames = () => {
 
             <div className="featured-list">
                 {DUMMY_GAMES.map((game, i) => (
-                    <Link
+                    <div
                         key={i}
                         to={"/game"}
                         className={
@@ -117,7 +125,7 @@ const FeaturedGames = () => {
                             <img src={`${game.posterSmall}`} alt="poster" />
                         </div>
                         <div className="featured-item__text">{game.name}</div>
-                    </Link>
+                    </div>
                 ))}
             </div>
         </div>
