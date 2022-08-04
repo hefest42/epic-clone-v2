@@ -97,6 +97,7 @@ const DUMMY_GAMES = [
 
 const FeaturedGames = () => {
     const [activeListItem, setActiveListItem] = useState(0);
+    const [testState, setTestState] = useState(false);
 
     // useEffect(() => {
     //     const timer = setTimeout(() => {
@@ -108,8 +109,13 @@ const FeaturedGames = () => {
 
     return (
         <div className="featured space-between">
-            <div className="featured-poster">
-                <img src={`${DUMMY_GAMES[0].posterBig}`} alt="poster" />
+            <div className="featured-container">
+                <div className="featured-poster featured-show">
+                    <img src={`${DUMMY_GAMES[0].posterBig}`} alt="poster" />
+                </div>
+                <div className="featured-poster featured-show">
+                    <img src={`${DUMMY_GAMES[0].posterBig}`} alt="poster" />
+                </div>
             </div>
 
             <div className="featured-list">
