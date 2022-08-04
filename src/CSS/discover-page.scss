@@ -83,7 +83,7 @@
 
 .featured-show {
     animation-name: show;
-    animation-duration: 400ms;
+    animation-duration: 600ms;
     animation-fill-mode: forwards;
     /*webkit*/
     -webkit-animation-fill-mode: forwards;
@@ -96,7 +96,8 @@
     }
 
     50% {
-        opacity: 0.2;
+        transform: translateX(10%);
+        opacity: 0;
     }
 
     70% {
@@ -117,6 +118,7 @@
     100% {
         opacity: 1;
         transform: translateX(0);
+        z-index: 100;
     }
 }
 
@@ -141,6 +143,6 @@
     100% {
         opacity: 0;
         transform: translateX(-10%);
-        display: none;
+        z-index: 1;
     }
 }

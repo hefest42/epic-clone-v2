@@ -97,7 +97,7 @@ const DUMMY_GAMES = [
 
 const FeaturedGames = () => {
     const [activeListItem, setActiveListItem] = useState(0);
-    const [testState, setTestState] = useState(false);
+    const [testState, setTestState] = useState(true);
 
     // useEffect(() => {
     //     const timer = setTimeout(() => {
@@ -110,11 +110,14 @@ const FeaturedGames = () => {
     return (
         <div className="featured space-between">
             <div className="featured-container">
-                <div className="featured-poster featured-show">
+                <div className={testState ? "featured-poster featured-hidden" : "featured-poster featured-show"}>
                     <img src={`${DUMMY_GAMES[0].posterBig}`} alt="poster" />
                 </div>
-                <div className="featured-poster featured-show">
-                    <img src={`${DUMMY_GAMES[0].posterBig}`} alt="poster" />
+                <div className={!testState ? "featured-poster featured-hidden" : "featured-poster featured-show"}>
+                    <img
+                        src={`https://cdn2.unrealengine.com/egs-saints-row-carousel-desktop-1248x702-fc921a0812ca.jpg?h=1080&resize=1&w=1920`}
+                        alt="poster"
+                    />
                 </div>
             </div>
 
