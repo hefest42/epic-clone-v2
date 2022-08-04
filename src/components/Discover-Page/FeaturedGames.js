@@ -97,7 +97,7 @@ const DUMMY_GAMES = [
 
 const FeaturedGames = () => {
     const [activeListItem, setActiveListItem] = useState(0);
-    const [testState, setTestState] = useState(true);
+    const [testState, setTestState] = useState(3);
 
     // useEffect(() => {
     //     const timer = setTimeout(() => {
@@ -110,12 +110,18 @@ const FeaturedGames = () => {
     return (
         <div className="featured space-between">
             <div className="featured-container">
-                <div className={testState ? "featured-poster featured-hidden" : "featured-poster featured-show"}>
+                <div className={testState === 1 ? "featured-poster featured-show" : "featured-poster featured-hidden"}>
                     <img src={`${DUMMY_GAMES[0].posterBig}`} alt="poster" />
                 </div>
-                <div className={!testState ? "featured-poster featured-hidden" : "featured-poster featured-show"}>
+                <div className={testState === 2 ? "featured-poster featured-show" : "featured-poster featured-hidden"}>
                     <img
                         src={`https://cdn2.unrealengine.com/egs-saints-row-carousel-desktop-1248x702-fc921a0812ca.jpg?h=1080&resize=1&w=1920`}
+                        alt="poster"
+                    />
+                </div>
+                <div className={testState === 3 ? "featured-poster featured-show" : "featured-poster featured-hidden"}>
+                    <img
+                        src={`https://cdn2.unrealengine.com/egs-lotr-return-to-moria-carousel-desktop-1280x702-8737f30f4278.jpg?h=1080&resize=1&w=1920`}
                         alt="poster"
                     />
                 </div>
