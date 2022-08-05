@@ -86,6 +86,7 @@
     background-color: var(--background-black);
     width: 75%;
     height: 5rem;
+    z-index: 1000;
 
     &-left {
         height: 100%;
@@ -130,5 +131,15 @@
 
     &-active {
         color: #fff;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .subHeader {
+        width: 100%;
+
+        &-left {
+            margin-left: 2rem;
+        }
     }
 }
