@@ -96,17 +96,19 @@ const DUMMY_GAMES = [
     },
 ];
 
+//TODO add links to the games ergo fix clickOnFeaturedListItemHandler
+//TODO separate featuredPoster into its own compenent
 const FeaturedGames = () => {
     const [activeListItem, setActiveListItem] = useState(0);
     const [testState, setTestState] = useState(1);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setActiveListItem((state) => (state === 5 ? 0 : state + 1));
-        }, 7000);
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         setActiveListItem((state) => (state === 5 ? 0 : state + 1));
+    //     }, 7000);
 
-        return () => clearTimeout(timer);
-    }, [activeListItem]);
+    //     return () => clearTimeout(timer);
+    // }, [activeListItem]);
 
     const clickOnFeaturedListItemHandler = (index) => {
         if (index === activeListItem) {

@@ -174,6 +174,53 @@
     }
 }
 
+.carousel {
+    width: 75%;
+    margin-top: 4rem;
+
+    &-top,
+    &-bottom {
+        width: 100%;
+    }
+
+    &-top {
+        &__title {
+            color: #fff;
+            font-size: 1.3rem;
+        }
+
+        &__navigation {
+            height: 100%;
+
+            &-inactive {
+                background-color: var(--dark-gray);
+                color: var(--lighter-gray);
+                width: 30px;
+                height: 100%;
+                margin-left: 0.5rem;
+                padding: 7px 0;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            &-active {
+                background-color: var(--dark-gray);
+                color: #fff;
+                width: 30px;
+                height: 100%;
+                margin-left: 0.5rem;
+                padding: 7px 0;
+                border-radius: 50%;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--light-gray);
+                }
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 1000px) {
     .featured {
         width: 95%;
