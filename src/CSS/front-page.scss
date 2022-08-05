@@ -133,3 +133,13 @@
         color: #fff;
     }
 }
+
+@media only screen and (max-width: 1000px) {
+    .subHeader {
+        width: 100%;
+
+        &-left {
+            margin-left: 2rem;
+        }
+    }
+}
