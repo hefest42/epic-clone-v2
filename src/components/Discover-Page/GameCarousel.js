@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { IoMdAddCircle } from "react-icons/io";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
@@ -10,13 +11,41 @@ const calculateDiscount = (price, discount) => {
 
 const GameCarousel = ({ title }) => {
     const [testNumber, setTestNumber] = useState(0);
+    const [pageNumber, setPageNumber] = useState(0);
+    const [imageCoverIndex, setImageCoverIndex] = useState("");
+    const [wishlistButtonIndex, setWishlistButtonIndex] = useState("");
+    const numberOfPages = Math.floor(DUMMY_CAROUSEL_GAMES.length / 6);
 
+    //TODO change which price is being dispalyed based on whether the game is on sale or not
+    //TODO make the carousel item a link to the game page
     const moveCarouselRight = () => {
-        setTestNumber(-5);
+        if (pageNumber === numberOfPages) return;
+
+        if (pageNumber === numberOfPages - 1) {
+            const remainderOfCarouselItems = DUMMY_CAROUSEL_GAMES.length - 6 * numberOfPages;
+
+            setTestNumber((state) => state - remainderOfCarouselItems);
+            setPageNumber((state) => state + 1);
+            return;
+        }
+
+        setTestNumber(testNumber - 6);
+        setPageNumber((state) => state + 1);
     };
 
     const moveCarouselLeft = () => {
-        setTestNumber(0);
+        if (pageNumber === 0) return;
+
+        if (pageNumber === numberOfPages) {
+            const remainderOfCarouselItems = DUMMY_CAROUSEL_GAMES.length - 6 * numberOfPages;
+
+            setTestNumber((state) => state + remainderOfCarouselItems);
+            setPageNumber((state) => state - 1);
+            return;
+        }
+
+        setTestNumber(testNumber + 6);
+        setPageNumber((state) => state - 1);
     };
 
     return (
@@ -24,10 +53,24 @@ const GameCarousel = ({ title }) => {
             <div className="carousel-top space-between">
                 <div className="carousel-top__title center">{title}</div>
                 <div className="carousel-top__navigation center">
-                    <div className="carousel-top__navigation-inactive center" onClick={moveCarouselLeft}>
+                    <div
+                        className={
+                            pageNumber === 0
+                                ? "carousel-top__navigation-inactive center"
+                                : "carousel-top__navigation-active center"
+                        }
+                        onClick={moveCarouselLeft}
+                    >
                         <AiOutlineLeft />
                     </div>
-                    <div className="carousel-top__navigation-active center" onClick={moveCarouselRight}>
+                    <div
+                        className={
+                            numberOfPages === pageNumber
+                                ? "carousel-top__navigation-inactive center"
+                                : "carousel-top__navigation-active center"
+                        }
+                        onClick={moveCarouselRight}
+                    >
                         <AiOutlineRight />
                     </div>
                 </div>
@@ -41,20 +84,36 @@ const GameCarousel = ({ title }) => {
                         style={{
                             transform: `translateX(${(i + testNumber) * 100}%)`,
                         }}
+                        onMouseEnter={() => setWishlistButtonIndex(i)}
+                        onMouseLeave={() => setWishlistButtonIndex("")}
                     >
                         <div className="carousel-item">
-                            <div className="carousel-item__image">
+                            <div
+                                className="carousel-item__image"
+                                onMouseEnter={() => setImageCoverIndex(i)}
+                                onMouseLeave={() => setImageCoverIndex("")}
+                            >
                                 <img src={game.posterSmall} alt="poster" />
+                                {imageCoverIndex === i && <div className="carousel-item__cover"></div>}
                             </div>
-                            <div className="carousel-item__name">{game.name}</div>
+                            <div className="carousel-item__name">
+                                {game.name}
+                                {i}
+                            </div>
                             <div className="carousel-item__price">
-                                <div className="carousel-item__price-discount">{game.discount}%</div>
+                                <div className="carousel-item__price-discount">-{game.discount}%</div>
                                 <div className="carousel-item__price-original">${game.price}</div>
                                 <div className="carousel-item__price-discounted">
                                     ${calculateDiscount(game.price, +game.discount)}
                                 </div>
                             </div>
                         </div>
+
+                        {wishlistButtonIndex === i && (
+                            <div className="carousel-item__wishlist">
+                                <IoMdAddCircle />
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
