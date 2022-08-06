@@ -9,6 +9,8 @@ const calculateDiscount = (price, discount) => {
     return (price - price * (discount / 100)).toFixed(2);
 };
 
+const NUMBER_OF_SLIDES_PER_PAGE = 6;
+
 //TODO change which price is being dispalyed based on whether the game is on sale or not
 //TODO make the carousel item a link to the game page
 //TODO change css to make it scale with page size
@@ -17,20 +19,20 @@ const GameCarousel = ({ title }) => {
     const [pageNumber, setPageNumber] = useState(0);
     const [imageCoverIndex, setImageCoverIndex] = useState("");
     const [wishlistButtonIndex, setWishlistButtonIndex] = useState("");
-    const numberOfPages = Math.floor(DUMMY_CAROUSEL_GAMES.length / 6);
+    const numberOfPages = Math.floor(DUMMY_CAROUSEL_GAMES.length / NUMBER_OF_SLIDES_PER_PAGE);
 
     const moveCarouselRight = () => {
         if (pageNumber === numberOfPages) return;
 
         if (pageNumber === numberOfPages - 1) {
-            const remainderOfCarouselItems = DUMMY_CAROUSEL_GAMES.length - 6 * numberOfPages;
+            const remainderOfCarouselItems = DUMMY_CAROUSEL_GAMES.length - NUMBER_OF_SLIDES_PER_PAGE * numberOfPages;
 
             setCarouselItem((state) => state - remainderOfCarouselItems);
             setPageNumber((state) => state + 1);
             return;
         }
 
-        setCarouselItem(carouselItem - 6);
+        setCarouselItem(carouselItem - NUMBER_OF_SLIDES_PER_PAGE);
         setPageNumber((state) => state + 1);
     };
 
@@ -38,14 +40,14 @@ const GameCarousel = ({ title }) => {
         if (pageNumber === 0) return;
 
         if (pageNumber === numberOfPages) {
-            const remainderOfCarouselItems = DUMMY_CAROUSEL_GAMES.length - 6 * numberOfPages;
+            const remainderOfCarouselItems = DUMMY_CAROUSEL_GAMES.length - NUMBER_OF_SLIDES_PER_PAGE * numberOfPages;
 
             setCarouselItem((state) => state + remainderOfCarouselItems);
             setPageNumber((state) => state - 1);
             return;
         }
 
-        setCarouselItem(carouselItem + 6);
+        setCarouselItem(carouselItem + NUMBER_OF_SLIDES_PER_PAGE);
         setPageNumber((state) => state - 1);
     };
 
