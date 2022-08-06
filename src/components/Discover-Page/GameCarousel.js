@@ -4,6 +4,10 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
+const calculateDiscount = (price, discount) => {
+    return (price - price * (discount / 100)).toFixed(2);
+};
+
 const GameCarousel = ({ title }) => {
     const [testNumber, setTestNumber] = useState(0);
 
@@ -41,6 +45,14 @@ const GameCarousel = ({ title }) => {
                         <div className="carousel-item">
                             <div className="carousel-item__image">
                                 <img src={game.posterSmall} alt="poster" />
+                            </div>
+                            <div className="carousel-item__name">{game.name}</div>
+                            <div className="carousel-item__price">
+                                <div className="carousel-item__price-discount">{game.discount}%</div>
+                                <div className="carousel-item__price-original">${game.price}</div>
+                                <div className="carousel-item__price-discounted">
+                                    ${calculateDiscount(game.price, +game.discount)}
+                                </div>
                             </div>
                         </div>
                     </div>
