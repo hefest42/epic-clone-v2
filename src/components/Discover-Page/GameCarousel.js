@@ -9,27 +9,28 @@ const calculateDiscount = (price, discount) => {
     return (price - price * (discount / 100)).toFixed(2);
 };
 
+//TODO change which price is being dispalyed based on whether the game is on sale or not
+//TODO make the carousel item a link to the game page
+//TODO change css to make it scale with page size
 const GameCarousel = ({ title }) => {
-    const [testNumber, setTestNumber] = useState(0);
+    const [carouselItem, setCarouselItem] = useState(0);
     const [pageNumber, setPageNumber] = useState(0);
     const [imageCoverIndex, setImageCoverIndex] = useState("");
     const [wishlistButtonIndex, setWishlistButtonIndex] = useState("");
     const numberOfPages = Math.floor(DUMMY_CAROUSEL_GAMES.length / 6);
 
-    //TODO change which price is being dispalyed based on whether the game is on sale or not
-    //TODO make the carousel item a link to the game page
     const moveCarouselRight = () => {
         if (pageNumber === numberOfPages) return;
 
         if (pageNumber === numberOfPages - 1) {
             const remainderOfCarouselItems = DUMMY_CAROUSEL_GAMES.length - 6 * numberOfPages;
 
-            setTestNumber((state) => state - remainderOfCarouselItems);
+            setCarouselItem((state) => state - remainderOfCarouselItems);
             setPageNumber((state) => state + 1);
             return;
         }
 
-        setTestNumber(testNumber - 6);
+        setCarouselItem(carouselItem - 6);
         setPageNumber((state) => state + 1);
     };
 
@@ -39,12 +40,12 @@ const GameCarousel = ({ title }) => {
         if (pageNumber === numberOfPages) {
             const remainderOfCarouselItems = DUMMY_CAROUSEL_GAMES.length - 6 * numberOfPages;
 
-            setTestNumber((state) => state + remainderOfCarouselItems);
+            setCarouselItem((state) => state + remainderOfCarouselItems);
             setPageNumber((state) => state - 1);
             return;
         }
 
-        setTestNumber(testNumber + 6);
+        setCarouselItem(carouselItem + 6);
         setPageNumber((state) => state - 1);
     };
 
@@ -82,7 +83,7 @@ const GameCarousel = ({ title }) => {
                         key={i}
                         className="carousel-inner"
                         style={{
-                            transform: `translateX(${(i + testNumber) * 100}%)`,
+                            transform: `translateX(${(i + carouselItem) * 100}%)`,
                         }}
                         onMouseEnter={() => setWishlistButtonIndex(i)}
                         onMouseLeave={() => setWishlistButtonIndex("")}
