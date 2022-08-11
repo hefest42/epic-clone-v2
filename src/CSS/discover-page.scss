@@ -327,13 +327,74 @@
 }
 
 .promoted {
-    background-color: teal;
     width: 75%;
-    height: 20rem;
 
-    &-container {
-        flex: 1;
-        height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-inner[data-items="2"] {
+        width: calc(100% / 2 - 16px);
+    }
+    &-inner[data-items="3"] {
+        width: calc(100% / 3 - 16px);
+    }
+
+    &-inner {
+        position: relative;
+        color: #fff;
+
+        &__image {
+            position: relative;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+        }
+
+        &__cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgb(0, 0, 0, 0.25);
+            width: 100%;
+            height: 99%;
+            z-index: 50;
+            border-radius: 10px;
+        }
+
+        &__wishlist {
+            position: absolute;
+            top: 3%;
+            right: 5%;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            z-index: 100;
+            cursor: pointer;
+
+            svg {
+                color: white;
+                background-color: black;
+                outline: 2px solid white;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+            }
+        }
+
+        &__info {
+            width: 90%;
+
+            h2,
+            div {
+                margin-top: 1rem;
+            }
+        }
     }
 }
 
@@ -382,6 +443,27 @@
 
         &-item {
             height: 4rem;
+        }
+    }
+
+    .promoted {
+        width: 95%;
+
+        &-inner {
+            &__info {
+                h2,
+                div {
+                    margin-top: 1rem;
+                }
+
+                h2 {
+                    font-size: 1.1rem;
+                }
+
+                div {
+                    font-size: 0.9rem;
+                }
+            }
         }
     }
 }
