@@ -326,6 +326,17 @@
     }
 }
 
+.promoted {
+    background-color: teal;
+    width: 75%;
+    height: 20rem;
+
+    &-container {
+        flex: 1;
+        height: 100%;
+    }
+}
+
 @media only screen and (max-width: 1000px) {
     .featured {
         width: 95%;
