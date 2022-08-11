@@ -1,6 +1,7 @@
 import React from "react";
 
 import FeaturedGames from "./FeaturedGames";
+import FreeGames from "./FreeGames";
 import GameCarousel from "./GameCarousel";
 import PromotedGames from "./PromotedGames";
 
@@ -10,6 +11,7 @@ const DiscoverContainer = () => {
             <FeaturedGames />
             <GameCarousel title="Games on Sale" />
             <PromotedGames />
+            <FreeGames />
         </>
     );
 };
