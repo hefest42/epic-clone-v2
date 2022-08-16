@@ -7,6 +7,7 @@ const DUMMY_TITLES = ["New Releases", "Top Selling", "Coming Soon"];
 
 //TODO add the wishlist button
 //TODO make the container a link to the game page
+//TODO add pricing depending whether the game is on sale/free
 const NewTopComingGames = () => {
     return (
         <div className="column">

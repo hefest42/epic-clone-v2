@@ -14,6 +14,10 @@ const DiscoverContainer = () => {
             <PromotedGames />
             <FreeGames />
             <NewTopComingGames />
+            <GameCarousel title="Games on Sale" />
+            <PromotedGames />
+            <GameCarousel title="Games on Sale" />
+            <GameCarousel title="Games on Sale" />
         </>
     );
 };
