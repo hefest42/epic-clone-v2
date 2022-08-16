@@ -2,17 +2,14 @@ import React, { useState } from "react";
 
 import { IoMdAddCircle } from "react-icons/io";
 
-import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
-
-const PromotedGames = () => {
-    const GAMES = DUMMY_CAROUSEL_GAMES.slice(0, 3);
+const PromotedGames = ({ games }) => {
     const [showGameCoverIdx, setShowGameCoverIdx] = useState("");
     const [showGameWishlistBtn, setShowWishlistBtn] = useState("");
 
     return (
         <div className="promoted">
-            {GAMES.map((game, i) => (
-                <div key={i} className="promoted-inner center-column" data-items={GAMES.length}>
+            {games.map((game, i) => (
+                <div key={i} className="promoted-inner center-column" data-items={games.length}>
                     <div
                         className="promoted-inner__image"
                         onMouseEnter={() => {
