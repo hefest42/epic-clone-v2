@@ -3,13 +3,15 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import { RiAccountCircleLine } from "react-icons/ri";
+import { SiEpicgames } from "react-icons/si";
 
+//TODO make logo link to the home/discover page
 const Header = () => {
     return (
         <header className="header space-between">
             <div className="header-left center">
-                <div className="header-logo">
-                    <div className="header-logo__text"></div>
+                <div className="header-logo center">
+                    <SiEpicgames />
                 </div>
 
                 <NavLink to="/" className={({ isActive }) => (isActive ? "header-item header-active" : "header-item")}>

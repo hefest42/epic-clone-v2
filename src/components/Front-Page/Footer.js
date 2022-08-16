@@ -4,6 +4,7 @@ import { AiFillFacebook, AiOutlineTwitter, AiFillYoutube } from "react-icons/ai"
 import { IoIosArrowUp } from "react-icons/io";
 import { SiUnrealengine, SiEpicgames } from "react-icons/si";
 
+//TODO click on button scrolls to top of page
 const Footer = () => {
     return (
         <footer className="footer">

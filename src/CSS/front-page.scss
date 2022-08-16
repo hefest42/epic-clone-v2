@@ -9,6 +9,12 @@
     &-logo {
         width: 5rem;
         height: 100%;
+        color: #fff;
+
+        svg {
+            width: 70%;
+            height: 70%;
+        }
     }
 
     &-left {
@@ -236,8 +242,9 @@
     }
 
     &-rights {
-        font-size: 0.7rem;
         width: 50%;
+        font-size: 0.7rem;
+        line-height: 1.5rem;
     }
 
     &-logo {
