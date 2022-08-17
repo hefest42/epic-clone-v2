@@ -19,7 +19,7 @@ const FreeGames = () => {
         };
     };
 
-    const dates = dateHandler("2022-08-11");
+    const { oneWeekFromDate, twoWeeksFromDate } = dateHandler("2022-08-11");
 
     return (
         <div className="free center">
@@ -41,8 +41,8 @@ const FreeGames = () => {
                                 <div className="free-item__info-name">{game.name}</div>
                                 <div className="free-item__info-date">
                                     {i === 0
-                                        ? `Free Now - ${dates.oneWeekFromDate}`
-                                        : `Free ${dates.oneWeekFromDate} - ${dates.twoWeeksFromDate}`}
+                                        ? `Free Now - ${oneWeekFromDate}`
+                                        : `Free ${oneWeekFromDate} - ${twoWeeksFromDate}`}
                                 </div>
                             </div>
                         </div>
