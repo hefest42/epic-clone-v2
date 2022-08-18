@@ -6,13 +6,9 @@ const GameItem = ({ game }) => {
     const [showCover, setShowCover] = useState(false);
     const [showWishlistButton, setShowWishlistButton] = useState(false);
 
-    const mouseEnterHandler = () => {
-        setShowCover(false);
+    const mouseEnterWishlistButtonHandler = () => {
         setShowWishlistButton(true);
-    };
-    const mouseLeaveHandler = () => {
-        setShowCover(true);
-        setShowWishlistButton(false);
+        setShowCover(false);
     };
 
     return (
@@ -39,9 +35,7 @@ const GameItem = ({ game }) => {
                     <div className="game-info__price">${game.price}</div>
                 </div>
             </a>
-            {showWishlistButton && (
-                <WishlistButton top="-13" left="50" mouseEnter={mouseEnterHandler} mouseLeave={mouseLeaveHandler} />
-            )}
+            {showWishlistButton && <WishlistButton mouseEnter={mouseEnterWishlistButtonHandler} />}
         </>
     );
 };

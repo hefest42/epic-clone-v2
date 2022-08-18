@@ -62,7 +62,6 @@ body {
 
 .game {
     width: 100%;
-    position: relative;
 
     &-image {
         position: relative;
@@ -104,39 +103,41 @@ body {
     }
 }
 
-.wishlist-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    color: none;
-    border: none;
-    outline: none;
-    z-index: 100;
+.wishlist {
+    &-button {
+        position: absolute;
+        top: calc(0% + 10px);
+        left: calc(100% - 30px);
+        background-color: transparent;
+        color: none;
+        border: none;
+        outline: none;
+        z-index: 100;
+        border: none;
+        cursor: pointer;
 
-    &__info {
+        svg {
+            color: white;
+            background-color: black;
+            outline: 2px solid white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+    }
+
+    &-info {
+        position: absolute;
+        top: calc(0% - 40px);
+        left: calc(100% - 90px);
         background-color: var(--light-gray);
         color: var(--lighter-gray);
+        width: 150px;
         padding: 7px 10px;
         margin-bottom: 1.5rem;
         border-radius: 5px;
         text-align: center;
         text-overflow: ellipsis;
         white-space: nowrap;
-    }
-
-    button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-    }
-
-    svg {
-        color: white;
-        background-color: black;
-        outline: 2px solid white;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
     }
 }
