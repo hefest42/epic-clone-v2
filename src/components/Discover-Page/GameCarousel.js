@@ -114,7 +114,7 @@ const GameCarousel = ({ title }) => {
                             </div>
                         </div>
 
-                        {wishlistButtonIndex === i && <WishlistButton top="-10" left="50" />}
+                        {wishlistButtonIndex === i && <WishlistButton top="-13" left="52" />}
                     </div>
                 ))}
             </div>

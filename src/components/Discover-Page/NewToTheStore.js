@@ -1,16 +1,26 @@
 import React from "react";
 
-import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
+import { WishlistButton } from "../UI/CoverAndWishlistButton";
 
-//TODO add cover & wishlist button
+import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
+import { useState } from "react";
+
+//TODO add cover
 //TODO fix pricing
 const NewToTheStore = () => {
+    const [showWishlistButtonIdx, setShowWishlistIdx] = useState("");
+
     return (
         <div className="new-to-store center-column">
             <div className="new-to-store-top">New To The Store</div>
             <div className="new-to-store-bottom space-between">
                 {DUMMY_CAROUSEL_GAMES.slice(0, 5).map((game, i) => (
-                    <div key={i} className="new-to-store-item">
+                    <div
+                        key={i}
+                        className="new-to-store-item"
+                        onMouseEnter={() => setShowWishlistIdx(i)}
+                        onMouseLeave={() => setShowWishlistIdx("")}
+                    >
                         <div className="new-to-store-item__image">
                             <img src={game.posterSmall} alt={`${game.name} poster`} />
                         </div>
@@ -22,6 +32,7 @@ const NewToTheStore = () => {
                             </div>
                             <div className="new-to-store-item__info-price">${game.price}</div>
                         </div>
+                        {showWishlistButtonIdx === i && <WishlistButton top="-9" right="-15" />}
                     </div>
                 ))}
             </div>
