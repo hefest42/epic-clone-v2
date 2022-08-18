@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { IoMdAddCircle } from "react-icons/io";
 
-export const WishlistButton = ({ top, left, mouseEnter }) => {
+export const WishlistButton = ({ top, left, right }) => {
     const [showWishlistInfo, setShowWishlistInfo] = useState(false);
 
     return (
@@ -12,6 +12,7 @@ export const WishlistButton = ({ top, left, mouseEnter }) => {
             style={{
                 top: `${top}%`,
                 left: `${left}%`,
+                right: `${right}%`,
             }}
         >
             <div
