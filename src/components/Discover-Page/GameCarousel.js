@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { WishlistButton } from "../UI/CoverAndWishlistButton";
+import GameItem from "../UI/GameItem";
 
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { IoMdAddCircle } from "react-icons/io";
@@ -19,8 +20,6 @@ const NUMBER_OF_SLIDES_PER_PAGE = 6;
 const GameCarousel = ({ title }) => {
     const [carouselItem, setCarouselItem] = useState(0);
     const [pageNumber, setPageNumber] = useState(0);
-    const [imageCoverIndex, setImageCoverIndex] = useState("");
-    const [wishlistButtonIndex, setWishlistButtonIndex] = useState("");
     const numberOfPages = Math.floor(DUMMY_CAROUSEL_GAMES.length / NUMBER_OF_SLIDES_PER_PAGE);
 
     const moveCarouselRight = () => {
@@ -89,32 +88,10 @@ const GameCarousel = ({ title }) => {
                         style={{
                             transform: `translateX(${(i + carouselItem) * 100}%)`,
                         }}
-                        onMouseEnter={() => setWishlistButtonIndex(i)}
-                        onMouseLeave={() => setWishlistButtonIndex("")}
                     >
                         <div className="carousel-item">
-                            <div
-                                className="carousel-item__image"
-                                onMouseEnter={() => setImageCoverIndex(i)}
-                                onMouseLeave={() => setImageCoverIndex("")}
-                            >
-                                <img src={game.posterSmall} alt="poster" />
-                                {imageCoverIndex === i && <div className="carousel-item__cover"></div>}
-                            </div>
-                            <div className="carousel-item__name">
-                                {game.name}
-                                {i}
-                            </div>
-                            <div className="carousel-item__price">
-                                <div className="carousel-item__price-discount">-{game.discount}%</div>
-                                <div className="carousel-item__price-original">${game.price}</div>
-                                <div className="carousel-item__price-discounted">
-                                    ${calculateDiscount(game.price, +game.discount)}
-                                </div>
-                            </div>
+                            <GameItem game={game} />
                         </div>
-
-                        {wishlistButtonIndex === i && <WishlistButton top="-13" left="52" />}
                     </div>
                 ))}
             </div>
