@@ -5,6 +5,7 @@ import { IoMdAddCircle } from "react-icons/io";
 const PromotedGames = ({ games }) => {
     const [showGameCoverIdx, setShowGameCoverIdx] = useState("");
     const [showGameWishlistBtn, setShowWishlistBtn] = useState("");
+    const [showAddToWishlistInfo, setShowAddToWishlistInfo] = useState(false);
 
     return (
         <div className="promoted">
@@ -34,13 +35,27 @@ const PromotedGames = ({ games }) => {
                         <h2>${game.price}</h2>
                     </div>
                     {showGameWishlistBtn === i && (
-                        <button
-                            className="promoted-inner__wishlist"
+                        <div
+                            className="promoted-inner__wishlist center-column"
                             onMouseEnter={() => setShowWishlistBtn(i)}
-                            onClick={() => console.log("wishlist")}
                         >
-                            <IoMdAddCircle />
-                        </button>
+                            <div
+                                className="promoted-inner__wishlist__info"
+                                style={{
+                                    opacity: `${showAddToWishlistInfo ? "100" : "0"}`,
+                                }}
+                            >
+                                Add to Wishlist
+                            </div>
+
+                            <button
+                                onClick={() => console.log("wishlist")}
+                                onMouseEnter={() => setShowAddToWishlistInfo(true)}
+                                onMouseLeave={() => setShowAddToWishlistInfo(false)}
+                            >
+                                <IoMdAddCircle />
+                            </button>
+                        </div>
                     )}
                 </div>
             ))}

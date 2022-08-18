@@ -374,13 +374,30 @@
 
         &__wishlist {
             position: absolute;
-            top: 3%;
-            right: 5%;
+            top: -8%;
+            left: 80%;
             background-color: transparent;
-            outline: none;
+            color: none;
             border: none;
+            outline: none;
             z-index: 100;
-            cursor: pointer;
+
+            &__info {
+                background-color: var(--light-gray);
+                color: var(--lighter-gray);
+                padding: 7px 10px;
+                margin-bottom: 1rem;
+                border-radius: 5px;
+                text-align: center;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            button {
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+            }
 
             svg {
                 color: white;
