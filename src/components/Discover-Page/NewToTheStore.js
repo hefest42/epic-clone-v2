@@ -23,6 +23,7 @@ const NewToTheStore = () => {
                     >
                         <div className="new-to-store-item__image">
                             <img src={game.posterSmall} alt={`${game.name} poster`} />
+                            {showWishlistButtonIdx === i && <WishlistButton top="-9" right="-15" />}
                         </div>
 
                         <div className="new-to-store-item__info">
@@ -32,7 +33,6 @@ const NewToTheStore = () => {
                             </div>
                             <div className="new-to-store-item__info-price">${game.price}</div>
                         </div>
-                        {showWishlistButtonIdx === i && <WishlistButton top="-9" right="-15" />}
                     </div>
                 ))}
             </div>
