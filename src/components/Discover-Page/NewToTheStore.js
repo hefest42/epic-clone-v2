@@ -4,11 +4,8 @@ import GameItem from "../UI/GameItem";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
-//TODO add cover
 //TODO fix pricing
 const NewToTheStore = () => {
-    const [showWishlistButtonIdx, setShowWishlistIdx] = useState("");
-
     return (
         <div className="new-to-store center-column">
             <div className="new-to-store-top">New To The Store</div>

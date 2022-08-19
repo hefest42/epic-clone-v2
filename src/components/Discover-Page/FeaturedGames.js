@@ -6,7 +6,6 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { DUMMY_GAMES } from "../../Helpers/DummyGames";
 
 //TODO add links to the games ergo fix clickOnFeaturedListItemHandler
-//TODO separate featuredPoster into its own compenent
 const FeaturedGames = () => {
     const [activeListItem, setActiveListItem] = useState(0);
     const [testState, setTestState] = useState(1);

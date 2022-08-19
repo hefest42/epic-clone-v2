@@ -15,8 +15,6 @@ const calculateDiscount = (price, discount) => {
 const NUMBER_OF_SLIDES_PER_PAGE = 6;
 
 //TODO change which price is being dispalyed based on whether the game is on sale or not
-//TODO make the carousel item a link to the game page
-//TODO change css to make it scale with page size
 const GameCarousel = ({ title }) => {
     const [carouselItem, setCarouselItem] = useState(0);
     const [pageNumber, setPageNumber] = useState(0);

@@ -536,15 +536,40 @@
         width: 95%;
 
         &-inner {
-            &__info {
-                h2 {
-                    font-size: 1.1rem;
-                }
-
-                div {
-                    font-size: 0.9rem;
+            &:last-child {
+                .wishlist-info {
+                    left: calc(100% - 140px);
                 }
             }
+        }
+    }
+
+    .carousel {
+        width: 100%;
+        margin-top: 2rem;
+
+        &-bottom {
+            height: 20rem;
+        }
+
+        &-inner {
+            position: absolute;
+            top: 0;
+            left: 0%;
+            min-width: calc(100% / 6);
+            z-index: 100;
+            transition: all 0.5s linear;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        &-item {
+            position: relative;
+            max-width: 8.2rem; // MAGIC NUMBER DONT ASK
+            min-width: 8.2rem; // MAGIC NUMBER DONT ASK
+            margin-right: 2rem; // MORE MAGIC NUMBERS DONT QUESTION IT
         }
     }
 
@@ -578,15 +603,9 @@
         width: 100%;
 
         &-item {
-            &__info {
-                font-size: 0.85rem;
-
-                &-tag {
-                    height: 1rem;
-                    margin: 0.7rem 0;
-                    span {
-                        padding: 3px 7px;
-                    }
+            &:last-child {
+                .wishlist-info {
+                    left: calc(100% - 155px);
                 }
             }
         }
