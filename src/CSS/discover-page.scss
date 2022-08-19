@@ -479,41 +479,8 @@
     }
 
     &-item {
+        position: relative;
         width: calc(100% / 5 - 0.5rem);
-
-        &__image {
-            position: relative;
-            width: 100%;
-            border-radius: 5px;
-
-            img {
-                width: 100%;
-                border-radius: 5px;
-            }
-        }
-
-        &__info {
-            color: #fff;
-            margin-top: 1rem;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            &-name,
-            &-price {
-                height: 2rem;
-            }
-
-            &-tag {
-                height: 2rem;
-                span {
-                    background-color: var(--light-gray);
-                    padding: 3px 10px;
-                    border-radius: 5px;
-                }
-            }
-        }
     }
 }
 
