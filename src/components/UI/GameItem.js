@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-import { WishlistButton } from "./CoverAndWishlistButton";
+import { WishlistButton, ImageCover } from "./CoverAndWishlistButton";
 
 const GameItem = ({ game }) => {
-    const [showCover, setShowCover] = useState(false);
+    const [showImageCover, setShowImageCover] = useState(false);
     const [showWishlistButton, setShowWishlistButton] = useState(false);
 
     const mouseEnterWishlistButtonHandler = () => {
         setShowWishlistButton(true);
-        setShowCover(false);
+        setShowImageCover(false);
     };
 
     return (
@@ -22,12 +22,12 @@ const GameItem = ({ game }) => {
             >
                 <div
                     className="game-image"
-                    onMouseEnter={() => setShowCover(true)}
-                    onMouseLeave={() => setShowCover(false)}
+                    onMouseEnter={() => setShowImageCover(true)}
+                    onMouseLeave={() => setShowImageCover(false)}
                 >
                     <>
                         <img src={game.posterSmall} alt={`${game.name} poster`} />
-                        {showCover && <div className="game-cover"></div>}
+                        {showImageCover && <ImageCover />}
                     </>
                 </div>
                 <div className="game-info">

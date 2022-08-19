@@ -30,3 +30,7 @@ export const WishlistButton = ({ mouseEnter }) => {
         </>
     );
 };
+
+export const ImageCover = () => {
+    return <div className="image-cover"></div>;
+};
