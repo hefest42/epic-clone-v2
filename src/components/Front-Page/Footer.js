@@ -10,14 +10,22 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer-inner">
                 <div className="footer-top space-between">
-                    <div>
-                        <AiFillFacebook />
-                        <AiOutlineTwitter />
-                        <AiFillYoutube />
+                    <div className="center">
+                        <div className="footer-svg">
+                            <AiFillFacebook />
+                        </div>
+                        <div className="footer-svg">
+                            <AiOutlineTwitter />
+                        </div>
+                        <div className="footer-svg">
+                            <AiFillYoutube />
+                        </div>
                     </div>
                     <div>
-                        <button className="center">
-                            <IoIosArrowUp />
+                        <button className="center" onClick={() => window.scrollTo(0, 0)}>
+                            <div className="footer-arrow center">
+                                <IoIosArrowUp />
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -77,9 +85,13 @@ const Footer = () => {
                         <span>Privacy Policy</span>
                         <span>Store Refund Policy</span>
                     </div>
-                    <div>
-                        <SiEpicgames />
-                        <SiUnrealengine />
+                    <div className="center">
+                        <div className="footer-svg">
+                            <SiEpicgames />
+                        </div>
+                        <div className="footer-svg">
+                            <SiUnrealengine />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -152,15 +152,25 @@
     justify-content: flex-start;
     align-items: center;
 
-    svg {
-        width: 35px;
-        height: 35px;
+    &-svg {
         margin-right: 0.5rem;
         cursor: pointer;
 
         :hover {
             color: var(--main-blue);
             transition: color 0.2s linear;
+        }
+
+        svg {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    &-arrow {
+        svg {
+            width: 30px;
+            height: 30px;
         }
     }
 
