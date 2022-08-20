@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 const FormInputs = ({ emailValue, changeEmailValue, emailRef, passwordValue, changePasswordValue, passwordRef }) => {
     const [emailInputActive, setEmailInputActive] = useState(false);

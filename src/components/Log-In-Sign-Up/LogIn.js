@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import FormInputs from "./FormInputs";
+import LogInFormInputs from "./LogInFormInputs";
 
 import { Link } from "react-router-dom";
 import { SiEpicgames } from "react-icons/si";
@@ -31,7 +31,7 @@ const LogIn = () => {
                     <h3>Sign in with a Game Store Account</h3>
                 </div>
 
-                <FormInputs
+                <LogInFormInputs
                     emailValue={emailInputValue}
                     changeEmailValue={setEmailInputValue}
                     emailRef={emailRef}
