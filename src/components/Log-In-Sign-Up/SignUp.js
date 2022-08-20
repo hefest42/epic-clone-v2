@@ -1,26 +1,6 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
-import FormInputs from "./FormInputs";
-
-import { Link } from "react-router-dom";
-import { SiEpicgames } from "react-icons/si";
-
-const LogIn = () => {
-    const [emailInputValue, setEmailInputValue] = useState("");
-    const [passwordInputValue, setPasswordInputValue] = useState("");
-    const emailRef = useRef();
-    const passwordRef = useRef();
-
-    const formSubmitHandler = (e) => {
-        e.preventDefault();
-
-        setEmailInputValue("");
-        setPasswordInputValue("");
-
-        emailRef.current.value = "";
-        passwordRef.current.value = "";
-    };
-
+const SignUp = () => {
     return (
         <form className="form center-column" onSubmit={formSubmitHandler}>
             <div className="form__inner">
@@ -57,4 +37,4 @@ const LogIn = () => {
     );
 };
 
-export default LogIn;
+export default SignUp;

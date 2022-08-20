@@ -1,4 +1,4 @@
-.log-in {
+.form {
     background-color: var(--dark-gray);
     color: #fff;
     width: 30rem;
@@ -7,12 +7,12 @@
     margin-top: 15rem;
     border-radius: 5px;
 
-    &__inner {
+    &-inner {
         width: 80%;
         height: auto;
     }
 
-    &__logo {
+    &-logo {
         svg {
             width: 50px;
             height: 50px;
@@ -23,12 +23,12 @@
         }
     }
 
-    &__inputs {
+    &-inputs {
         width: 100%;
         margin-top: 1rem;
     }
 
-    &__input {
+    &-input {
         position: relative;
         width: 100%;
         height: 4rem;
@@ -41,7 +41,7 @@
         justify-content: center;
         align-items: flex-end;
 
-        &-desc {
+        &__desc {
             position: absolute;
             top: 35%;
             width: 90%;
@@ -68,11 +68,11 @@
         }
     }
 
-    &__input-active {
+    &-input__active {
         border-color: #fff;
 
-        .log-in__input {
-            &-desc {
+        .form-input {
+            &__desc {
                 top: 10%;
                 font-size: 0.8rem;
                 transition: all 0.1s linear;
@@ -80,7 +80,7 @@
         }
     }
 
-    &__button {
+    &-button {
         width: 100%;
 
         button {
@@ -96,7 +96,7 @@
             pointer-events: none;
         }
 
-        &-active {
+        &__active {
             button {
                 background-color: var(--main-blue);
                 color: #fff;
@@ -106,7 +106,7 @@
         }
     }
 
-    &__link {
+    &-link {
         margin-top: 2rem;
         color: var(--lighter-gray);
 
