@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import FrontPageContainer from "./components/Front-Page/FrontPageContainer";
-import LogInContainer from "./components/Log-In/LogInContainer";
+import LogInContainer from "./components/Log-In-Sign-Up/LogInContainer";
 
 function App() {
     return (
