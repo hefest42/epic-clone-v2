@@ -69,12 +69,51 @@
     }
 
     &__input-active {
+        border-color: #fff;
+
         .log-in__input {
             &-desc {
                 top: 10%;
                 font-size: 0.8rem;
                 transition: all 0.1s linear;
             }
+        }
+    }
+
+    &__button {
+        width: 100%;
+
+        button {
+            background-color: #004c97;
+            color: rgb(160, 160, 160);
+            width: 100%;
+            height: 3rem;
+            font-weight: bold;
+            font-size: 0.7rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            pointer-events: none;
+        }
+
+        &-active {
+            button {
+                background-color: var(--main-blue);
+                color: #fff;
+
+                pointer-events: all;
+            }
+        }
+    }
+
+    &__link {
+        margin-top: 2rem;
+        color: var(--lighter-gray);
+
+        a {
+            color: #fff;
+            margin-left: 0.5rem;
+            text-decoration: underline;
         }
     }
 }

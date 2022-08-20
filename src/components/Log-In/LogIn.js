@@ -66,11 +66,17 @@ const LogIn = () => {
                     </div>
                 </div>
 
-                <div>
+                <div
+                    className={
+                        emailInputValue && passwordInputValue
+                            ? "log-in__button log-in__button-active"
+                            : "log-in__button"
+                    }
+                >
                     <button>LOG IN NOW</button>
                 </div>
 
-                <div className="center">
+                <div className="log-in__link center">
                     <div>Don't have an Game Store Account?</div>
                     <Link to="sign-up">Sign Up</Link>
                 </div>
