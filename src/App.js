@@ -9,7 +9,7 @@ function App() {
         <Routes>
             <Route path="/" element={<FrontPageContainer />} />
             <Route path="log-in" element={<LogInContainer />} />
-            <Route path="sign-up" element={<LogInContainer />} />
+            <Route path="sign-up" element={<SignUpContainer />} />
         </Routes>
     );
 }
