@@ -43,7 +43,7 @@ const LogIn = () => {
 
                 <div className="form-link center">
                     <div>Don't have an Game Store Account?</div>
-                    <Link to="sign-up">Sign Up</Link>
+                    <Link to="/sign-up">Sign Up</Link>
                 </div>
             </div>
         </form>
