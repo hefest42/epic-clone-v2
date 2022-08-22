@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import LogInFormInputs from "./LogInFormInputs";
 
@@ -8,17 +8,12 @@ import { SiEpicgames } from "react-icons/si";
 const LogIn = () => {
     const [emailInputValue, setEmailInputValue] = useState("");
     const [passwordInputValue, setPasswordInputValue] = useState("");
-    const emailRef = useRef();
-    const passwordRef = useRef();
 
     const formSubmitHandler = (e) => {
         e.preventDefault();
 
         setEmailInputValue("");
         setPasswordInputValue("");
-
-        emailRef.current.value = "";
-        passwordRef.current.value = "";
     };
 
     return (
@@ -34,10 +29,8 @@ const LogIn = () => {
                 <LogInFormInputs
                     emailValue={emailInputValue}
                     changeEmailValue={setEmailInputValue}
-                    emailRef={emailRef}
                     passwordValue={passwordInputValue}
                     changePasswordValue={setPasswordInputValue}
-                    passwordRef={passwordRef}
                 />
 
                 <div
