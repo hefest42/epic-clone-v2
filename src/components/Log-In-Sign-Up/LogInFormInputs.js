@@ -8,7 +8,7 @@ const FormInputs = ({ emailValue, changeEmailValue, passwordValue, changePasswor
         <div className="form-inputs">
             <div className={emailInputActive ? "form-input form-input__active" : "form-input"}>
                 <div className="form-input__desc">
-                    <label for="email">Email Address</label>
+                    <label htmlFor="email">Email Address</label>
                 </div>
 
                 <input
@@ -27,7 +27,7 @@ const FormInputs = ({ emailValue, changeEmailValue, passwordValue, changePasswor
 
             <div className={passwordInputActive ? "form-input form-input__active" : "form-input"}>
                 <div className="form-input__desc">
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                 </div>
                 <input
                     type="password"
