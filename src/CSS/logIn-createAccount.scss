@@ -4,7 +4,6 @@
     width: 30rem;
     height: auto;
     padding: 3rem 1rem;
-    margin-top: 15rem;
     border-radius: 5px;
 
     &-inner {
@@ -117,6 +116,44 @@
             color: #fff;
             margin-left: 0.5rem;
             text-decoration: underline;
+        }
+    }
+}
+
+.log-in {
+    margin-top: 15rem;
+}
+
+.sign-up {
+    margin-top: 8rem;
+
+    &__inputs {
+        margin-top: 1rem;
+    }
+
+    &__names {
+        .form-input {
+            width: calc(50% - 0.5rem);
+        }
+    }
+
+    &__check {
+        width: 100%;
+        height: auto;
+
+        &-container {
+            font-size: 0.9rem;
+            margin: 1rem 0;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            input {
+                margin-right: 1rem;
+                width: 20px;
+                height: 20px;
+            }
         }
     }
 }

@@ -17,10 +17,7 @@ const FormInputs = ({ emailValue, changeEmailValue, passwordValue, changePasswor
                     name="email"
                     onClick={() => setEmailInputActive(true)}
                     onChange={(e) => changeEmailValue(e.target.value)}
-                    onFocus={() => setEmailInputActive(true)}
-                    onBlur={() => {
-                        emailValue === "" && setEmailInputActive(false);
-                    }}
+                    onBlur={() => !emailValue && setEmailInputActive(false)}
                     value={emailValue}
                 />
             </div>
@@ -35,10 +32,7 @@ const FormInputs = ({ emailValue, changeEmailValue, passwordValue, changePasswor
                     name="password"
                     onClick={() => setPasswordInputActive(true)}
                     onChange={(e) => changePasswordValue(e.target.value)}
-                    onFocus={() => setPasswordInputActive(true)}
-                    onBlur={() => {
-                        passwordValue === "" && setPasswordInputActive(false);
-                    }}
+                    onBlur={() => !passwordValue && setPasswordInputActive(false)}
                     value={passwordValue}
                     autoComplete="yes"
                 />

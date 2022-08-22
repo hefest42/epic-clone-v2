@@ -17,7 +17,7 @@ const LogIn = () => {
     };
 
     return (
-        <form className="form center-column" onSubmit={formSubmitHandler}>
+        <form className="form log-in center-column" onSubmit={formSubmitHandler}>
             <div className="form__inner">
                 <div className="form-logo center-column">
                     <Link to="/">
