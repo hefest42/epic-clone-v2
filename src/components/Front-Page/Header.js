@@ -37,7 +37,7 @@ const Header = () => {
             </div>
 
             <div className="header-right center">
-                <NavLink to="/sign-in">
+                <NavLink to="/log-in">
                     <div className="header-right__sign center">
                         <div>
                             <RiAccountCircleLine />

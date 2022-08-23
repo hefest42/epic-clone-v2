@@ -3,29 +3,34 @@ import { useState } from "react";
 
 import { IoMdAddCircle } from "react-icons/io";
 
-export const WishlistButton = ({ top, left, right }) => {
+export const WishlistButton = ({ mouseEnter }) => {
     const [showWishlistInfo, setShowWishlistInfo] = useState(false);
 
     return (
-        <div
-            className="wishlist-button center-column"
-            style={{
-                top: `${top}%`,
-                left: `${left}%`,
-                right: `${right}%`,
-            }}
-        >
+        <>
             <div
-                className="wishlist-button__info"
+                className="wishlist-info"
                 style={{
                     opacity: `${showWishlistInfo ? "100" : "0"}`,
                 }}
             >
                 Add to Wishlist
             </div>
-            <button onMouseEnter={() => setShowWishlistInfo(true)} onMouseLeave={() => setShowWishlistInfo(false)}>
+            <button
+                className="wishlist-button"
+                onMouseEnter={() => {
+                    setShowWishlistInfo(true);
+                    mouseEnter();
+                }}
+                onMouseLeave={() => setShowWishlistInfo(false)}
+                onClick={() => console.log("WISHLIST")}
+            >
                 <IoMdAddCircle />
             </button>
-        </div>
+        </>
     );
+};
+
+export const ImageCover = () => {
+    return <div className="image-cover"></div>;
 };
