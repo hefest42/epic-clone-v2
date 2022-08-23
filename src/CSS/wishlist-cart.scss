@@ -31,68 +31,58 @@
 
     &-sort {
         position: relative;
+        color: var(--link-gray);
         margin-top: 1rem;
         padding: 0.7rem 0;
 
         &__item {
-            color: var(--link-gray);
-
             display: flex;
             justify-content: flex-start;
             align-items: center;
 
-            button {
+            &-button {
                 background-color: transparent;
                 color: var(--link-gray);
                 font-size: 0.9rem;
-                margin-left: 0.3rem;
-                outline: none;
                 border: none;
+                margin-left: 0.5rem;
                 cursor: pointer;
+
+                svg {
+                    width: 12px;
+                    height: 12px;
+                    margin-left: 0.3rem;
+                    transition: transform 0.2s linear;
+                }
 
                 &:hover {
                     color: #fff;
                 }
-            }
-
-            svg {
-                margin-left: 0.3rem;
-                cursor: pointer;
-                transition: transform 0.2s linear;
             }
         }
+    }
 
-        &__list {
-            position: absolute;
-            top: 100%;
-            left: 5%;
-            background-color: var(--dark-gray);
-            padding: 1rem 1rem;
-            list-style: none;
+    &-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 5%;
+        background-color: var(--dark-gray);
+        padding: 0.5rem 0.5rem;
+        list-style: none;
 
-            button {
-                background-color: transparent;
-                color: var(--link-gray);
-                font-size: 0.9rem;
-                margin-left: 0.3rem;
-                outline: none;
-                border: none;
-                cursor: pointer;
+        li {
+            margin-top: 0.5rem;
+        }
 
-                &:hover {
-                    color: #fff;
-                }
-            }
+        &__item {
+            background-color: transparent;
+            color: var(--link-gray);
+            border: none;
+            cursor: pointer;
 
-            &-idle {
-                color: var(--link-gray);
-                margin-bottom: 0.5rem;
-                cursor: pointer;
-
-                &:hover {
-                    color: #fff;
-                    text-decoration: underline;
-                }
+            &:hover {
+                color: #fff;
+                text-decoration: underline;
             }
 
             &-active {

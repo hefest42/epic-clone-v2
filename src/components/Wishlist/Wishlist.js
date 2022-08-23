@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 
 import useComponentVisible from "../../Helpers/useComponentVisible";
 
@@ -20,7 +20,7 @@ const Wishlist = () => {
                         <div className="wishlist-sort__item">
                             Sort by:
                             <button
-                                className="center"
+                                className="wishlist-sort__item-button center"
                                 onClick={() => setIsComponentVisible((state) => !state)}
                                 ref={ref}
                             >
@@ -33,20 +33,18 @@ const Wishlist = () => {
                             </button>
                         </div>
                         {isComponentVisible && (
-                            <ul className="wishlist-sort__list">
+                            <ul className="wishlist-dropdown">
                                 {SORT_BY_ITEMS.map((item) => (
-                                    <li
-                                        key={item}
-                                        className={
-                                            item === sortBy
-                                                ? "wishlist-sort__list-idle wishlist-sort__list-active"
-                                                : "wishlist-sort__list-idle"
-                                        }
-                                        onClick={() => {
-                                            setSortBy(item);
-                                        }}
-                                    >
-                                        <button>{item}</button>
+                                    <li key={item} onClick={() => setSortBy(item)}>
+                                        <button
+                                            className={
+                                                item === sortBy
+                                                    ? "wishlist-dropdown__item wishlist-dropdown__item-active"
+                                                    : "wishlist-dropdown__item"
+                                            }
+                                        >
+                                            {item}
+                                        </button>
                                     </li>
                                 ))}
                             </ul>
