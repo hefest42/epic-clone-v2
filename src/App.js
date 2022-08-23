@@ -7,7 +7,7 @@ import SignUpContainer from "./components/Log-In-Sign-Up/SignUpContainer";
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<FrontPageContainer />} />
+            <Route path="/*" element={<FrontPageContainer />} />
             <Route path="log-in" element={<LogInContainer />} />
             <Route path="sign-up" element={<SignUpContainer />} />
         </Routes>

@@ -40,7 +40,25 @@ const SubHeader = () => {
                 </NavLink>
             </div>
 
-            <div className="subHeader-right"></div>
+            <div className="subHeader-right">
+                <NavLink
+                    to="wishlist"
+                    className={({ isActive }) =>
+                        isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
+                    }
+                >
+                    Wishlist
+                </NavLink>
+
+                <NavLink
+                    to="cart"
+                    className={({ isActive }) =>
+                        isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
+                    }
+                >
+                    Cart
+                </NavLink>
+            </div>
         </div>
     );
 };
