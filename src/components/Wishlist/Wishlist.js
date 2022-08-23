@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import WishlistItem from "./WishlistItem";
 import useComponentVisible from "../../Helpers/useComponentVisible";
 
 import { AiOutlineDown } from "react-icons/ai";
@@ -49,6 +50,9 @@ const Wishlist = () => {
                                 ))}
                             </ul>
                         )}
+                    </div>
+                    <div>
+                        <WishlistItem />
                     </div>
                 </div>
             </div>
