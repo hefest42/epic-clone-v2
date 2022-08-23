@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
-import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
+import useComponentVisible from "../../Helpers/useComponentVisible";
+
+import { AiOutlineDown } from "react-icons/ai";
 
 const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Price: High to Low"];
+
 const Wishlist = () => {
-    const [showSortByList, setSortByList] = useState(false);
     const [sortBy, setSortBy] = useState("Date Added");
+    const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
 
     return (
         <div className="wishlist">
@@ -15,10 +18,21 @@ const Wishlist = () => {
                 <div className="wishlist-container">
                     <div className="wishlist-sort">
                         <div className="wishlist-sort__item">
-                            <div>Sort by: {sortBy}</div>
-                            <AiOutlineDown />
+                            Sort by:
+                            <button
+                                className="center"
+                                onClick={() => setIsComponentVisible((state) => !state)}
+                                ref={ref}
+                            >
+                                {sortBy}
+                                <AiOutlineDown
+                                    style={{
+                                        transform: `rotate(${isComponentVisible ? "-180deg" : "0"})`,
+                                    }}
+                                />
+                            </button>
                         </div>
-                        {showSortByList && (
+                        {isComponentVisible && (
                             <ul className="wishlist-sort__list">
                                 {SORT_BY_ITEMS.map((item) => (
                                     <li
@@ -32,7 +46,7 @@ const Wishlist = () => {
                                             setSortBy(item);
                                         }}
                                     >
-                                        {item}
+                                        <button>{item}</button>
                                     </li>
                                 ))}
                             </ul>

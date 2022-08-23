@@ -35,9 +35,31 @@
         padding: 0.7rem 0;
 
         &__item {
+            color: var(--link-gray);
+
             display: flex;
             justify-content: flex-start;
             align-items: center;
+
+            button {
+                background-color: transparent;
+                color: var(--link-gray);
+                font-size: 0.9rem;
+                margin-left: 0.3rem;
+                outline: none;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+
+            svg {
+                margin-left: 0.3rem;
+                cursor: pointer;
+                transition: transform 0.2s linear;
+            }
         }
 
         &__list {
@@ -47,6 +69,20 @@
             background-color: var(--dark-gray);
             padding: 1rem 1rem;
             list-style: none;
+
+            button {
+                background-color: transparent;
+                color: var(--link-gray);
+                font-size: 0.9rem;
+                margin-left: 0.3rem;
+                outline: none;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
 
             &-idle {
                 color: var(--link-gray);
