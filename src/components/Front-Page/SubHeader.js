@@ -10,15 +10,16 @@ const SubHeader = () => {
             <div className="subHeader-left center">
                 <div className="subHeader-left__form center">
                     <FiSearch />
-                    <form action="">
+                    <form>
                         <input type="text" placeholder="Search the store" />
                     </form>
                 </div>
                 <NavLink
-                    to="/"
+                    to="/store"
                     className={({ isActive }) =>
                         isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
                     }
+                    end
                 >
                     Discover
                 </NavLink>
