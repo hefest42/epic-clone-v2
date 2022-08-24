@@ -98,6 +98,7 @@
     background-color: var(--dark-gray);
     width: 100%;
     height: 14rem;
+    border-radius: 5px;
 
     &:hover {
         background-color: var(--light-gray);
@@ -126,6 +127,41 @@
 
         &-container {
             width: 100%;
+        }
+
+        &-name {
+            font-size: 1.3rem;
+        }
+
+        &-remove {
+            background-color: transparent;
+            color: var(--link-gray);
+            text-decoration: underline;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-right: 1.5rem;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        &-cart {
+            background-color: transparent;
+            color: var(--link-gray);
+            border: none;
+            border-radius: 5px;
+            outline: 1px solid var(--link-gray);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 1rem 3rem;
+
+            &:hover {
+                background-color: var(--lighter-gray);
+                color: #fff;
+                outline-color: #fff;
+            }
         }
     }
 }
