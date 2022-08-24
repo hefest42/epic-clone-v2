@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import WishlistItem from "./WishlistItem";
+import WishlistGenreFilters from "./WishlistGenreFilters";
 import useComponentVisible from "../../Helpers/useComponentVisible";
 
 import { AiOutlineDown } from "react-icons/ai";
@@ -56,7 +57,9 @@ const Wishlist = () => {
                     </div>
                 </div>
             </div>
-            <div className="wishlist-right"></div>
+            <div className="wishlist-right">
+                <WishlistGenreFilters />
+            </div>
         </div>
     );
 };
