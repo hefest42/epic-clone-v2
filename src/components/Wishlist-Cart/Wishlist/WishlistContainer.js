@@ -7,8 +7,8 @@ import WishlistEmpty from "./WishlistEmpty";
 const WishlistContainer = () => {
     return (
         <PageContainer>
-            {/* <Wishlist /> */}
-            <WishlistEmpty />
+            <Wishlist />
+            {/* <WishlistEmpty /> */}
         </PageContainer>
     );
 };

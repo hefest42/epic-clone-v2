@@ -68,12 +68,19 @@
         position: absolute;
         top: 100%;
         left: 5%;
-        background-color: var(--dark-gray);
-        padding: 0.5rem 0.5rem;
+        background-color: var(--light-gray);
+        padding: 0.5rem 0.5rem 1rem 0.5rem;
         list-style: none;
+        z-index: 50;
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
 
         li {
-            margin-top: 0.5rem;
+            margin: 0.25rem 0;
         }
 
         &__item {
@@ -190,34 +197,36 @@
 }
 
 .wishlist-item {
-    &-cart {
-        background-color: transparent;
-        color: var(--link-gray);
-        border: none;
-        border-radius: 5px;
-        outline: 1px solid var(--link-gray);
-        font-size: 1.1rem;
-        cursor: pointer;
-        padding: 1rem 3rem;
+    &__info {
+        &-cart {
+            background-color: transparent;
+            color: var(--link-gray);
+            border: none;
+            border-radius: 5px;
+            outline: 1px solid var(--link-gray);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 1rem 3rem;
 
-        &:hover {
-            background-color: var(--lighter-gray);
-            color: #fff;
-            outline-color: #fff;
+            &:hover {
+                background-color: var(--lighter-gray);
+                color: #fff;
+                outline-color: #fff;
+            }
         }
-    }
 
-    &-remove {
-        background-color: transparent;
-        color: var(--link-gray);
-        text-decoration: underline;
-        border: none;
-        font-size: 1.1rem;
-        cursor: pointer;
-        margin-right: 1.5rem;
+        &-remove {
+            background-color: transparent;
+            color: var(--link-gray);
+            text-decoration: underline;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-right: 1.5rem;
 
-        &:hover {
-            color: #fff;
+            &:hover {
+                color: #fff;
+            }
         }
     }
 }
@@ -339,7 +348,8 @@
     }
 }
 
-.wishlist-empty {
+.wishlist-empty,
+.cart-empty {
     color: #fff;
     width: 75%;
 
@@ -423,7 +433,8 @@
         }
     }
 
-    .wishlist-empty {
+    .wishlist-empty,
+    .cart-empty {
         width: 95%;
 
         &__inner {
