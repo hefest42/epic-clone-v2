@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import WishlistItem from "./WishlistItem";
 import WishlistGenreFilters from "./WishlistGenreFilters";
-import useComponentVisible from "../../Helpers/useComponentVisible";
+import useComponentVisible from "../../../Helpers/useComponentVisible";
 
 import { AiOutlineDown } from "react-icons/ai";
 

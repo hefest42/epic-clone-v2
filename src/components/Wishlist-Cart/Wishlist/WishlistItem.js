@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
+import { DUMMY_CAROUSEL_GAMES } from "../../../Helpers/DummyGames";
 
 import { AiFillWindows } from "react-icons/ai";
 

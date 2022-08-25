@@ -1,6 +1,6 @@
 import React from "react";
 
-import PageContainer from "../UI/PageContainer";
+import PageContainer from "../../UI/PageContainer";
 import Wishlist from "./Wishlist";
 import WishlistEmpty from "./WishlistEmpty";
 

@@ -7,7 +7,7 @@ import Header from "./Header";
 import SubHeader from "./SubHeader";
 import Footer from "./Footer";
 import DiscoverContainer from "../Discover-Page/DiscoverContainer";
-import WishlistContainer from "../Wishlist/WishlistContainer";
+import WishlistContainer from "../Wishlist-Cart/Wishlist/WishlistContainer";
 
 const FrontPageContainer = () => {
     return (
