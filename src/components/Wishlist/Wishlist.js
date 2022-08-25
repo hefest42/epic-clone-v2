@@ -8,6 +8,7 @@ import { AiOutlineDown } from "react-icons/ai";
 
 const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Price: High to Low"];
 
+//TODO fix media query
 const Wishlist = () => {
     const [sortBy, setSortBy] = useState("Date Added");
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);

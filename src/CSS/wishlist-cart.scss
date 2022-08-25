@@ -257,7 +257,7 @@
     }
 
     &__inner {
-        padding: 10rem 0;
+        padding: 8rem 0;
 
         &-svg {
             background: var(--main-blue);
@@ -295,6 +295,7 @@
 
         &-link {
             color: var(--link-gray);
+            margin-top: 1rem;
             font-size: 2rem;
             padding: 0.25rem 0;
             border-bottom: 2px solid var(--light-gray);
@@ -302,6 +303,18 @@
             &:hover {
                 color: #fff;
                 border-color: #fff;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .wishlist-empty {
+        width: 95%;
+
+        &__inner {
+            &-desc {
+                text-align: center;
             }
         }
     }
