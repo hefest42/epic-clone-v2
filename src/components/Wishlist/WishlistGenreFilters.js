@@ -21,7 +21,11 @@ const WishlistGenreFilters = () => {
                 <div className="wishlist-genre__container">
                     <button onClick={() => setShowGenreList((state) => !state)}>
                         <div>GENRE</div>
-                        <AiOutlineDown />
+                        <AiOutlineDown
+                            style={{
+                                transform: `rotate(${showGenreList ? "-180deg" : "0"})`,
+                            }}
+                        />
                     </button>
 
                     <div>
