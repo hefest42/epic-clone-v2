@@ -1,4 +1,5 @@
-.wishlist {
+.wishlist,
+.cart {
     color: #fff;
     width: 75%;
     margin-top: 2rem;
@@ -27,7 +28,9 @@
     &-title {
         font-size: 4rem;
     }
+}
 
+.wishlist {
     &-sort {
         position: relative;
         color: var(--link-gray);
@@ -92,7 +95,14 @@
     }
 }
 
-.wishlist-item {
+.cart {
+    &-title {
+        margin-bottom: 2rem;
+    }
+}
+
+.wishlist-item,
+.cart-item {
     background-color: var(--dark-gray);
     width: 100%;
     height: 14rem;
@@ -130,40 +140,78 @@
         &-name {
             font-size: 1.3rem;
         }
+    }
+}
 
-        &-remove {
-            background-color: transparent;
-            color: var(--link-gray);
-            text-decoration: underline;
-            border: none;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin-right: 1.5rem;
+.wishlist-item {
+    &-cart {
+        background-color: transparent;
+        color: var(--link-gray);
+        border: none;
+        border-radius: 5px;
+        outline: 1px solid var(--link-gray);
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 1rem 3rem;
 
-            &:hover {
-                color: #fff;
-            }
+        &:hover {
+            background-color: var(--lighter-gray);
+            color: #fff;
+            outline-color: #fff;
         }
+    }
 
-        &-cart {
-            background-color: transparent;
-            color: var(--link-gray);
-            border: none;
-            border-radius: 5px;
-            outline: 1px solid var(--link-gray);
-            font-size: 1.1rem;
-            cursor: pointer;
-            padding: 1rem 3rem;
+    &-remove {
+        background-color: transparent;
+        color: var(--link-gray);
+        text-decoration: underline;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-right: 1.5rem;
 
-            &:hover {
-                background-color: var(--lighter-gray);
-                color: #fff;
-                outline-color: #fff;
-            }
+        &:hover {
+            color: #fff;
         }
     }
 }
 
+.cart-item {
+    &:hover {
+        background-color: var(--dark-gray);
+    }
+
+    button {
+        color: var(--link-gray);
+        background-color: transparent;
+        border: none;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 1.1rem;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    &__info-wishlist {
+        margin-right: 1rem;
+        color: var(--link-gray);
+        cursor: pointer;
+
+        &:hover {
+            color: #fff;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.3rem;
+        }
+    }
+}
+
+//TODO move this to the filter components/css
 .wishlist-genre {
     width: 100%;
 

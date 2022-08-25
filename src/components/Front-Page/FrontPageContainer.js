@@ -8,6 +8,7 @@ import SubHeader from "./SubHeader";
 import Footer from "./Footer";
 import DiscoverContainer from "../Discover-Page/DiscoverContainer";
 import WishlistContainer from "../Wishlist-Cart/Wishlist/WishlistContainer";
+import CartContainer from "../Wishlist-Cart/Cart/CartContainer";
 
 const FrontPageContainer = () => {
     return (
@@ -19,6 +20,7 @@ const FrontPageContainer = () => {
                 {/* Browse, Wishlist, an Cart page containers/links go here */}
                 <Route path="/" element={<DiscoverContainer />} />
                 <Route path="wishlist" element={<WishlistContainer />} />
+                <Route path="cart" element={<CartContainer />} />
             </Routes>
 
             <Footer />
