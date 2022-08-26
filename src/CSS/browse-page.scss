@@ -1,0 +1,53 @@
+.browse {
+    width: 75%;
+    margin-top: 5rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &-left {
+        width: 80%;
+        height: 100%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    &-right {
+        width: calc((20% - 1rem));
+        height: 20rem;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    &-game {
+        position: relative;
+        width: calc(100% / 5 - 1rem);
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .browse {
+        width: 95%;
+
+        &-left {
+            width: 72%;
+        }
+
+        &-right {
+            background-color: teal;
+            width: calc(30% - 2rem);
+        }
+
+        &-game {
+            font-size: 0.8rem;
+        }
+    }
+}

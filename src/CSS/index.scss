@@ -3,6 +3,7 @@
 @import "./discover-page.scss";
 @import "./logIn-createAccount.scss";
 @import "./wishlist-cart.scss";
+@import "./browse-page.scss";
 
 :root {
     --background-black: rgb(18, 18, 18);
@@ -172,5 +173,26 @@ body {
         text-align: center;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .game {
+        width: 100%;
+        min-height: 15rem;
+
+        &-info {
+            color: #fff;
+            max-width: 100%;
+            height: auto;
+            font-size: inherit;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &__price {
+                margin-top: 0.5rem;
+            }
+        }
     }
 }
