@@ -14,7 +14,10 @@ const Header = () => {
                     <SiEpicgames />
                 </div>
 
-                <NavLink to="/" className={({ isActive }) => (isActive ? "header-item header-active" : "header-item")}>
+                <NavLink
+                    to="/store"
+                    className={({ isActive }) => (isActive ? "header-item header-active" : "header-item")}
+                >
                     <div className="header-item__text center">STORE</div>
                     <div className="header-item__border"></div>
                 </NavLink>

@@ -2,6 +2,7 @@
 @import "./front-page.scss";
 @import "./discover-page.scss";
 @import "./logIn-createAccount.scss";
+@import "./wishlist-cart.scss";
 
 :root {
     --background-black: rgb(18, 18, 18);
@@ -57,6 +58,12 @@ body {
 
 .space-between {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.space-between-column {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }

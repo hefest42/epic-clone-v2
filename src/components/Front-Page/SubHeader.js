@@ -10,15 +10,16 @@ const SubHeader = () => {
             <div className="subHeader-left center">
                 <div className="subHeader-left__form center">
                     <FiSearch />
-                    <form action="">
+                    <form>
                         <input type="text" placeholder="Search the store" />
                     </form>
                 </div>
                 <NavLink
-                    to="/"
+                    to="/store"
                     className={({ isActive }) =>
                         isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
                     }
+                    end
                 >
                     Discover
                 </NavLink>
@@ -40,7 +41,25 @@ const SubHeader = () => {
                 </NavLink>
             </div>
 
-            <div className="subHeader-right"></div>
+            <div className="subHeader-right">
+                <NavLink
+                    to="wishlist"
+                    className={({ isActive }) =>
+                        isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
+                    }
+                >
+                    Wishlist
+                </NavLink>
+
+                <NavLink
+                    to="cart"
+                    className={({ isActive }) =>
+                        isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
+                    }
+                >
+                    Cart
+                </NavLink>
+            </div>
         </div>
     );
 };
