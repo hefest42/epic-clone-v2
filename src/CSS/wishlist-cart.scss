@@ -415,6 +415,65 @@
 }
 
 @media only screen and (max-width: 1000px) {
+    .wishlist {
+        width: 92%;
+
+        &-left {
+            width: 75%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        &-right {
+            width: calc(25% - 2rem);
+        }
+    }
+
+    .wishlist-item {
+        background-color: var(--dark-gray);
+        width: 100%;
+        height: 10rem;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: var(--light-gray);
+        }
+
+        &__inner {
+            width: 98%;
+            height: 90%;
+        }
+
+        &__image {
+            width: 7rem;
+            height: 100%;
+            margin-left: 1rem;
+            border-radius: 5px;
+
+            img {
+                width: 100%;
+                border-radius: 5px;
+            }
+        }
+
+        &__info {
+            width: calc(100% - 9.5rem);
+
+            &-name {
+                font-size: 1rem;
+            }
+        }
+
+        &__info {
+            &-cart {
+                padding: 0.7rem 2rem;
+            }
+        }
+    }
+
     .cart {
         width: 90%;
 
