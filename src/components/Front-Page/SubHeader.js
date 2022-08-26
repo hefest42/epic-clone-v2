@@ -24,7 +24,7 @@ const SubHeader = () => {
                     Discover
                 </NavLink>
                 <NavLink
-                    to="/browse"
+                    to="browse"
                     className={({ isActive }) =>
                         isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
                     }
