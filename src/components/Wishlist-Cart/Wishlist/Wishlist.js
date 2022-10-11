@@ -10,7 +10,7 @@ const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Pric
 
 //TODO fix media query
 const Wishlist = () => {
-    const [sortBy, setSortBy] = useState("Date Added");
+    const [sortByText, setSortByText] = useState("Date Added");
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
 
     return (
@@ -27,7 +27,7 @@ const Wishlist = () => {
                                 onClick={() => setIsComponentVisible((state) => !state)}
                                 ref={ref}
                             >
-                                {sortBy}
+                                {sortByText}
                                 <AiOutlineDown
                                     style={{
                                         transform: `rotate(${isComponentVisible ? "-180deg" : "0"})`,
@@ -38,10 +38,10 @@ const Wishlist = () => {
                         {isComponentVisible && (
                             <ul className="wishlist-dropdown">
                                 {SORT_BY_ITEMS.map((item) => (
-                                    <li key={item} onClick={() => setSortBy(item)}>
+                                    <li key={item} onClick={() => setSortByText(item)}>
                                         <button
                                             className={
-                                                item === sortBy
+                                                item === sortByText
                                                     ? "wishlist-dropdown__item wishlist-dropdown__item-active"
                                                     : "wishlist-dropdown__item"
                                             }
