@@ -14,7 +14,7 @@ const WishlistGenreFilters = () => {
                     <div>Filters</div>
                     <div>{`()`}</div>
                 </div>
-                <button>RESET</button>
+                <button className="wishlist-genre__reset">RESET</button>
             </div>
 
             <div>

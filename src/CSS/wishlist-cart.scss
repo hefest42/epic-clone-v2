@@ -281,6 +281,16 @@
         align-items: center;
     }
 
+    &__reset {
+        background-color: transparent;
+        color: var(--lighter-gray);
+        cursor: pointer;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
     &__container {
         width: 100%;
         border-bottom: 1px solid var(--link-gray);
