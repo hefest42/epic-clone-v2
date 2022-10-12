@@ -15,17 +15,17 @@ const FilterBrowser = ({ games }) => {
     };
 
     return (
-        <div className="wishlist-genre">
-            <div className="wishlist-genre__title space-bewteen">
+        <div className="filter-browser">
+            <div className="filter-browser__title space-bewteen">
                 <div className="center">
                     <div>Filters</div>
                     <div>{`(${activeFilters.length > 0 ? activeFilters.length : ""})`}</div>
                 </div>
-                <button className="wishlist-genre__reset">RESET</button>
+                <button className="filter-browser__reset">RESET</button>
             </div>
 
             <div>
-                <div className="wishlist-genre__container">
+                <div className="filter-browser__container">
                     <button onClick={() => setShowGenreList((state) => !state)}>
                         <div>GENRE</div>
                         <AiOutlineDown
@@ -42,12 +42,12 @@ const FilterBrowser = ({ games }) => {
                                     key={genre}
                                     className={
                                         activeFilters.includes(genre)
-                                            ? "wishlist-genre__item wishlist-genre__item-active"
-                                            : "wishlist-genre__item wishlist-genre__item"
+                                            ? "filter-browser__item filter-browser__item-active"
+                                            : "filter-browser__item filter-browser__item"
                                     }
                                     onClick={() => addGenreToActiveFilters(genre)}
                                 >
-                                    <div className="wishlist-genre__item-inner space-between">
+                                    <div className="filter-browser__item-inner space-between">
                                         <div>{genre}</div>
                                         <div>
                                             <AiOutlineCheck />

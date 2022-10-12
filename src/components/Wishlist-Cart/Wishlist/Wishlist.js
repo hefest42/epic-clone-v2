@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
 import WishlistItem from "./WishlistItem";
-import WishlistGenreFilters from "./WishlistGenreFilters";
+import FilterBrowser from "../../UI/FilterBrowser";
 import useComponentVisible from "../../../Helpers/useComponentVisible";
 
+import { DUMMY_CAROUSEL_GAMES } from "../../../Helpers/DummyGames";
 import { AiOutlineDown } from "react-icons/ai";
 
 const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Price: High to Low"];
 
 //TODO fix media query
+//TODO add games/filters from users wishlist
 const Wishlist = () => {
     const [sortByText, setSortByText] = useState("Date Added");
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -59,7 +61,7 @@ const Wishlist = () => {
                 </div>
             </div>
             <div className="wishlist-right">
-                <WishlistGenreFilters />
+                <FilterBrowser games={DUMMY_CAROUSEL_GAMES} />
             </div>
         </div>
     );
