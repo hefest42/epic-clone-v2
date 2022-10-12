@@ -5,13 +5,15 @@ import { AiOutlineDown, AiOutlineCheck } from "react-icons/ai";
 const FilterBrowser = ({ games }) => {
     const [showGenreList, setShowGenreList] = useState(false);
     const [activeFilters, setActiveFilters] = useState([]);
-
-    const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())]);
+    const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())], [games]);
 
     const addGenreToActiveFilters = (genre) => {
-        console.log(genre);
         if (activeFilters.includes(genre)) setActiveFilters((state) => state.filter((gnr) => gnr !== genre));
         else setActiveFilters((state) => [genre, ...state]);
+    };
+
+    const resetFilters = () => {
+        setActiveFilters([]);
     };
 
     return (
@@ -21,7 +23,9 @@ const FilterBrowser = ({ games }) => {
                     <div>Filters</div>
                     <div>{`(${activeFilters.length > 0 ? activeFilters.length : ""})`}</div>
                 </div>
-                <button className="filter-browser__reset">RESET</button>
+                <button className="filter-browser__reset" onClick={() => resetFilters()}>
+                    RESET
+                </button>
             </div>
 
             <div>
