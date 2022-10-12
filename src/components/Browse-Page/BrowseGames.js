@@ -1,6 +1,7 @@
 import React from "react";
 
 import GameItem from "../UI/GameItem";
+import FilterBrowser from "../UI/FilterBrowser";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
@@ -14,7 +15,9 @@ const BrowseGames = () => {
                     </div>
                 ))}
             </div>
-            <div className="browse-right"></div>
+            <div className="browse-right">
+                <FilterBrowser games={DUMMY_CAROUSEL_GAMES} />
+            </div>
         </div>
     );
 };

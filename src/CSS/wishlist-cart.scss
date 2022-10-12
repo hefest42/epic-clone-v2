@@ -273,6 +273,7 @@
     width: 100%;
 
     &__title {
+        color: #fff;
         padding: 1.5rem 0;
         border-bottom: 1px solid var(--link-gray);
 
@@ -284,6 +285,7 @@
     &__reset {
         background-color: transparent;
         color: var(--lighter-gray);
+        border: none;
         cursor: pointer;
 
         &:hover {

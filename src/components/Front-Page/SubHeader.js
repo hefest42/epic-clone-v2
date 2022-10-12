@@ -14,6 +14,7 @@ const SubHeader = () => {
                         <input type="text" placeholder="Search the store" />
                     </form>
                 </div>
+
                 <NavLink
                     to="/store"
                     className={({ isActive }) =>

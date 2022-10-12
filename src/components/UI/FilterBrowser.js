@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 import { AiOutlineDown, AiOutlineCheck } from "react-icons/ai";
 
-const GENRES = ["Action", "Adventure", "Shooter", "Action-Adventure"];
-const WishlistGenreFilters = () => {
+const FilterBrowser = ({ games }) => {
     const [showGenreList, setShowGenreList] = useState(false);
+    const [activeFilters, setActiveFilters] = useState([]);
+
+    const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())]);
+
+    const addGenreToActiveFilters = (genre) => {
+        console.log(genre);
+        if (activeFilters.includes(genre)) setActiveFilters((state) => state.filter((gnr) => gnr !== genre));
+        else setActiveFilters((state) => [genre, ...state]);
+    };
 
     return (
         <div className="wishlist-genre">
@@ -29,8 +37,16 @@ const WishlistGenreFilters = () => {
 
                     <div>
                         {showGenreList &&
-                            GENRES.map((genre) => (
-                                <div key={genre} className="wishlist-genre__item wishlist-genre__item-active">
+                            gamesGenres.map((genre) => (
+                                <div
+                                    key={genre}
+                                    className={
+                                        activeFilters.includes(genre)
+                                            ? "wishlist-genre__item wishlist-genre__item-active"
+                                            : "wishlist-genre__item wishlist-genre__item"
+                                    }
+                                    onClick={() => addGenreToActiveFilters(genre)}
+                                >
                                     <div className="wishlist-genre__item-inner space-between">
                                         <div>{genre}</div>
                                         <div>
@@ -46,4 +62,4 @@ const WishlistGenreFilters = () => {
     );
 };
 
-export default WishlistGenreFilters;
+export default FilterBrowser;
