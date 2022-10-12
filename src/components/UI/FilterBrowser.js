@@ -19,7 +19,7 @@ const FilterBrowser = ({ games }) => {
             <div className="wishlist-genre__title space-bewteen">
                 <div className="center">
                     <div>Filters</div>
-                    <div>{`()`}</div>
+                    <div>{`(${activeFilters.length > 0 ? activeFilters.length : ""})`}</div>
                 </div>
                 <button className="wishlist-genre__reset">RESET</button>
             </div>
