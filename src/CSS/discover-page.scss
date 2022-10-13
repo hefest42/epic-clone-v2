@@ -39,8 +39,8 @@
 
         &__info {
             position: absolute;
-            top: 30%;
-            left: 5%;
+            bottom: 10%;
+            left: 3%;
             color: #fff;
 
             &-logo {
@@ -49,7 +49,6 @@
 
             &-description {
                 max-width: 15rem;
-                min-height: 10rem;
                 height: auto;
                 margin-top: 1rem;
 
