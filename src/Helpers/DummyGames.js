@@ -86,7 +86,7 @@ export const DUMMY_CAROUSEL_GAMES = [
             "Experience deeper simulation, an upgraded career mode, and powerful new customization features. Use realistic parts from 40+ hardware brands to bring your ultimate PC to life.",
         price: "24.99",
         discount: "60",
-        gameOnSale: false,
+        gameOnSale: true,
         gameFeatured: true,
         genres: ["Casual", "Simulation"],
         developer: "Spiral House Ltd",
