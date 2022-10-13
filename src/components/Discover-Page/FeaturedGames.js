@@ -9,8 +9,25 @@ import { useMemo } from "react";
 //TODO add links to the games ergo fix clickOnFeaturedListItemHandler
 const FeaturedGames = () => {
     const [activeListItem, setActiveListItem] = useState(0);
-    const [testState, setTestState] = useState(1);
     const GAMES = useMemo(() => DUMMY_CAROUSEL_GAMES.slice(0, 6), []);
+    const currentDate = new Date();
+
+    const clickOnFeaturedListItemHandler = (index) => {
+        if (index === activeListItem) {
+            console.log("LINK TO THE GAME");
+            return;
+        } else setActiveListItem(index);
+    };
+
+    const gameReleaseDate = (releaseDate) => {
+        const gameReleaseDate = new Date(releaseDate);
+
+        if (currentDate.getTime() >= gameReleaseDate.getTime()) return "Available Now";
+        else
+            return `Coming ${gameReleaseDate.getDate()}/${
+                gameReleaseDate.getMonth() + 1
+            }/${gameReleaseDate.getFullYear()}`;
+    };
 
     // useEffect(() => {
     //     const timer = setTimeout(() => {
@@ -19,13 +36,6 @@ const FeaturedGames = () => {
 
     //     return () => clearTimeout(timer);
     // }, [activeListItem]);
-
-    const clickOnFeaturedListItemHandler = (index) => {
-        if (index === activeListItem) {
-            console.log("LINK TO THE GAME");
-            return;
-        } else setActiveListItem(index);
-    };
 
     return (
         <div className="featured space-between">
@@ -42,12 +52,12 @@ const FeaturedGames = () => {
                                 <img src={`${game.logo}`} alt="logo" />
                             </div>
                             <div className="featured-cover__info-description">
-                                <p>Available Now</p>
+                                <p>{gameReleaseDate(game.releaseDate)}</p>
                                 <div>{game.shortDescription}</div>
                             </div>
                             <div className="featured-cover__info-buttons">
                                 <div className="featured-cover__info-buy">
-                                    <p>${game.price}</p>
+                                    <p>{game.price === "" ? "Free" : `$${game.price}`}</p>
                                     <button onClick={() => console.log("bought the game")}>PRE-PURCHASE</button>
                                 </div>
                                 <div className="featured-cover__info-wishlist">
