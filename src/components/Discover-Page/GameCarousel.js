@@ -8,10 +8,6 @@ import { IoMdAddCircle } from "react-icons/io";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
-const calculateDiscount = (price, discount) => {
-    return (price - price * (discount / 100)).toFixed(2);
-};
-
 const NUMBER_OF_SLIDES_PER_PAGE = 6;
 
 //TODO change which price is being dispalyed based on whether the game is on sale or not

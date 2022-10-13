@@ -75,6 +75,7 @@ body {
     &-image {
         position: relative;
         width: 100%;
+        height: 17rem; // might not work
         border-radius: 10px;
         overflow: hidden;
 
@@ -94,7 +95,22 @@ body {
         margin-top: 0.5rem;
 
         &__price {
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
+
+            span {
+                margin-right: 0.6rem;
+            }
+
+            &-discount {
+                background-color: var(--main-blue);
+                padding: 0.2rem 0.6rem;
+                border-radius: 3px;
+            }
+
+            &-old {
+                color: var(--lighter-gray);
+                text-decoration: line-through;
+            }
         }
     }
 }

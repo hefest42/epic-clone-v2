@@ -2,6 +2,10 @@ import React, { useState } from "react";
 
 import { WishlistButton, ImageCover } from "./CoverAndWishlistButton";
 
+const calculateDiscount = (price, discount) => {
+    return (price - price * (discount / 100)).toFixed(2);
+};
+
 const GameItem = ({ game }) => {
     const [showImageCover, setShowImageCover] = useState(false);
     const [showWishlistButton, setShowWishlistButton] = useState(false);
@@ -18,9 +22,9 @@ const GameItem = ({ game }) => {
         if (isGameOnSale) {
             return (
                 <>
-                    <span>14</span>
-                    <span>15</span>
-                    <span>17</span>
+                    <span className="game-info__price-discount">{`-${gameDiscount}%`}</span>
+                    <span className="game-info__price-old">{`$${game.price}`}</span>
+                    <span className="game-info__price-new">{`$${calculateDiscount(gamePrice, gameDiscount)}`}</span>
                 </>
             );
         }
