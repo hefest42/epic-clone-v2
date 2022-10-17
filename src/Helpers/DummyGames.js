@@ -16,7 +16,7 @@ export const DUMMY_CAROUSEL_GAMES = [
         genres: ["Action", "Adventure"],
         developer: "Insomniac Games",
         publisher: "PlayStation",
-        platform: ["windows"],
+        platform: ["Windows"],
     },
     {
         name: "UNCHARTED: Legacy of Thieves Collection",
@@ -35,7 +35,7 @@ export const DUMMY_CAROUSEL_GAMES = [
         genres: ["Action", "Adventure"],
         developer: "Naughty Dog",
         publisher: "PlayStation",
-        platform: ["windows"],
+        platform: ["Windows"],
     },
     {
         name: "Rumbleverse",
@@ -53,7 +53,7 @@ export const DUMMY_CAROUSEL_GAMES = [
         genres: ["Action", "Fighting", "Platformer"],
         developer: "Iron Galaxy Studios",
         publisher: "Epic Games Publishing",
-        platform: ["windows"],
+        platform: ["Windows"],
     },
     {
         name: "Darkest Dungeon II",
@@ -72,7 +72,7 @@ export const DUMMY_CAROUSEL_GAMES = [
         genres: ["RPG", "Strategy"],
         developer: "Red Hook Studios",
         publisher: "Red Hook Studios",
-        platform: ["windows"],
+        platform: ["Windows"],
     },
     {
         name: "PC Building Simulator 2",
@@ -91,7 +91,7 @@ export const DUMMY_CAROUSEL_GAMES = [
         genres: ["Casual", "Simulation"],
         developer: "Spiral House Ltd",
         publisher: "Epic Games Publishing",
-        platform: ["windows"],
+        platform: ["Windows"],
     },
     {
         name: "Ghostbuster: Spirits Unleashed",
@@ -110,7 +110,7 @@ export const DUMMY_CAROUSEL_GAMES = [
         genres: ["Horror", "Shooter"],
         developer: "IllFonic",
         publisher: "IllFonic",
-        platform: ["windows"],
+        platform: ["Windows"],
     },
     {
         name: "Marvel's Spider-Man Remastered",
