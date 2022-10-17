@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { WishlistButton } from "../UI/CoverAndWishlistButton";
-
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
-import { useState } from "react";
+import { gamePriceHandler } from "../../Helpers/HelperFunctions";
 
 const GAMES = DUMMY_CAROUSEL_GAMES.slice(0, 5);
 const DUMMY_TITLES = ["New Releases", "Top Selling", "Coming Soon"];
@@ -45,7 +44,9 @@ const NewTopComingGames = () => {
                                     </div>
                                     <div className="column-item__info">
                                         <div>{game.name}</div>
-                                        <div>${game.price}</div>
+                                        <div className="game-info__price">
+                                            {gamePriceHandler(game.gameOnSale, game.price, game.discount)}
+                                        </div>
                                     </div>
                                 </div>
                             ))}

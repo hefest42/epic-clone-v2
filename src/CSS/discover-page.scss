@@ -455,6 +455,10 @@
         &__info {
             color: #fff;
             margin-left: 2rem;
+
+            &-price {
+                margin-top: 1rem;
+            }
         }
 
         &:hover {

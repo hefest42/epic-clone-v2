@@ -197,6 +197,10 @@ body {
         width: 100%;
         min-height: 15rem;
 
+        &-image {
+            height: 12rem; // might not work
+        }
+
         &-info {
             color: #fff;
             max-width: 100%;

@@ -2,9 +2,7 @@ import React, { useState } from "react";
 
 import { WishlistButton, ImageCover } from "./CoverAndWishlistButton";
 
-const calculateDiscount = (price, discount) => {
-    return (price - price * (discount / 100)).toFixed(2);
-};
+import { gamePriceHandler } from "../../Helpers/HelperFunctions";
 
 const GameItem = ({ game }) => {
     const [showImageCover, setShowImageCover] = useState(false);
@@ -13,23 +11,6 @@ const GameItem = ({ game }) => {
     const mouseEnterWishlistButtonHandler = () => {
         setShowWishlistButton(true);
         setShowImageCover(false);
-    };
-
-    const gamePriceHandler = (isGameOnSale, gamePrice, gameDiscount) => {
-        // game is free
-        if (gamePrice === "") return "Free to Play";
-        // game is on sale
-        if (isGameOnSale) {
-            return (
-                <>
-                    <span className="game-info__price-discount">{`-${gameDiscount}%`}</span>
-                    <span className="game-info__price-old">{`$${game.price}`}</span>
-                    <span className="game-info__price-new">{`$${calculateDiscount(gamePrice, gameDiscount)}`}</span>
-                </>
-            );
-        }
-        // game is NOT on sale
-        if (!isGameOnSale) return `$${gamePrice}`;
     };
 
     return (
