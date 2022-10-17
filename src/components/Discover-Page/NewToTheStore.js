@@ -9,7 +9,7 @@ const NewToTheStore = () => {
     return (
         <div className="new-to-store center-column">
             <div className="new-to-store-top">New To The Store</div>
-            <div className="new-to-store-bottom space-between">
+            <div className="new-to-store-bottom">
                 {DUMMY_CAROUSEL_GAMES.slice(0, 5).map((game, i) => (
                     <div key={i} className="new-to-store-item">
                         <GameItem game={game} />

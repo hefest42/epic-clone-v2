@@ -254,7 +254,7 @@
         max-width: 13.2rem; // MAGIC NUMBER DONT ASK
         min-width: 13.2rem; // MAGIC NUMBER DONT ASK
         margin-right: 2rem; // MORE MAGIC NUMBERS DONT QUESTION IT
-        height: auto;
+        height: 24rem;
     }
 }
 
@@ -263,7 +263,7 @@
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 
     &-inner[data-items="2"] {
         width: calc(100% / 2 - 16px);
@@ -456,6 +456,7 @@
 
         &__info {
             color: #fff;
+            width: 50%;
             margin-left: 2rem;
 
             &-price {
@@ -482,11 +483,16 @@
     &-bottom {
         width: 100%;
         margin-top: 1rem;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
     }
 
     &-item {
         position: relative;
         width: calc(100% / 5 - 0.5rem);
+        height: 35rem;
     }
 }
 
@@ -576,6 +582,7 @@
             max-width: 8.2rem; // MAGIC NUMBER DONT ASK
             min-width: 8.2rem; // MAGIC NUMBER DONT ASK
             margin-right: 2rem; // MORE MAGIC NUMBERS DONT QUESTION IT
+            height: auto;
         }
     }
 
@@ -609,6 +616,8 @@
         width: 100%;
 
         &-item {
+            height: auto;
+
             &:last-child {
                 .wishlist-info {
                     left: calc(100% - 155px);
