@@ -57,7 +57,7 @@ const FeaturedGames = () => {
                             </div>
                             <div className="featured-cover__info-buttons">
                                 <div className="featured-cover__info-buy">
-                                    <p>{game.price === "" ? "Free" : `$${game.price}`}</p>
+                                    <p>{game.price === "0" ? "Free to Play" : `$${game.price}`}</p>
                                     <button onClick={() => console.log("bought the game")}>PRE-PURCHASE</button>
                                 </div>
                                 <div className="featured-cover__info-wishlist">

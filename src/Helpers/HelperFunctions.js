@@ -4,7 +4,7 @@ export const calculateDiscount = (price, discount) => {
 
 export const gamePriceHandler = (isGameOnSale, gamePrice, gameDiscount) => {
     // game is free
-    if (gamePrice === "") return "Free to Play";
+    if (gamePrice === "0") return "Free to Play";
     // game is on sale
     if (isGameOnSale) {
         return (
@@ -17,4 +17,8 @@ export const gamePriceHandler = (isGameOnSale, gamePrice, gameDiscount) => {
     }
     // game is NOT on sale
     if (!isGameOnSale) return `$${gamePrice}`;
+};
+
+export const compareTwoArrays = (arr1, arr2) => {
+    return arr2.every((value) => arr1.includes(value));
 };

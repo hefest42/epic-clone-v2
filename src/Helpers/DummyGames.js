@@ -46,7 +46,7 @@ export const DUMMY_CAROUSEL_GAMES = [
             "https://cdn2.unrealengine.com/egs-rumbleverse-thumb-1200x1600-1200x1600-f9b282161739.jpg?h=480&resize=1&w=360",
         logo: "https://cdn2.unrealengine.com/rumbleverse-logo-no-backplate-3499x745-805c905bafc6.png?h=270&resize=1&w=480",
         shortDescription: "Master new moves, wield new weapons, and swag out of your Rumbler in new cosmetics.",
-        price: "",
+        price: "0",
         discount: "",
         gameOnSale: false,
         gameFeatured: true,

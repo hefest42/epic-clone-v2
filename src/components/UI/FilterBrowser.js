@@ -51,7 +51,10 @@ const FilterBrowser = ({
                                         ? "filter-browser__item filter-browser__item-active"
                                         : "filter-browser__item filter-browser__item"
                                 }
-                                onClick={() => setPriceFilter(price)}
+                                onClick={() => {
+                                    if (priceFilter === price) setPriceFilter("");
+                                    else setPriceFilter(price);
+                                }}
                             >
                                 <div className="filter-browser__item-inner space-between">
                                     <div>{price}</div>
