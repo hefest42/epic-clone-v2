@@ -4,18 +4,20 @@ import { AiOutlineDown, AiOutlineCheck } from "react-icons/ai";
 
 const PRICE_RANGES = ["Free", "Under $5.00", "Under $10.00", "Under $20.00", "Under $30.00", "$14.99 and above"];
 
-const FilterBrowser = ({ games }) => {
+const FilterBrowser = ({
+    games,
+    addGenreToActiveFilters,
+    activeFilters,
+    resetActiveFilters,
+    priceFilter,
+    setPriceFilter,
+}) => {
     const [showGenreList, setShowGenreList] = useState(false);
     const [showPriceRangesList, setShowPriceRangesList] = useState(false);
     const [showPlatformList, setShowPlatformList] = useState(false);
-    const [activeFilters, setActiveFilters] = useState([]);
+
     const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())], [games]);
     const gamesPlatforms = useMemo(() => [...new Set(games.map((game) => game.platform).flat())], [games]);
-
-    const addGenreToActiveFilters = (genre) => {
-        if (activeFilters.includes(genre)) setActiveFilters((state) => state.filter((gnr) => gnr !== genre));
-        else setActiveFilters((state) => [genre, ...state]);
-    };
 
     return (
         <div className="filter-browser">
@@ -24,7 +26,7 @@ const FilterBrowser = ({ games }) => {
                     <div>Filters</div>
                     <div>{`(${activeFilters.length > 0 ? activeFilters.length : ""})`}</div>
                 </div>
-                <button className="filter-browser__reset" onClick={() => setActiveFilters([])}>
+                <button className="filter-browser__reset" onClick={() => resetActiveFilters()}>
                     RESET
                 </button>
             </div>
@@ -45,11 +47,11 @@ const FilterBrowser = ({ games }) => {
                             <div
                                 key={price}
                                 className={
-                                    activeFilters.includes(price)
+                                    priceFilter === price
                                         ? "filter-browser__item filter-browser__item-active"
                                         : "filter-browser__item filter-browser__item"
                                 }
-                                onClick={() => addGenreToActiveFilters(price)}
+                                onClick={() => setPriceFilter(price)}
                             >
                                 <div className="filter-browser__item-inner space-between">
                                     <div>{price}</div>
@@ -103,7 +105,7 @@ const FilterBrowser = ({ games }) => {
                         <div>PLATFORM</div>
                         <AiOutlineDown
                             style={{
-                                transform: `rotate(${showGenreList ? "-180deg" : "0"})`,
+                                transform: `rotate(${showPlatformList ? "-180deg" : "0"})`,
                             }}
                         />
                     </button>
