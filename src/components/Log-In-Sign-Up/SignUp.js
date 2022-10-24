@@ -58,13 +58,13 @@ const SignUp = () => {
             setErrorMessage("Oops. Something went wrong, please wait a bit and try again.");
         }
 
-        console.log("test");
-
         setFirstNameInputValue("");
         setLastNameInputValue("");
         setDisplayNameInputValue("");
         setEmailAdressInputValue("");
         setPasswordInputValue("");
+        newsRef.current.checked = false;
+        termsOfServiceRef.current.checked = false;
     };
 
     return (
