@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { WishlistButton, ImageCover } from "./CoverAndWishlistButton";
 
+import { gamePriceHandler } from "../../Helpers/HelperFunctions";
+
 const GameItem = ({ game }) => {
     const [showImageCover, setShowImageCover] = useState(false);
     const [showWishlistButton, setShowWishlistButton] = useState(false);
@@ -32,7 +34,9 @@ const GameItem = ({ game }) => {
                 </div>
                 <div className="game-info">
                     <div className="game-info__name">{game.name}</div>
-                    <div className="game-info__price">${game.price}</div>
+                    <div className="game-info__price">
+                        {gamePriceHandler(game.gameOnSale, game.price, game.discount)}
+                    </div>
                 </div>
             </a>
             {showWishlistButton && <WishlistButton mouseEnter={mouseEnterWishlistButtonHandler} />}

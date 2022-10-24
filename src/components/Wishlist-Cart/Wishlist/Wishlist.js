@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 
 import WishlistItem from "./WishlistItem";
-import WishlistGenreFilters from "./WishlistGenreFilters";
+import FilterBrowser from "../../UI/FilterBrowser";
 import useComponentVisible from "../../../Helpers/useComponentVisible";
 
+import { DUMMY_CAROUSEL_GAMES } from "../../../Helpers/DummyGames";
 import { AiOutlineDown } from "react-icons/ai";
 
 const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Price: High to Low"];
 
 //TODO fix media query
+//TODO add games/filters from users wishlist
 const Wishlist = () => {
-    const [sortBy, setSortBy] = useState("Date Added");
+    const [sortByText, setSortByText] = useState("Date Added");
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
 
     return (
@@ -27,7 +29,7 @@ const Wishlist = () => {
                                 onClick={() => setIsComponentVisible((state) => !state)}
                                 ref={ref}
                             >
-                                {sortBy}
+                                {sortByText}
                                 <AiOutlineDown
                                     style={{
                                         transform: `rotate(${isComponentVisible ? "-180deg" : "0"})`,
@@ -38,10 +40,10 @@ const Wishlist = () => {
                         {isComponentVisible && (
                             <ul className="wishlist-dropdown">
                                 {SORT_BY_ITEMS.map((item) => (
-                                    <li key={item} onClick={() => setSortBy(item)}>
+                                    <li key={item} onClick={() => setSortByText(item)}>
                                         <button
                                             className={
-                                                item === sortBy
+                                                item === sortByText
                                                     ? "wishlist-dropdown__item wishlist-dropdown__item-active"
                                                     : "wishlist-dropdown__item"
                                             }
@@ -59,7 +61,7 @@ const Wishlist = () => {
                 </div>
             </div>
             <div className="wishlist-right">
-                <WishlistGenreFilters />
+                <FilterBrowser games={DUMMY_CAROUSEL_GAMES} />
             </div>
         </div>
     );

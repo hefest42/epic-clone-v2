@@ -1,0 +1,81 @@
+import React, { useState, useEffect } from "react";
+
+import GameItem from "../UI/GameItem";
+import FilterBrowser from "../UI/FilterBrowser";
+
+import { calculateDiscount, compareTwoArrays } from "../../Helpers/HelperFunctions";
+
+import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
+
+const BrowseGames = () => {
+    const [games, setGames] = useState(DUMMY_CAROUSEL_GAMES);
+    const [activeFilters, setActiveFilters] = useState([]);
+    const [priceFilter, setPriceFilter] = useState("");
+
+    const resetActiveFilters = () => {
+        setActiveFilters([]);
+        setPriceFilter("");
+    };
+
+    const addGenreToActiveFilters = (genre) => {
+        if (activeFilters.includes(genre)) setActiveFilters((state) => state.filter((gnr) => gnr !== genre));
+        else setActiveFilters((state) => [genre, ...state]);
+    };
+
+    const filterGameByPrice = (game) => {
+        if (priceFilter === "") return true;
+
+        const priceRange = priceFilter.replace(/[^0-9.]/g, "");
+        const gamePrice = game.gameOnSale ? calculateDiscount(game.price, game.discount) : game.price;
+
+        if (priceFilter === "Free") {
+            if (+gamePrice === 0) return true;
+            else return false;
+        }
+
+        if (priceFilter === "$14.99 and above") {
+            if (+gamePrice >= 14.99) return true;
+            else return false;
+        }
+
+        if (+priceRange >= +gamePrice) return true;
+        else return false;
+    };
+
+    useEffect(() => {
+        if (priceFilter === "" && activeFilters.length === 0) {
+            setGames(DUMMY_CAROUSEL_GAMES);
+            return;
+        }
+
+        const filteredGames = DUMMY_CAROUSEL_GAMES.filter((game) => {
+            if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
+        });
+
+        setGames(filteredGames);
+    }, [activeFilters, priceFilter]);
+
+    return (
+        <div className="browse">
+            <div className="browse-left">
+                {games.map((game, i) => (
+                    <div key={i} className="browse-game">
+                        <GameItem game={game} />
+                    </div>
+                ))}
+            </div>
+            <div className="browse-right">
+                <FilterBrowser
+                    games={DUMMY_CAROUSEL_GAMES}
+                    addGenreToActiveFilters={addGenreToActiveFilters}
+                    activeFilters={activeFilters}
+                    resetActiveFilters={resetActiveFilters}
+                    priceFilter={priceFilter}
+                    setPriceFilter={setPriceFilter}
+                />
+            </div>
+        </div>
+    );
+};
+
+export default BrowseGames;

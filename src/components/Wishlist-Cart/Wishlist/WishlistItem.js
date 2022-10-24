@@ -25,7 +25,7 @@ const WishlistItem = () => {
                 <div className="wishlist-item__info space-between-column">
                     <div className="wishlist-item__info-container space-between">
                         <div className="wishlist-item__info-name">{GAME.name}</div>
-                        <div className="wishlist-item__info-price">{GAME.price}</div>
+                        <div className="wishlist-item__info-price">${GAME.price}</div>
                     </div>
                     <div className="wishlist-item__info-container space-between">
                         <div>

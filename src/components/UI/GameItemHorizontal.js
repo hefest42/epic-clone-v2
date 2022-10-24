@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 import { WishlistButton, ImageCover } from "../UI/CoverAndWishlistButton";
+import { gamePriceHandler } from "../../Helpers/HelperFunctions";
 
 const GameItemHorizontal = ({ game }) => {
     const [showImageCover, setShowImageCover] = useState(false);
@@ -32,7 +33,11 @@ const GameItemHorizontal = ({ game }) => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Id temporibus mollitia nobis possimus
                     consequatur repellendus voluptas minima est tempore assumenda?
                 </div>
-                <div className="game-horizontal__info-price">{game.price}</div>
+                <div className="game-horizontal__info-price">
+                    {game.price === "0"
+                        ? "Free to Play"
+                        : gamePriceHandler(game.gamegameOnSale, game.price, game.discount)}
+                </div>
             </div>
             {showWishlistButton && <WishlistButton mouseEnter={mouseEnterWishlistButtonHandler} />}
         </div>
