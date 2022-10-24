@@ -8,7 +8,7 @@ const SignUpFormInputs = ({
     changeLastNameValue,
     displayNameValue,
     changeDisplayNameValue,
-    emailAddressvalue,
+    emailAddressValue,
     changeEmailAddressValue,
     passwordValue,
     changePasswordValue,
@@ -31,6 +31,7 @@ const SignUpFormInputs = ({
                         type="text"
                         id="fname"
                         name="fname"
+                        value={firstNameValue ? firstNameValue : ""} // not really sure about this but i'll leave it for now
                         onClick={() => setIsFirstNameInputActive(true)}
                         onChange={(e) => changeFirstNameValue(e.target.value)}
                         onBlur={() => !firstNameValue && setIsFirstNameInputActive(false)}
@@ -46,6 +47,7 @@ const SignUpFormInputs = ({
                         type="text"
                         id="lname"
                         name="lname"
+                        value={lastNameValue ? lastNameValue : ""}
                         onClick={() => setIsLastNameInputActive(true)}
                         onChange={(e) => changeLastNameValue(e.target.value)}
                         onBlur={() => !lastNameValue && setIsLastNameInputActive(false)}
@@ -62,6 +64,7 @@ const SignUpFormInputs = ({
                     type="text"
                     id="dname"
                     name="dname"
+                    value={displayNameValue ? displayNameValue : ""}
                     onClick={() => setIsDisplayNameInputActive(true)}
                     onChange={(e) => changeDisplayNameValue(e.target.value)}
                     onBlur={() => !displayNameValue && setIsDisplayNameInputActive(false)}
@@ -77,9 +80,10 @@ const SignUpFormInputs = ({
                     type="email"
                     id="email"
                     name="email"
+                    value={emailAddressValue ? emailAddressValue : ""}
                     onClick={() => setIsEmailInputActive(true)}
                     onChange={(e) => changeEmailAddressValue(e.target.value)}
-                    onBlur={() => !emailAddressvalue && setIsEmailInputActive(false)}
+                    onBlur={() => !emailAddressValue && setIsEmailInputActive(false)}
                 />
             </div>
 
@@ -92,6 +96,8 @@ const SignUpFormInputs = ({
                     type="password"
                     id="password"
                     name="password"
+                    value={passwordValue ? passwordValue : ""}
+                    autoComplete="yes"
                     onClick={() => setIsPasswordInputActive(true)}
                     onChange={(e) => changePasswordValue(e.target.value)}
                     onBlur={() => !passwordValue && setIsPasswordInputActive(false)}
