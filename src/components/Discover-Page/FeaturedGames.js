@@ -1,16 +1,17 @@
 import React, { useEffect, useState, useMemo } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { IoIosAddCircleOutline } from "react-icons/io";
+import { IoMdAddCircle, IoMdCheckmarkCircle } from "react-icons/io";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
-import { useDispatch } from "react-redux";
-import { addGameToWishlist } from "../../store/AccountSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addGameToWishlist, removeGameFromWishlist } from "../../store/AccountSlice";
 
 //TODO add links to the games ergo fix clickOnFeaturedListItemHandler
 const FeaturedGames = () => {
     const dispatch = useDispatch();
+    const account = useSelector((state) => state.account.account);
     const [activeListItem, setActiveListItem] = useState(0);
     const GAMES = useMemo(() => DUMMY_CAROUSEL_GAMES.slice(0, 6), []);
     const currentDate = new Date();
@@ -64,9 +65,19 @@ const FeaturedGames = () => {
                                     <button onClick={() => console.log("bought the game")}>PRE-PURCHASE</button>
                                 </div>
                                 <div className="featured-cover__info-wishlist">
-                                    <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
-                                        <IoIosAddCircleOutline /> ADD TO WISHLIST
-                                    </button>
+                                    {account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name)
+                                        .length === 0 ? (
+                                        <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
+                                            <IoMdAddCircle /> ADD TO WISHLIST
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="center"
+                                            onClick={() => dispatch(removeGameFromWishlist(game))}
+                                        >
+                                            <IoMdCheckmarkCircle /> ADDED TO WISHLIST
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
