@@ -39,7 +39,7 @@ const GameItem = ({ game }) => {
                     </div>
                 </div>
             </a>
-            {showWishlistButton && <WishlistButton mouseEnter={mouseEnterWishlistButtonHandler} />}
+            {showWishlistButton && <WishlistButton game={game} mouseEnter={mouseEnterWishlistButtonHandler} />}
         </>
     );
 };

@@ -21,8 +21,6 @@ const WishlistItem = ({ game }) => {
         e.preventDefault();
         e.stopPropagation();
 
-        console.log("hello");
-
         dispatch(removeGameFromWishlist(game));
     };
 

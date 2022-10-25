@@ -39,7 +39,7 @@ const NewTopComingGames = () => {
                                     <div className="column-item__image">
                                         <img src={game.posterSmall} alt="" />
                                         {showWishlistButtonInx === i && columnWishlistButton === title && (
-                                            <WishlistButton mouseEnter={() => {}} />
+                                            <WishlistButton game={game} mouseEnter={() => {}} />
                                         )}
                                     </div>
                                     <div className="column-item__info">

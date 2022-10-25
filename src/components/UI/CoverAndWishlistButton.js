@@ -1,10 +1,21 @@
 import React from "react";
 import { useState } from "react";
 
-import { IoMdAddCircle } from "react-icons/io";
+import { IoMdAddCircle, IoMdCheckmarkCircle } from "react-icons/io";
 
-export const WishlistButton = ({ mouseEnter }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { addGameToWishlist, removeGameFromWishlist } from "../../store/AccountSlice";
+
+export const WishlistButton = ({ game, mouseEnter }) => {
+    const dispatch = useDispatch();
+    const account = useSelector((state) => state.account.account);
     const [showWishlistInfo, setShowWishlistInfo] = useState(false);
+
+    const wishlistingGameHandler = () => {
+        if (account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name).length > 0)
+            dispatch(removeGameFromWishlist(game));
+        else dispatch(addGameToWishlist(game));
+    };
 
     return (
         <>
@@ -23,9 +34,13 @@ export const WishlistButton = ({ mouseEnter }) => {
                     mouseEnter();
                 }}
                 onMouseLeave={() => setShowWishlistInfo(false)}
-                onClick={() => console.log("WISHLIST")}
+                onClick={wishlistingGameHandler}
             >
-                <IoMdAddCircle />
+                {account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
+                    <IoMdAddCircle />
+                ) : (
+                    <IoMdCheckmarkCircle />
+                )}
             </button>
         </>
     );
