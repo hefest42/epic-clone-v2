@@ -15,7 +15,7 @@ const WishlistContainer = () => {
         if (!isAccountLoggedIn) return;
 
         setWishlist(loggedInAccount.wishlist.slice(1));
-    }, [loggedInAccount.wishlist]);
+    }, [loggedInAccount.wishlist, isAccountLoggedIn]);
 
     return <PageContainer>{wishlist.length === 0 ? <WishlistEmpty /> : <Wishlist />}</PageContainer>;
 };

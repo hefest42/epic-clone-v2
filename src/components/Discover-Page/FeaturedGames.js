@@ -11,6 +11,7 @@ import { addGameToWishlist, removeGameFromWishlist } from "../../store/AccountSl
 //TODO add links to the games ergo fix clickOnFeaturedListItemHandler
 const FeaturedGames = () => {
     const dispatch = useDispatch();
+    const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const account = useSelector((state) => state.account.account);
     const [activeListItem, setActiveListItem] = useState(0);
     const GAMES = useMemo(() => DUMMY_CAROUSEL_GAMES.slice(0, 6), []);
@@ -41,6 +42,27 @@ const FeaturedGames = () => {
     //     return () => clearTimeout(timer);
     // }, [activeListItem]);
 
+    const wishlistButtonHandler = (game) => {
+        if (!isAccountLoggedIn)
+            return (
+                <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
+                    <IoMdAddCircle /> ADD TO WISHLIST
+                </button>
+            );
+
+        if (isAccountLoggedIn) {
+            return account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
+                <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
+                    <IoMdAddCircle /> ADD TO WISHLIST
+                </button>
+            ) : (
+                <button className="center" onClick={() => dispatch(removeGameFromWishlist(game))}>
+                    <IoMdCheckmarkCircle /> ADDED TO WISHLIST
+                </button>
+            );
+        }
+    };
+
     return (
         <div className="featured space-between">
             <div className="featured-container">
@@ -64,21 +86,7 @@ const FeaturedGames = () => {
                                     <p>{game.price === "0" ? "Free to Play" : `$${game.price}`}</p>
                                     <button onClick={() => console.log("bought the game")}>PRE-PURCHASE</button>
                                 </div>
-                                <div className="featured-cover__info-wishlist">
-                                    {account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name)
-                                        .length === 0 ? (
-                                        <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
-                                            <IoMdAddCircle /> ADD TO WISHLIST
-                                        </button>
-                                    ) : (
-                                        <button
-                                            className="center"
-                                            onClick={() => dispatch(removeGameFromWishlist(game))}
-                                        >
-                                            <IoMdCheckmarkCircle /> ADDED TO WISHLIST
-                                        </button>
-                                    )}
-                                </div>
+                                <div className="featured-cover__info-wishlist">{wishlistButtonHandler(game)}</div>
                             </div>
                         </div>
                     </div>
