@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import WishlistItem from "./WishlistItem";
 import FilterBrowser from "../../UI/FilterBrowser";
 import useComponentVisible from "../../../Helpers/useComponentVisible";
 
-import { DUMMY_CAROUSEL_GAMES } from "../../../Helpers/DummyGames";
 import { AiOutlineDown } from "react-icons/ai";
+import { compareTwoArrays, calculateDiscount } from "../../../Helpers/HelperFunctions";
 
 import { useSelector } from "react-redux";
 
@@ -14,7 +14,8 @@ const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Pric
 //TODO fix media query
 
 const Wishlist = () => {
-    const loggedInAccount = useSelector((state) => state.account.account);
+    const account = useSelector((state) => state.account.account);
+    const [wishlistedGames, setWishlistedGames] = useState([]);
     const [sortByText, setSortByText] = useState("Date Added");
     const [activeFilters, setActiveFilters] = useState([]);
     const [priceFilter, setPriceFilter] = useState("");
@@ -29,6 +30,43 @@ const Wishlist = () => {
         setActiveFilters([]);
         setPriceFilter("");
     };
+
+    const filterGameByPrice = (game) => {
+        if (priceFilter === "") return true;
+
+        const priceRange = priceFilter.replace(/[^0-9.]/g, "");
+        const gamePrice = game.gameOnSale ? calculateDiscount(game.price, game.discount) : game.price;
+
+        if (priceFilter === "Free") {
+            if (+gamePrice === 0) return true;
+            else return false;
+        }
+
+        if (priceFilter === "$14.99 and above") {
+            if (+gamePrice >= 14.99) return true;
+            else return false;
+        }
+
+        if (+priceRange >= +gamePrice) return true;
+        else return false;
+    };
+
+    useEffect(() => {
+        setWishlistedGames(account.wishlist.slice(1));
+    }, [account.wishlist]);
+
+    useEffect(() => {
+        if (priceFilter === "" && activeFilters.length === 0) {
+            setWishlistedGames(account.wishlist.slice(1));
+            return;
+        }
+
+        const filteredGames = account.wishlist.slice(1).filter((game) => {
+            if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
+        });
+
+        setWishlistedGames(filteredGames);
+    }, [activeFilters, priceFilter]);
 
     return (
         <div className="wishlist">
@@ -52,6 +90,7 @@ const Wishlist = () => {
                                 />
                             </button>
                         </div>
+
                         {isComponentVisible && (
                             <ul className="wishlist-dropdown">
                                 {SORT_BY_ITEMS.map((item) => (
@@ -70,14 +109,18 @@ const Wishlist = () => {
                             </ul>
                         )}
                     </div>
+
                     <div>
-                        <WishlistItem />
+                        {wishlistedGames.map((game) => (
+                            <WishlistItem key={game.name} game={game} />
+                        ))}
                     </div>
                 </div>
             </div>
+
             <div className="wishlist-right">
                 <FilterBrowser
-                    games={loggedInAccount.wishlist.slice(1)}
+                    games={wishlistedGames}
                     addGenreToActiveFilters={addGenreToActiveFilters}
                     activeFilters={activeFilters}
                     resetActiveFilters={resetActiveFilters}
