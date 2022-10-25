@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
-import { useMemo } from "react";
+
+import { useDispatch } from "react-redux";
+import { addGameToWishlist } from "../../store/AccountSlice";
 
 //TODO add links to the games ergo fix clickOnFeaturedListItemHandler
 const FeaturedGames = () => {
+    const dispatch = useDispatch();
     const [activeListItem, setActiveListItem] = useState(0);
     const GAMES = useMemo(() => DUMMY_CAROUSEL_GAMES.slice(0, 6), []);
     const currentDate = new Date();
@@ -61,7 +64,7 @@ const FeaturedGames = () => {
                                     <button onClick={() => console.log("bought the game")}>PRE-PURCHASE</button>
                                 </div>
                                 <div className="featured-cover__info-wishlist">
-                                    <button className="center" onClick={() => console.log("added to wishlist")}>
+                                    <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
                                         <IoIosAddCircleOutline /> ADD TO WISHLIST
                                     </button>
                                 </div>

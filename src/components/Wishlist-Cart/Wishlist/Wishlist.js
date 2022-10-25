@@ -7,13 +7,28 @@ import useComponentVisible from "../../../Helpers/useComponentVisible";
 import { DUMMY_CAROUSEL_GAMES } from "../../../Helpers/DummyGames";
 import { AiOutlineDown } from "react-icons/ai";
 
+import { useSelector } from "react-redux";
+
 const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Price: High to Low"];
 
 //TODO fix media query
-//TODO add games/filters from users wishlist
+
 const Wishlist = () => {
+    const loggedInAccount = useSelector((state) => state.account.account);
     const [sortByText, setSortByText] = useState("Date Added");
+    const [activeFilters, setActiveFilters] = useState([]);
+    const [priceFilter, setPriceFilter] = useState("");
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+
+    const addGenreToActiveFilters = (genre) => {
+        if (activeFilters.includes(genre)) setActiveFilters((state) => state.filter((gnr) => gnr !== genre));
+        else setActiveFilters((state) => [genre, ...state]);
+    };
+
+    const resetActiveFilters = () => {
+        setActiveFilters([]);
+        setPriceFilter("");
+    };
 
     return (
         <div className="wishlist">
@@ -61,7 +76,14 @@ const Wishlist = () => {
                 </div>
             </div>
             <div className="wishlist-right">
-                <FilterBrowser games={DUMMY_CAROUSEL_GAMES} />
+                <FilterBrowser
+                    games={loggedInAccount.wishlist.slice(1)}
+                    addGenreToActiveFilters={addGenreToActiveFilters}
+                    activeFilters={activeFilters}
+                    resetActiveFilters={resetActiveFilters}
+                    priceFilter={priceFilter}
+                    setPriceFilter={setPriceFilter}
+                />
             </div>
         </div>
     );
