@@ -15,8 +15,8 @@ const WishlistItem = ({ game }) => {
         e.preventDefault();
         e.stopPropagation();
 
-        console.log("CLICK");
         dispatch(addGameToCart(game));
+        dispatch(removeGameFromWishlist(game));
     };
 
     const removeGameFromWishlistHandler = (e) => {

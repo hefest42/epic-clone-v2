@@ -36,7 +36,7 @@ export const WishlistButton = ({ game, mouseEnter }) => {
                 onMouseLeave={() => setShowWishlistInfo(false)}
                 onClick={wishlistingGameHandler}
             >
-                {account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
+                {account.wishlist.filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
                     <IoMdAddCircle />
                 ) : (
                     <IoMdCheckmarkCircle />

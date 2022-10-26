@@ -2,8 +2,19 @@ import React from "react";
 
 import { AiFillWindows } from "react-icons/ai";
 import { IoMdAddCircle } from "react-icons/io";
+import { useDispatch } from "react-redux";
+
+import { removeGameFromCart } from "../../../store/CartSlice";
+import { addGameToWishlist } from "../../../store/AccountSlice";
 
 const CartItem = ({ game }) => {
+    const dispatch = useDispatch();
+
+    const moveGameBackToWishlistHandler = () => {
+        dispatch(removeGameFromCart(game));
+        dispatch(addGameToWishlist(game));
+    };
+
     return (
         <div to="/store" className="cart-item center">
             <div className="cart-item__inner space-between">
@@ -22,9 +33,14 @@ const CartItem = ({ game }) => {
                         <div className="center">
                             <div className="cart-item__info-wishlist center">
                                 <IoMdAddCircle />
-                                <button>Move to Wishlist</button>
+                                <button onClick={moveGameBackToWishlistHandler}>Move to Wishlist</button>
                             </div>
-                            <button className="cart-item__info-remove">Remove</button>
+                            <button
+                                className="cart-item__info-remove"
+                                onClick={() => dispatch(removeGameFromCart(game))}
+                            >
+                                Remove
+                            </button>
                         </div>
                     </div>
                 </div>
