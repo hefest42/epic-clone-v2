@@ -6,6 +6,7 @@ import { AiFillWindows } from "react-icons/ai";
 
 import { useDispatch } from "react-redux";
 import { removeGameFromWishlist } from "../../../store/AccountSlice";
+import { addGameToCart } from "../../../store/CartSlice";
 
 const WishlistItem = ({ game }) => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const WishlistItem = ({ game }) => {
         e.stopPropagation();
 
         console.log("CLICK");
+        dispatch(addGameToCart(game));
     };
 
     const removeGameFromWishlistHandler = (e) => {
