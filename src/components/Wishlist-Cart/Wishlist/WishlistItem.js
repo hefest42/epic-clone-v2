@@ -2,6 +2,8 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
+import { gamePriceHandler } from "../../../Helpers/HelperFunctions";
+
 import { AiFillWindows } from "react-icons/ai";
 
 import { useDispatch } from "react-redux";
@@ -35,7 +37,9 @@ const WishlistItem = ({ game }) => {
                 <div className="wishlist-item__info space-between-column">
                     <div className="wishlist-item__info-container space-between">
                         <div className="wishlist-item__info-name">{game.name}</div>
-                        <div className="wishlist-item__info-price">${game.price}</div>
+                        <div className="wishlist-item__info-price">
+                            {gamePriceHandler(game.gameOnSale, game.price, game.discount)}
+                        </div>
                     </div>
                     <div className="wishlist-item__info-container space-between">
                         <div>

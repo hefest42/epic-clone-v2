@@ -1,9 +1,11 @@
 import React from "react";
 
+import { gamePriceHandler } from "../../../Helpers/HelperFunctions";
+
 import { AiFillWindows } from "react-icons/ai";
 import { IoMdAddCircle } from "react-icons/io";
-import { useDispatch } from "react-redux";
 
+import { useDispatch } from "react-redux";
 import { removeGameFromCart } from "../../../store/CartSlice";
 import { addGameToWishlist } from "../../../store/AccountSlice";
 
@@ -24,7 +26,9 @@ const CartItem = ({ game }) => {
                 <div className="cart-item__info space-between-column">
                     <div className="cart-item__info-container space-between">
                         <div className="cart-item__info-name">{game.name}</div>
-                        <div className="cart-item__info-price">{game.price}</div>
+                        <div className="cart-item__info-price">
+                            {gamePriceHandler(game.gameOnSale, game.price, game.discount)}
+                        </div>
                     </div>
                     <div className="cart-item__info-container space-between">
                         <div>
