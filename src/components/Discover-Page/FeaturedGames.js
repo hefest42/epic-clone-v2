@@ -34,14 +34,6 @@ const FeaturedGames = () => {
             }/${gameReleaseDate.getFullYear()}`;
     };
 
-    // useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //         setActiveListItem((state) => (state === 5 ? 0 : state + 1));
-    //     }, 7000);
-
-    //     return () => clearTimeout(timer);
-    // }, [activeListItem]);
-
     const wishlistButtonHandler = (game) => {
         if (!isAccountLoggedIn)
             return (
@@ -62,6 +54,21 @@ const FeaturedGames = () => {
             );
         }
     };
+
+    const buyButtonTextHandler = (releaseDate) => {
+        const gameReleaseDate = new Date(releaseDate);
+
+        if (currentDate.getTime() >= gameReleaseDate.getTime()) return "BUY NOW";
+        else return "PRE-PURCHASE";
+    };
+
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         setActiveListItem((state) => (state === 5 ? 0 : state + 1));
+    //     }, 7000);
+
+    //     return () => clearTimeout(timer);
+    // }, [activeListItem]);
 
     return (
         <div className="featured space-between">
@@ -84,7 +91,9 @@ const FeaturedGames = () => {
                             <div className="featured-cover__info-buttons">
                                 <div className="featured-cover__info-buy">
                                     <p>{game.price === "0" ? "Free to Play" : `$${game.price}`}</p>
-                                    <button onClick={() => console.log("bought the game")}>PRE-PURCHASE</button>
+                                    <button onClick={() => console.log("bought the game")}>
+                                        {buyButtonTextHandler(game.releaseDate)}
+                                    </button>
                                 </div>
                                 <div className="featured-cover__info-wishlist">{wishlistButtonHandler(game)}</div>
                             </div>
