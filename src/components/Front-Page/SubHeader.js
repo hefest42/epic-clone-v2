@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const SubHeader = () => {
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
+    const cart = useSelector((state) => state.cart.cart);
 
     return (
         <div className="subHeader space-between">
@@ -64,7 +65,7 @@ const SubHeader = () => {
                             isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
                         }
                     >
-                        Cart
+                        {cart.length === 0 ? "Cart" : `Cart(${cart.length})`}
                     </NavLink>
                 )}
             </div>
