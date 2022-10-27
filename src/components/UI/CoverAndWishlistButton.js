@@ -8,13 +8,26 @@ import { addGameToWishlist, removeGameFromWishlist } from "../../store/AccountSl
 
 export const WishlistButton = ({ game, mouseEnter }) => {
     const dispatch = useDispatch();
+    const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const account = useSelector((state) => state.account.account);
     const [showWishlistInfo, setShowWishlistInfo] = useState(false);
 
     const wishlistingGameHandler = () => {
+        if (!isAccountLoggedIn) return;
+
         if (account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name).length > 0)
             dispatch(removeGameFromWishlist(game));
         else dispatch(addGameToWishlist(game));
+    };
+
+    const wishlistButtonHandler = (wishlist) => {
+        if (!isAccountLoggedIn) return <IoMdAddCircle />;
+
+        return wishlist.filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
+            <IoMdAddCircle />
+        ) : (
+            <IoMdCheckmarkCircle />
+        );
     };
 
     return (
@@ -36,11 +49,7 @@ export const WishlistButton = ({ game, mouseEnter }) => {
                 onMouseLeave={() => setShowWishlistInfo(false)}
                 onClick={wishlistingGameHandler}
             >
-                {account.wishlist.filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
-                    <IoMdAddCircle />
-                ) : (
-                    <IoMdCheckmarkCircle />
-                )}
+                {wishlistButtonHandler(account.wishlist)}
             </button>
         </>
     );
