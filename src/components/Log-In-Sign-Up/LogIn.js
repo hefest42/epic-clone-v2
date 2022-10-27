@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import LogInFormInputs from "./LogInFormInputs";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SiEpicgames } from "react-icons/si";
 import { BiErrorCircle } from "react-icons/bi";
 import { API_URL } from "../../Helpers/HelperFunctions";
@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { setLoggedInAccount } from "../../store/AccountSlice";
 
 const LogIn = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [emailInputValue, setEmailInputValue] = useState("");
     const [passwordInputValue, setPasswordInputValue] = useState("");
@@ -51,6 +52,7 @@ const LogIn = () => {
         if (account.password === password) {
             console.log("LOG IN ACCOUNT");
             dispatch(setLoggedInAccount(account));
+            navigate("/store");
         } else {
             setErrorMessage("Check your credentials and try again.");
             resetInputValues();
