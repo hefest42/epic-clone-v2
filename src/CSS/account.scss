@@ -1,0 +1,53 @@
+.account {
+    background-color: var(--background-white);
+    width: 100%;
+    height: auto;
+
+    &-container {
+        width: 60%;
+        height: 50rem;
+        margin: 5rem 0;
+    }
+
+    &-information {
+        background-color: rebeccapurple;
+        width: 52rem;
+        height: 100%;
+    }
+}
+
+.account-categories {
+    background-color: #fff;
+    width: 17rem;
+    height: 100%;
+
+    &__item {
+        background-color: #fff;
+        color: var(--account-text);
+        border: 1px solid #ebebeb;
+        padding: 18px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease-in-out;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 0.5rem;
+        }
+
+        &:hover {
+            color: black;
+            border-left: 5px solid var(--main-blue);
+            transition: all 0.15s ease-in-out;
+        }
+    }
+
+    &__active {
+        color: black;
+        border-left: 5px solid var(--main-blue);
+    }
+}
