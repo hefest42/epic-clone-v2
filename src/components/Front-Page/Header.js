@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+
+import AccountDropdownMenu from "./AccountDropdownMenu";
 
 import { NavLink } from "react-router-dom";
 
 import { RiAccountCircleLine } from "react-icons/ri";
 import { SiEpicgames } from "react-icons/si";
 
-//TODO make logo link to the home/discover page
+import { useSelector } from "react-redux";
+
 const Header = () => {
+    const account = useSelector((state) => state.account.account);
+    const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
+    const [showDropdownMenu, setShowDropdownMenu] = useState(false);
+
     return (
         <header className="header space-between">
             <div className="header-left center">
@@ -41,11 +48,16 @@ const Header = () => {
 
             <div className="header-right center">
                 <NavLink to="/log-in">
-                    <div className="header-right__sign center">
+                    <div
+                        className="header-right__sign center"
+                        onMouseEnter={() => setShowDropdownMenu(true)}
+                        onMouseLeave={() => setShowDropdownMenu(false)}
+                    >
                         <div>
                             <RiAccountCircleLine />
                         </div>
-                        <p>SIGN IN</p>
+                        <p>{isAccountLoggedIn ? account.displayName : "SIGN IN"}</p>
+                        {showDropdownMenu && <AccountDropdownMenu />}
                     </div>
                 </NavLink>
                 <div className="header-right__download center">DOWNLOAD</div>

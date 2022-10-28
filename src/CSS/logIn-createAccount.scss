@@ -22,6 +22,36 @@
         }
     }
 
+    &-error {
+        width: 100%;
+        height: auto;
+        padding: 1rem 0;
+        border-radius: 5px;
+
+        border: 1px solid var(--error-main);
+        margin-top: 1rem;
+
+        &__svg {
+            width: 20%;
+            height: 100%;
+
+            svg {
+                color: var(--error-main);
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        &__message {
+            color: var(--error-main);
+
+            width: 80%;
+            height: auto;
+            font-size: 1.1rem;
+            word-wrap: break-word;
+        }
+    }
+
     &-inputs {
         width: 100%;
         margin-top: 1rem;

@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { IoIosAddCircleOutline } from "react-icons/io";
+import { IoMdAddCircle, IoMdCheckmarkCircle } from "react-icons/io";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
-import { useMemo } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { addGameToWishlist, removeGameFromWishlist } from "../../store/AccountSlice";
 
 //TODO add links to the games ergo fix clickOnFeaturedListItemHandler
 const FeaturedGames = () => {
+    const dispatch = useDispatch();
+    const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
+    const account = useSelector((state) => state.account.account);
     const [activeListItem, setActiveListItem] = useState(0);
     const GAMES = useMemo(() => DUMMY_CAROUSEL_GAMES.slice(0, 6), []);
     const currentDate = new Date();
@@ -27,6 +32,34 @@ const FeaturedGames = () => {
             return `Coming ${gameReleaseDate.getDate()}/${
                 gameReleaseDate.getMonth() + 1
             }/${gameReleaseDate.getFullYear()}`;
+    };
+
+    const wishlistButtonHandler = (game) => {
+        if (!isAccountLoggedIn)
+            return (
+                <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
+                    <IoMdAddCircle /> ADD TO WISHLIST
+                </button>
+            );
+
+        if (isAccountLoggedIn) {
+            return account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
+                <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
+                    <IoMdAddCircle /> ADD TO WISHLIST
+                </button>
+            ) : (
+                <button className="center" onClick={() => dispatch(removeGameFromWishlist(game))}>
+                    <IoMdCheckmarkCircle /> ADDED TO WISHLIST
+                </button>
+            );
+        }
+    };
+
+    const buyButtonTextHandler = (releaseDate) => {
+        const gameReleaseDate = new Date(releaseDate);
+
+        if (currentDate.getTime() >= gameReleaseDate.getTime()) return "BUY NOW";
+        else return "PRE-PURCHASE";
     };
 
     // useEffect(() => {
@@ -58,13 +91,11 @@ const FeaturedGames = () => {
                             <div className="featured-cover__info-buttons">
                                 <div className="featured-cover__info-buy">
                                     <p>{game.price === "0" ? "Free to Play" : `$${game.price}`}</p>
-                                    <button onClick={() => console.log("bought the game")}>PRE-PURCHASE</button>
-                                </div>
-                                <div className="featured-cover__info-wishlist">
-                                    <button className="center" onClick={() => console.log("added to wishlist")}>
-                                        <IoIosAddCircleOutline /> ADD TO WISHLIST
+                                    <button onClick={() => console.log("bought the game")}>
+                                        {buyButtonTextHandler(game.releaseDate)}
                                     </button>
                                 </div>
+                                <div className="featured-cover__info-wishlist">{wishlistButtonHandler(game)}</div>
                             </div>
                         </div>
                     </div>

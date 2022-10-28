@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 
-import { WishlistButton } from "../UI/CoverAndWishlistButton";
 import GameItem from "../UI/GameItem";
 
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import { IoMdAddCircle } from "react-icons/io";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 

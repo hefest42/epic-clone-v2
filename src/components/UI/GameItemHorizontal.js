@@ -39,7 +39,7 @@ const GameItemHorizontal = ({ game }) => {
                         : gamePriceHandler(game.gamegameOnSale, game.price, game.discount)}
                 </div>
             </div>
-            {showWishlistButton && <WishlistButton mouseEnter={mouseEnterWishlistButtonHandler} />}
+            {showWishlistButton && <WishlistButton game={game} mouseEnter={mouseEnterWishlistButtonHandler} />}
         </div>
     );
 };

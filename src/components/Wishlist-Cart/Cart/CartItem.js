@@ -1,23 +1,34 @@
 import React from "react";
 
-import { DUMMY_CAROUSEL_GAMES } from "../../../Helpers/DummyGames";
+import { gamePriceHandler } from "../../../Helpers/HelperFunctions";
 
 import { AiFillWindows } from "react-icons/ai";
 import { IoMdAddCircle } from "react-icons/io";
 
-const CartItem = () => {
-    const GAME = DUMMY_CAROUSEL_GAMES[0];
+import { useDispatch } from "react-redux";
+import { removeGameFromCart } from "../../../store/CartSlice";
+import { addGameToWishlist } from "../../../store/AccountSlice";
+
+const CartItem = ({ game }) => {
+    const dispatch = useDispatch();
+
+    const moveGameBackToWishlistHandler = () => {
+        dispatch(removeGameFromCart(game));
+        dispatch(addGameToWishlist(game));
+    };
 
     return (
         <div to="/store" className="cart-item center">
             <div className="cart-item__inner space-between">
                 <div className="cart-item__image center">
-                    <img src={GAME.posterSmall} alt={`${GAME.name} poster`} />
+                    <img src={game.posterSmall} alt={`${game.name} poster`} />
                 </div>
                 <div className="cart-item__info space-between-column">
                     <div className="cart-item__info-container space-between">
-                        <div className="cart-item__info-name">{GAME.name}</div>
-                        <div className="cart-item__info-price">{GAME.price}</div>
+                        <div className="cart-item__info-name">{game.name}</div>
+                        <div className="cart-item__info-price">
+                            {gamePriceHandler(game.gameOnSale, game.price, game.discount)}
+                        </div>
                     </div>
                     <div className="cart-item__info-container space-between">
                         <div>
@@ -26,9 +37,14 @@ const CartItem = () => {
                         <div className="center">
                             <div className="cart-item__info-wishlist center">
                                 <IoMdAddCircle />
-                                <button>Move to Wishlist</button>
+                                <button onClick={moveGameBackToWishlistHandler}>Move to Wishlist</button>
                             </div>
-                            <button className="cart-item__info-remove">Remove</button>
+                            <button
+                                className="cart-item__info-remove"
+                                onClick={() => dispatch(removeGameFromCart(game))}
+                            >
+                                Remove
+                            </button>
                         </div>
                     </div>
                 </div>

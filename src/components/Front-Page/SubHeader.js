@@ -1,10 +1,14 @@
 import React from "react";
 
 import { NavLink } from "react-router-dom";
-
 import { FiSearch } from "react-icons/fi";
 
+import { useSelector } from "react-redux";
+
 const SubHeader = () => {
+    const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
+    const cart = useSelector((state) => state.cart.cart);
+
     return (
         <div className="subHeader space-between">
             <div className="subHeader-left center">
@@ -43,23 +47,27 @@ const SubHeader = () => {
             </div>
 
             <div className="subHeader-right">
-                <NavLink
-                    to="wishlist"
-                    className={({ isActive }) =>
-                        isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
-                    }
-                >
-                    Wishlist
-                </NavLink>
+                {isAccountLoggedIn && (
+                    <NavLink
+                        to="wishlist"
+                        className={({ isActive }) =>
+                            isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
+                        }
+                    >
+                        Wishlist
+                    </NavLink>
+                )}
 
-                <NavLink
-                    to="cart"
-                    className={({ isActive }) =>
-                        isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
-                    }
-                >
-                    Cart
-                </NavLink>
+                {isAccountLoggedIn && (
+                    <NavLink
+                        to="cart"
+                        className={({ isActive }) =>
+                            isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
+                        }
+                    >
+                        {cart.length === 0 ? "Cart" : `Cart(${cart.length})`}
+                    </NavLink>
+                )}
             </div>
         </div>
     );
