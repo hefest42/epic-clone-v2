@@ -4,21 +4,21 @@
     height: auto;
 
     &-container {
-        width: 60%;
+        width: 65%;
         height: 50rem;
         margin: 5rem 0;
     }
 
     &-information {
-        background-color: rebeccapurple;
-        width: 52rem;
+        background-color: #fff;
+        width: 55rem;
         height: 100%;
     }
 }
 
 .account-categories {
     background-color: #fff;
-    width: 17rem;
+    width: 20rem;
     height: 100%;
 
     &__item {
@@ -49,5 +49,95 @@
     &__active {
         color: black;
         border-left: 5px solid var(--main-blue);
+    }
+}
+
+.account-settings {
+    width: 100%;
+    padding: 2rem;
+
+    &__section {
+        margin: 3rem 0;
+    }
+
+    &__title {
+        font-size: 1.7rem;
+    }
+
+    &__subtitle {
+        color: var(--account-text);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+    }
+
+    &__id {
+        margin-top: 2rem;
+        color: var(--account-text);
+
+        span {
+            color: #111;
+            font-weight: bold;
+        }
+    }
+
+    &__inputs-container {
+        width: 48%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        transition: all 0.2s linear;
+    }
+
+    &__input {
+        position: relative;
+        background-color: #eee;
+        color: var(--account-text);
+        height: 3rem;
+        border: 1px solid var(--account-text);
+        transition: all 0.2s linear;
+        cursor: not-allowed;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        label {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 0.6rem;
+            transition: all 0.2s linear;
+            cursor: inherit;
+        }
+
+        input {
+            background-color: transparent;
+            color: inherit;
+            width: 18rem;
+            height: 60%;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            margin-left: 1rem;
+            cursor: inherit;
+        }
+    }
+
+    &__button {
+        background-color: var(--main-blue);
+        width: 4rem;
+        height: 3rem;
+        border: none;
+        border-radius: 5px;
+        margin-left: 1rem;
+        cursor: pointer;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
 }
