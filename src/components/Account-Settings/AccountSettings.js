@@ -1,12 +1,21 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect } from "react";
 
 import { FiEdit2 } from "react-icons/fi";
 
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const AccountSettings = () => {
+    const navigate = useNavigate();
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const account = useSelector((state) => state.account.account);
+
+    useEffect(() => {
+        if (!isAccountLoggedIn) {
+            navigate("/log-in");
+            return;
+        }
+    });
 
     return (
         <div className="account-settings">
@@ -19,7 +28,7 @@ const AccountSettings = () => {
                 <div className="account-settings__title">ACCOUNT INFORMATION</div>
 
                 <div className="account-settings__id">
-                    <span>ID:</span> ACCOUNT ID GOES HERE
+                    <span>ID:</span> {account.accountId}
                 </div>
             </div>
 

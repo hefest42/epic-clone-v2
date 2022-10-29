@@ -53,11 +53,9 @@ const Header = () => {
                         onMouseEnter={() => setShowDropdownMenu(true)}
                         onMouseLeave={() => setShowDropdownMenu(false)}
                     >
-                        <div>
-                            <RiAccountCircleLine />
-                        </div>
+                        <div>{isAccountLoggedIn && <RiAccountCircleLine />}</div>
                         <p>{isAccountLoggedIn ? account.displayName : "SIGN IN"}</p>
-                        {showDropdownMenu && <AccountDropdownMenu />}
+                        {isAccountLoggedIn && showDropdownMenu && <AccountDropdownMenu />}
                     </div>
                 </NavLink>
                 <div className="header-right__download center">DOWNLOAD</div>
