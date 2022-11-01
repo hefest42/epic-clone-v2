@@ -7,9 +7,11 @@ import Footer from "../Front-Page/Footer";
 import AccountSettings from "./AccountSettings";
 import AccountCategories from "./AccountCategories";
 import ChangeDisplayNameModal from "./ChangeDisplayNameModal";
+import ChangeEmailAddressModal from "./ChangeEmailAddressModal";
 
 const AccountSettingsContainer = () => {
     const [showChangeDisplayNameModal, setShowDisplayNameModal] = useState(false);
+    const [showChangeEmailAddressModal, setShowChangeEmailAddressModal] = useState(false);
 
     return (
         <div className="account center-column">
@@ -22,14 +24,21 @@ const AccountSettingsContainer = () => {
                     <Routes>
                         <Route
                             path="settings"
-                            element={<AccountSettings setShowDisplayNameModal={setShowDisplayNameModal} />}
+                            element={
+                                <AccountSettings
+                                    setShowDisplayNameModal={setShowDisplayNameModal}
+                                    setShowChangeEmailAddressModal={setShowChangeEmailAddressModal}
+                                />
+                            }
                         />
                     </Routes>
                 </div>
             </div>
 
             {showChangeDisplayNameModal && <ChangeDisplayNameModal setShowDisplayNameModal={setShowDisplayNameModal} />}
-
+            {showChangeEmailAddressModal && (
+                <ChangeEmailAddressModal setShowChangeEmailAddressModal={setShowChangeEmailAddressModal} />
+            )}
             <Footer />
         </div>
     );
