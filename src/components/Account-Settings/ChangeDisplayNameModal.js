@@ -5,7 +5,7 @@ import { SiEpicgames } from "react-icons/si";
 
 import { useSelector } from "react-redux";
 
-const ChangeDisplayNameModal = () => {
+const ChangeDisplayNameModal = ({ setShowDisplayNameModal }) => {
     const account = useSelector((state) => state.account.account);
     const [isDisplayNameActive, setIsDisplayNameActive] = useState(false);
     const [displayNameValue, setDisplayNameValue] = useState("");
@@ -16,7 +16,7 @@ const ChangeDisplayNameModal = () => {
         <div className="settings-modal center">
             <div className="settings-modal__inner">
                 <div className="settings-modal__close">
-                    <AiOutlineClose />
+                    <AiOutlineClose onClick={() => setShowDisplayNameModal(false)} />
                 </div>
                 <div className="settings-modal__logo center">
                     <SiEpicgames />
@@ -72,7 +72,12 @@ const ChangeDisplayNameModal = () => {
                     </div>
 
                     <div className="space-between">
-                        <button className="settings-modal__buttons settings-modal__cancel">CANCEL</button>
+                        <button
+                            className="settings-modal__buttons settings-modal__cancel"
+                            onClick={() => setShowDisplayNameModal(false)}
+                        >
+                            CANCEL
+                        </button>
                         <button className="settings-modal__buttons settings-modal__confirm ">CONFIRM</button>
                     </div>
                 </form>

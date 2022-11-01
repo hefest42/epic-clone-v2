@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -9,6 +9,8 @@ import AccountCategories from "./AccountCategories";
 import ChangeDisplayNameModal from "./ChangeDisplayNameModal";
 
 const AccountSettingsContainer = () => {
+    const [showChangeDisplayNameModal, setShowDisplayNameModal] = useState(false);
+
     return (
         <div className="account center-column">
             <Header />
@@ -18,12 +20,15 @@ const AccountSettingsContainer = () => {
 
                 <div className="account-information">
                     <Routes>
-                        <Route path="settings" element={<AccountSettings />} />
+                        <Route
+                            path="settings"
+                            element={<AccountSettings setShowDisplayNameModal={setShowDisplayNameModal} />}
+                        />
                     </Routes>
                 </div>
             </div>
 
-            <ChangeDisplayNameModal />
+            {showChangeDisplayNameModal && <ChangeDisplayNameModal setShowDisplayNameModal={setShowDisplayNameModal} />}
 
             <Footer />
         </div>
