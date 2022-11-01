@@ -6,6 +6,7 @@ import Header from "../Front-Page/Header";
 import Footer from "../Front-Page/Footer";
 import AccountSettings from "./AccountSettings";
 import AccountCategories from "./AccountCategories";
+import ChangeDisplayNameModal from "./ChangeDisplayNameModal";
 
 const AccountSettingsContainer = () => {
     return (
@@ -21,6 +22,8 @@ const AccountSettingsContainer = () => {
                     </Routes>
                 </div>
             </div>
+
+            <ChangeDisplayNameModal />
 
             <Footer />
         </div>
