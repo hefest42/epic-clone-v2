@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import LoadingSpinner from "../UI/LoadingSpinner";
 
 import { AiOutlineClose } from "react-icons/ai";
+import { SiEpicgames } from "react-icons/si";
 
 const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
     const [stepper, setStepper] = useState(1);
@@ -22,6 +23,10 @@ const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
             <div className="email-modal__inner">
                 <div className="settings-modal__close">
                     <AiOutlineClose onClick={() => setShowChangeEmailAddressModal(false)} />
+                </div>
+
+                <div className="settings-modal__logo center">
+                    <SiEpicgames />
                 </div>
 
                 <div className="center-column">
