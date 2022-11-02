@@ -125,7 +125,12 @@ const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
 
                                 <div className="email-modal__buttons">
                                     <button className="email-modal__buttons-continue">CONTINUE</button>
-                                    <button className="email-modal__buttons-cancel">CANCEL</button>
+                                    <button
+                                        className="email-modal__buttons-cancel"
+                                        onClick={() => setShowChangeEmailAddressModal(false)}
+                                    >
+                                        CANCEL
+                                    </button>
                                 </div>
                             </form>
                         </>
@@ -167,8 +172,17 @@ const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
                                 </div>
 
                                 <div className="email-modal__buttons">
-                                    <button className="email-modal__buttons-continue">CONFIRM</button>
-                                    <button className="email-modal__buttons-cancel">CANCEL</button>
+                                    <button type="submit" className="email-modal__buttons-continue">
+                                        CONFIRM
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        className="email-modal__buttons-cancel"
+                                        onClick={(e) => setShowChangeEmailAddressModal(false)}
+                                    >
+                                        CANCEL
+                                    </button>
                                 </div>
                             </form>
                         </>
