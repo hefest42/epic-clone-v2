@@ -105,6 +105,10 @@ const AccountSettings = ({ setShowDisplayNameModal, setShowChangeEmailAddressMod
                     </button>
                 </div>
             </div>
+
+            <div className="account-settings__id">
+                <span>NOTE:</span> After every change you will need to log in again.
+            </div>
         </div>
     );
 };

@@ -4,11 +4,16 @@ import { AiOutlineClose } from "react-icons/ai";
 import { SiEpicgames } from "react-icons/si";
 import { BiErrorCircle } from "react-icons/bi";
 
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+import { logOutAccount } from "../../store/AccountSlice";
 
 import { API_URL } from "../../Helpers/HelperFunctions";
 
 const ChangeDisplayNameModal = ({ setShowDisplayNameModal }) => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const account = useSelector((state) => state.account.account);
     const [errorMessage, setErrorMessage] = useState("");
     const [isDisplayNameActive, setIsDisplayNameActive] = useState(false);
@@ -39,6 +44,9 @@ const ChangeDisplayNameModal = ({ setShowDisplayNameModal }) => {
             console.error(error);
             setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
         }
+
+        dispatch(logOutAccount());
+        navigate("/log-in");
     };
 
     return (
