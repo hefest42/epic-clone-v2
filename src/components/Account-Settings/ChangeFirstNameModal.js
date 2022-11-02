@@ -139,8 +139,8 @@ const ChangeFirstNameModal = ({ setShowChangeFirstNameModal }) => {
 
                     {stepper === 3 && (
                         <>
-                            <div className="account-settings__title">Change your Email Address</div>
-                            <div className="email-modal__info">Enter your new Email Address</div>
+                            <div className="account-settings__title">Change your First Name</div>
+                            <div className="email-modal__info">Enter your new first name.</div>
 
                             <form onSubmit={emailChangeHandler} className="email-modal__form">
                                 <div

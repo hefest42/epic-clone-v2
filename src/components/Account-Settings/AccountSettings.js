@@ -5,7 +5,12 @@ import { FiEdit2 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const AccountSettings = ({ setShowDisplayNameModal, setShowChangeEmailAddressModal, setShowChangeFirstNameModal }) => {
+const AccountSettings = ({
+    setShowDisplayNameModal,
+    setShowChangeEmailAddressModal,
+    setShowChangeFirstNameModal,
+    setShowChangeLastNameModal,
+}) => {
     const navigate = useNavigate();
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const account = useSelector((state) => state.account.account);
@@ -100,7 +105,7 @@ const AccountSettings = ({ setShowDisplayNameModal, setShowChangeEmailAddressMod
                         <div className="account-settings__input-filler"></div>
                         <input type="text" defaultValue={isAccountLoggedIn ? hiddenLastName : ""} />
                     </div>
-                    <button className="account-settings__button">
+                    <button className="account-settings__button" onClick={() => setShowChangeLastNameModal(true)}>
                         <FiEdit2 />
                     </button>
                 </div>

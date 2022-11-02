@@ -9,11 +9,13 @@ import AccountCategories from "./AccountCategories";
 import ChangeDisplayNameModal from "./ChangeDisplayNameModal";
 import ChangeEmailAddressModal from "./ChangeEmailAddressModal";
 import ChangeFirstNameModal from "./ChangeFirstNameModal";
+import ChangeLastNameModal from "./ChangeLastNameModal";
 
 const AccountSettingsContainer = () => {
     const [showChangeDisplayNameModal, setShowDisplayNameModal] = useState(false);
     const [showChangeEmailAddressModal, setShowChangeEmailAddressModal] = useState(false);
     const [showChangeFirstNameModal, setShowChangeFirstNameModal] = useState(false);
+    const [showChangeLastNameModal, setShowChangeLastNameModal] = useState(false);
 
     return (
         <div className="account center-column">
@@ -31,6 +33,7 @@ const AccountSettingsContainer = () => {
                                     setShowDisplayNameModal={setShowDisplayNameModal}
                                     setShowChangeEmailAddressModal={setShowChangeEmailAddressModal}
                                     setShowChangeFirstNameModal={setShowChangeFirstNameModal}
+                                    setShowChangeLastNameModal={setShowChangeLastNameModal}
                                 />
                             }
                         />
@@ -45,6 +48,8 @@ const AccountSettingsContainer = () => {
             {showChangeFirstNameModal && (
                 <ChangeFirstNameModal setShowChangeFirstNameModal={setShowChangeFirstNameModal} />
             )}
+
+            {showChangeLastNameModal && <ChangeLastNameModal setShowChangeLastNameModal={setShowChangeLastNameModal} />}
 
             <Footer />
         </div>
