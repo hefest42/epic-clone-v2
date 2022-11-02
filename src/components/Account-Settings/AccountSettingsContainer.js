@@ -6,6 +6,7 @@ import Header from "../Front-Page/Header";
 import Footer from "../Front-Page/Footer";
 import AccountSettings from "./AccountSettings";
 import AccountCategories from "./AccountCategories";
+import PasswordSettings from "./PasswordSettings";
 import ChangeDisplayNameModal from "./ChangeDisplayNameModal";
 import ChangeEmailAddressModal from "./ChangeEmailAddressModal";
 import ChangeFirstNameModal from "./ChangeFirstNameModal";
@@ -37,6 +38,7 @@ const AccountSettingsContainer = () => {
                                 />
                             }
                         />
+                        <Route path="password" element={<PasswordSettings />} />
                     </Routes>
                 </div>
             </div>

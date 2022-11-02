@@ -26,7 +26,7 @@ const AccountCategories = () => {
             </Link>
 
             <Link
-                to="settings"
+                to="password"
                 className={
                     activeCategory === "password"
                         ? "account-categories__item account-categories__active"
