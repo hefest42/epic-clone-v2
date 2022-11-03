@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
+import { useSelector } from "react-redux";
+
 const PasswordSettings = () => {
+    const account = useSelector((state) => state.account.account);
+
     const [isCurrentPasswordActive, setIsCurrentPasswordActive] = useState(false);
     const [currentPasswordValue, setCurrentPasswordValue] = useState("");
     const [isNewPasswordActive, setIsNewPasswordActive] = useState(false);
@@ -10,6 +14,10 @@ const PasswordSettings = () => {
 
     const changePasswordHandler = async (e) => {
         e.preventDefault();
+
+        const currentPassword = currentPasswordValue;
+        const newPassword = newPasswordValue;
+        const retypedNewPassword = retypePasswordValue;
     };
 
     return (
@@ -111,7 +119,11 @@ const PasswordSettings = () => {
                             SAVE CHANGES
                         </button>
                     </div>
+                    <div className="account-settings__id">
+                        <span>NOTE:</span> After every change you will need to log in again.
+                    </div>
                 </form>
+
                 <div className="password-settings__information"></div>
             </div>
         </div>
