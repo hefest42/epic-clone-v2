@@ -54,7 +54,7 @@
 
 .account-settings {
     width: 100%;
-    padding: 2rem;
+    padding: 3rem;
 
     &__section {
         margin: 3rem 0;
@@ -353,5 +353,52 @@
     &__loading {
         width: 23rem; // magic number
         height: 20rem; // magic number
+    }
+}
+
+.password-settings {
+    padding: 3rem;
+
+    &__container {
+        width: 100%;
+        height: 10rem;
+        margin-top: 5rem;
+    }
+
+    &__form {
+        width: 50%;
+        height: 100%;
+        padding-right: 1rem;
+    }
+
+    &__information {
+        width: 50%;
+        height: 100%;
+        padding-left: 1rem;
+    }
+
+    &__section {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+
+        &-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        &-subtitle {
+            color: var(--account-text);
+            font-size: 0.8rem;
+        }
+    }
+
+    &__buttons {
+        margin-top: 2rem;
+
+        button {
+            width: 45%;
+            height: 3rem;
+        }
     }
 }

@@ -123,7 +123,7 @@ const ChangeDisplayNameModal = ({ setShowDisplayNameModal }) => {
                         >
                             CANCEL
                         </button>
-                        <button className="settings-modal__buttons settings-modal__confirm ">CONFIRM</button>
+                        <button className="settings-modal__buttons settings-modal__confirm">CONFIRM</button>
                     </div>
                 </form>
             </div>
