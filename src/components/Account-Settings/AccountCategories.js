@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { FaUser, FaWallet } from "react-icons/fa";
 import { ImKey } from "react-icons/im";
 
 const AccountCategories = () => {
-    const [activeCategory, setActiveCategory] = useState("settings");
+    const location = useLocation();
+
+    const [activeCategory, setActiveCategory] = useState("");
+
+    useEffect(() => {
+        const path = location.pathname.split("/")[location.pathname.split("/").length - 1];
+
+        setActiveCategory(path);
+    }, [location.pathname]);
 
     return (
         <div className="account-categories">

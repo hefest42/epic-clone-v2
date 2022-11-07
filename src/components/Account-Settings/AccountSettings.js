@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FiEdit2 } from "react-icons/fi";
 
 import { useNavigate } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
 const AccountSettings = ({
@@ -14,8 +15,11 @@ const AccountSettings = ({
     const navigate = useNavigate();
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const account = useSelector((state) => state.account.account);
+    const [accountInformation, setAccountInformation] = useState({});
 
     const displayAccountInformation = () => {
+        if (!isAccountLoggedIn) return;
+
         const [email, domain] = account.emailAddress.split("@");
         const splitEmail = email.split("");
 
@@ -29,16 +33,16 @@ const AccountSettings = ({
         };
     };
 
-    const { hiddenEmailAddress, hiddenFirstName, hiddenLastName } = displayAccountInformation();
-
     useEffect(() => {
         if (!isAccountLoggedIn) {
             navigate("/log-in");
             return;
         }
-    });
 
-    displayAccountInformation();
+        setAccountInformation(displayAccountInformation());
+    }, []);
+
+    // const { hiddenEmailAddress, hiddenFirstName, hiddenLastName } = displayAccountInformation();
 
     return (
         <div className="account-settings">
@@ -71,7 +75,10 @@ const AccountSettings = ({
                     <div className={isAccountLoggedIn ? "account-settings__input" : "account-settings__input"}>
                         <label htmlFor="">EMAIL ADDRESS</label>
                         <div className="account-settings__input-filler"></div>
-                        <input type="text" defaultValue={isAccountLoggedIn ? hiddenEmailAddress : ""} />
+                        <input
+                            type="text"
+                            defaultValue={isAccountLoggedIn ? accountInformation.hiddenEmailAddress : ""}
+                        />
                     </div>
                     <button className="account-settings__button" onClick={() => setShowChangeEmailAddressModal(true)}>
                         <FiEdit2 />
@@ -92,7 +99,7 @@ const AccountSettings = ({
                     <div className={isAccountLoggedIn ? "account-settings__input" : "account-settings__input"}>
                         <label htmlFor="">FIRST NAME</label>
                         <div className="account-settings__input-filler"></div>
-                        <input type="text" defaultValue={isAccountLoggedIn ? hiddenFirstName : ""} />
+                        <input type="text" defaultValue={isAccountLoggedIn ? accountInformation.hiddenFirstName : ""} />
                     </div>
                     <button className="account-settings__button" onClick={() => setShowChangeFirstNameModal(true)}>
                         <FiEdit2 />
@@ -103,7 +110,7 @@ const AccountSettings = ({
                     <div className={isAccountLoggedIn ? "account-settings__input" : "account-settings__input"}>
                         <label htmlFor="">LAST NAME</label>
                         <div className="account-settings__input-filler"></div>
-                        <input type="text" defaultValue={isAccountLoggedIn ? hiddenLastName : ""} />
+                        <input type="text" defaultValue={isAccountLoggedIn ? accountInformation.hiddenFirstName : ""} />
                     </div>
                     <button className="account-settings__button" onClick={() => setShowChangeLastNameModal(true)}>
                         <FiEdit2 />

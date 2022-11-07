@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
+
+import { useSelector } from "react-redux";
 
 import Header from "../Front-Page/Header";
 import Footer from "../Front-Page/Footer";
@@ -13,10 +15,19 @@ import ChangeFirstNameModal from "./ChangeFirstNameModal";
 import ChangeLastNameModal from "./ChangeLastNameModal";
 
 const AccountSettingsContainer = () => {
+    const navigate = useNavigate();
+    const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const [showChangeDisplayNameModal, setShowDisplayNameModal] = useState(false);
     const [showChangeEmailAddressModal, setShowChangeEmailAddressModal] = useState(false);
     const [showChangeFirstNameModal, setShowChangeFirstNameModal] = useState(false);
     const [showChangeLastNameModal, setShowChangeLastNameModal] = useState(false);
+
+    useEffect(() => {
+        if (!isAccountLoggedIn) {
+            navigate("/log-in");
+            return;
+        }
+    });
 
     return (
         <div className="account center-column">
