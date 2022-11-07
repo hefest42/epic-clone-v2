@@ -91,8 +91,6 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-
-        transition: all 0.2s linear;
     }
 
     &__input {
@@ -101,7 +99,6 @@
         color: var(--account-text);
         height: 3rem;
         border: 1px solid var(--account-text);
-        transition: all 0.2s linear;
         cursor: not-allowed;
 
         display: flex;
@@ -114,7 +111,6 @@
             top: 5%;
             left: 5%;
             font-size: 0.6rem;
-            transition: all 0.2s linear;
             cursor: inherit;
         }
 
