@@ -12,9 +12,13 @@ const accountSlice = createSlice({
             state.isAccountLoggedIn = true;
         },
         addGameToWishlist(state, action) {
+            if (!state.isAccountLoggedIn) return;
+
             state.account.wishlist.push(action.payload);
         },
         removeGameFromWishlist(state, action) {
+            if (!state.isAccountLoggedIn) return;
+
             state.account.wishlist = state.account.wishlist.filter((game) => game.name !== action.payload.name);
         },
         logOutAccount(state, action) {

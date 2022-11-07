@@ -30,7 +30,7 @@ const AccountSettingsContainer = () => {
     });
 
     return (
-        <div className="account center-column">
+        <div className="account">
             <Header />
 
             <div className="account-container space-between">
