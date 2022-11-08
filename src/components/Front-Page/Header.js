@@ -4,7 +4,7 @@ import AccountDropdownMenu from "./AccountDropdownMenu";
 
 import { NavLink } from "react-router-dom";
 
-import { RiAccountCircleLine } from "react-icons/ri";
+import { RiAccountCircleLine, RiLoginBoxLine } from "react-icons/ri";
 import { SiEpicgames } from "react-icons/si";
 
 import { useSelector } from "react-redux";
@@ -47,17 +47,28 @@ const Header = () => {
             </div>
 
             <div className="header-right center">
-                <NavLink to="/log-in">
-                    <div
-                        className="header-right__sign center"
-                        onMouseEnter={() => setShowDropdownMenu(true)}
-                        onMouseLeave={() => setShowDropdownMenu(false)}
-                    >
-                        <div>{isAccountLoggedIn && <RiAccountCircleLine />}</div>
-                        <p>{isAccountLoggedIn ? account.displayName : "SIGN IN"}</p>
-                        {isAccountLoggedIn && showDropdownMenu && <AccountDropdownMenu />}
-                    </div>
-                </NavLink>
+                <div
+                    className="header-right__sign center"
+                    onMouseEnter={() => setShowDropdownMenu(true)}
+                    onMouseLeave={() => setShowDropdownMenu(false)}
+                >
+                    {!isAccountLoggedIn ? (
+                        <div className="header-right__link">
+                            <NavLink to="/log-in" className="header-right__link center">
+                                <RiLoginBoxLine />
+                                <p>SIGN IN</p>
+                            </NavLink>
+                        </div>
+                    ) : (
+                        <div className="header-right__online center">
+                            <div>
+                                <RiAccountCircleLine />
+                            </div>
+                            <p>{account.displayName}</p>
+                        </div>
+                    )}
+                    {isAccountLoggedIn && showDropdownMenu && <AccountDropdownMenu />}
+                </div>
                 <div className="header-right__download center">DOWNLOAD</div>
             </div>
         </header>

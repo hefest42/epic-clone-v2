@@ -60,20 +60,30 @@
 
         &__sign {
             position: relative;
-            width: auto;
+            width: 7.5rem;
             height: 100%;
             padding: 0 1.5rem;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
+            cursor: pointer;
 
             svg {
                 width: 25px;
                 height: 25px;
-                margin-right: 1rem;
+                margin-right: 0.3rem;
             }
+        }
+
+        &__link {
+            width: 6rem;
+            text-align: center;
 
             &:hover {
                 color: #fff;
             }
+        }
+
+        &__online {
+            color: #fff;
         }
 
         &__download {
@@ -89,10 +99,10 @@
     &-dropdown {
         position: absolute;
         top: 100%;
-        left: 40%;
+        left: 0%;
         background-color: var(--light-gray);
-        width: 60%;
-        padding: 1.5rem 0 0.2rem 0;
+        width: 7.5rem;
+        padding: 1rem 0 0.2rem 0;
         z-index: 1001;
 
         &__item {
@@ -100,8 +110,8 @@
             color: var(--link-gray);
             width: 100%;
             padding: 0.2rem 0;
-            font-size: 0.7rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
             border: none;
             cursor: pointer;
 

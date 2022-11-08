@@ -24,7 +24,7 @@ const AccountDropdownMenu = () => {
     };
 
     return (
-        <div className="header-dropdown">
+        <div className="header-dropdown center-column">
             <button className="header-dropdown__item center-column" onClick={(e) => settingsHandler(e)}>
                 Settings
             </button>
