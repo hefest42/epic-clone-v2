@@ -10,19 +10,21 @@
 
     &-container {
         width: 65%;
-        height: 50rem;
-        margin: 5rem 0;
+        height: auto;
+        margin: 3rem 0;
 
-        &__categories {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        &__left {
             background-color: #fff;
             width: 20rem;
-            height: 100%;
         }
 
-        &__information {
+        &__right {
             background-color: #fff;
             width: 55rem;
-            height: 100%;
         }
     }
 
@@ -360,12 +362,10 @@
 }
 
 .password-settings {
-    height: 100%;
     padding: 3rem;
 
     &__container {
         width: 100%;
-        height: 10rem;
         margin-top: 5rem;
     }
 
@@ -408,13 +408,10 @@
 }
 
 .transaction {
-    background-color: rebeccapurple;
     width: 100%;
-    height: 100%;
     padding: 1rem 2rem;
 
     &-container {
-        background-color: teal;
         width: 100%;
         margin-top: 3rem;
 

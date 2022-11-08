@@ -17,7 +17,7 @@ const AccountCategories = () => {
     }, [location.pathname]);
 
     return (
-        <div className="account-container__categories">
+        <div className="account-container__left">
             <Link
                 to="settings"
                 className={

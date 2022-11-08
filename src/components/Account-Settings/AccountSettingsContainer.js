@@ -34,10 +34,10 @@ const AccountSettingsContainer = () => {
         <div className="account">
             <Header />
 
-            <div className="account-container space-between">
+            <div className="account-container">
                 <AccountCategories />
 
-                <div className="account-container__information">
+                <div className="account-container__right">
                     <Routes>
                         <Route
                             path="settings"
