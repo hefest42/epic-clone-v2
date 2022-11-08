@@ -94,7 +94,7 @@ const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
                 <div className="center-column">
                     {stepper === 1 && (
                         <>
-                            <div className="account-settings__title">Change your Email Address</div>
+                            <div className="account-title">Change your Email Address</div>
                             <div className="email-modal__info">
                                 In order to change your Email Address, you must first enter your password
                             </div>
@@ -144,7 +144,7 @@ const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
 
                     {stepper === 3 && (
                         <>
-                            <div className="account-settings__title">Change your Email Address</div>
+                            <div className="account-title">Change your Email Address</div>
                             <div className="email-modal__info">Enter your new Email Address</div>
 
                             <form onSubmit={emailChangeHandler} className="email-modal__form">

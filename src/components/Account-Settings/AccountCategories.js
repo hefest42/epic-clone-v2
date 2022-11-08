@@ -17,7 +17,7 @@ const AccountCategories = () => {
     }, [location.pathname]);
 
     return (
-        <div className="account-categories">
+        <div className="account-container__categories">
             <Link
                 to="settings"
                 className={
@@ -49,7 +49,7 @@ const AccountCategories = () => {
             </Link>
 
             <Link
-                to="settings"
+                to="transaction"
                 className={
                     activeCategory === "transaction"
                         ? "account-categories__item account-categories__active"

@@ -71,8 +71,8 @@ const PasswordSettings = () => {
     return (
         <div className="password-settings">
             <div>
-                <div className="account-settings__title">PASSWORD SETTINGS</div>
-                <div className="account-settings__subtitle">
+                <div className="account-title">PASSWORD SETTINGS</div>
+                <div className="account-subtitle">
                     For your security, we highly recommend that you choose a unique password that you don't use for any
                     other online account.
                 </div>
@@ -176,7 +176,7 @@ const PasswordSettings = () => {
                         </button>
                         <button className="settings-modal__buttons settings-modal__confirm">SAVE CHANGES</button>
                     </div>
-                    <div className="account-settings__id">
+                    <div className="account-id">
                         <span>NOTE:</span> After every change you will need to log in again.
                     </div>
                 </form>

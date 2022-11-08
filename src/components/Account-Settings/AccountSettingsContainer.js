@@ -13,6 +13,7 @@ import ChangeDisplayNameModal from "./ChangeDisplayNameModal";
 import ChangeEmailAddressModal from "./ChangeEmailAddressModal";
 import ChangeFirstNameModal from "./ChangeFirstNameModal";
 import ChangeLastNameModal from "./ChangeLastNameModal";
+import TransactionHistory from "./TransactionHistory";
 
 const AccountSettingsContainer = () => {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ const AccountSettingsContainer = () => {
             <div className="account-container space-between">
                 <AccountCategories />
 
-                <div className="account-information">
+                <div className="account-container__information">
                     <Routes>
                         <Route
                             path="settings"
@@ -50,6 +51,7 @@ const AccountSettingsContainer = () => {
                             }
                         />
                         <Route path="password" element={<PasswordSettings />} />
+                        <Route path="transaction" element={<TransactionHistory />} />
                     </Routes>
                 </div>
             </div>

@@ -89,7 +89,7 @@ const ChangeFirstNameModal = ({ setShowChangeFirstNameModal }) => {
                 <div className="center-column">
                     {stepper === 1 && (
                         <>
-                            <div className="account-settings__title">Change your First Name</div>
+                            <div className="account-title">Change your First Name</div>
                             <div className="email-modal__info">
                                 In order to change your name, you must first enter your password
                             </div>
@@ -139,7 +139,7 @@ const ChangeFirstNameModal = ({ setShowChangeFirstNameModal }) => {
 
                     {stepper === 3 && (
                         <>
-                            <div className="account-settings__title">Change your First Name</div>
+                            <div className="account-title">Change your First Name</div>
                             <div className="email-modal__info">Enter your new first name.</div>
 
                             <form onSubmit={emailChangeHandler} className="email-modal__form">

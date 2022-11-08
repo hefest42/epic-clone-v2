@@ -58,7 +58,7 @@ const ChangeDisplayNameModal = ({ setShowDisplayNameModal }) => {
                 <div className="settings-modal__logo center">
                     <SiEpicgames />
                 </div>
-                <div className="account-settings__title">Confirm display name change</div>
+                <div className="account-title">Confirm display name change</div>
                 <div className="settings-modal__accent">
                     <span>Current Display Name:</span> {account.displayName}
                 </div>

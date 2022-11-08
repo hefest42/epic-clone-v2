@@ -47,19 +47,19 @@ const AccountSettings = ({
     return (
         <div className="account-settings">
             <div>
-                <div className="account-settings__title">ACCOUNT SETTINGS</div>
-                <div className="account-settings__subtitle">Manage your accounts's details.</div>
+                <div className="account-title">ACCOUNT SETTINGS</div>
+                <div className="account-subtitle">Manage your accounts's details.</div>
             </div>
 
-            <div className="account-settings__section">
-                <div className="account-settings__title">ACCOUNT INFORMATION</div>
+            <div className="account-section">
+                <div className="account-title">ACCOUNT INFORMATION</div>
 
-                <div className="account-settings__id">
+                <div className="account-id">
                     <span>ID:</span> {account.accountId}
                 </div>
             </div>
 
-            <div className="account-settings__section space-between">
+            <div className="account-section space-between">
                 <div className="account-settings__inputs-container">
                     <div className={isAccountLoggedIn ? "account-settings__input" : "account-settings__input"}>
                         <label htmlFor="">DISPLAY NAME</label>
@@ -87,14 +87,14 @@ const AccountSettings = ({
             </div>
 
             <div>
-                <div className="account-settings__title">PERSONAL DETAILS</div>
-                <div className="account-settings__subtitle">
+                <div className="account-title">PERSONAL DETAILS</div>
+                <div className="account-subtitle">
                     Manage your personal information. These personal details are private and will not be displayed to
                     other users.
                 </div>
             </div>
 
-            <div className="account-settings__section space-between">
+            <div className="account-section space-between">
                 <div className="account-settings__inputs-container">
                     <div className={isAccountLoggedIn ? "account-settings__input" : "account-settings__input"}>
                         <label htmlFor="">FIRST NAME</label>
@@ -118,7 +118,7 @@ const AccountSettings = ({
                 </div>
             </div>
 
-            <div className="account-settings__id">
+            <div className="account-id">
                 <span>NOTE:</span> After every change you will need to log in again.
             </div>
         </div>

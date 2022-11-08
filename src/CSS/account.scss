@@ -12,20 +12,46 @@
         width: 65%;
         height: 50rem;
         margin: 5rem 0;
+
+        &__categories {
+            background-color: #fff;
+            width: 20rem;
+            height: 100%;
+        }
+
+        &__information {
+            background-color: #fff;
+            width: 55rem;
+            height: 100%;
+        }
     }
 
-    &-information {
-        background-color: #fff;
-        width: 55rem;
-        height: 100%;
+    &-section {
+        margin: 3rem 0;
+    }
+
+    &-title {
+        font-size: 1.7rem;
+    }
+
+    &-subtitle {
+        color: var(--account-text);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+    }
+
+    &-id {
+        margin-top: 2rem;
+        color: var(--account-text);
+
+        span {
+            color: #111;
+            font-weight: bold;
+        }
     }
 }
 
 .account-categories {
-    background-color: #fff;
-    width: 20rem;
-    height: 100%;
-
     &__item {
         background-color: #fff;
         color: var(--account-text);
@@ -60,30 +86,6 @@
 .account-settings {
     width: 100%;
     padding: 3rem;
-
-    &__section {
-        margin: 3rem 0;
-    }
-
-    &__title {
-        font-size: 1.7rem;
-    }
-
-    &__subtitle {
-        color: var(--account-text);
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-    }
-
-    &__id {
-        margin-top: 2rem;
-        color: var(--account-text);
-
-        span {
-            color: #111;
-            font-weight: bold;
-        }
-    }
 
     &__inputs-container {
         width: 48%;
@@ -403,6 +405,11 @@
             height: 3rem;
         }
     }
+}
+
+.trasaction {
+    width: 100%;
+    padding: 3rem;
 }
 
 @media only screen and (max-width: 1000px) {
