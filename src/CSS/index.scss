@@ -238,7 +238,7 @@ body {
         min-height: 15rem;
 
         &-image {
-            height: 12rem; // might not work
+            height: 10rem; // might not work
         }
 
         &-info {
@@ -252,6 +252,10 @@ body {
 
             &__price {
                 margin-top: 0.5rem;
+
+                &-old {
+                    display: none;
+                }
             }
         }
     }
