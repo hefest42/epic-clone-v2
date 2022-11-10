@@ -459,34 +459,35 @@
         height: auto;
 
         &-container {
-            width: 100%;
+            width: 97%;
             height: 50rem;
             margin: 5rem 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            &__left {
+                width: 26%;
+            }
+
+            &__right {
+                width: 73%;
+                height: auto;
+            }
         }
 
-        &-information {
-            background-color: #fff;
-            width: 73%;
-            height: 100%;
-        }
-    }
-
-    .account-categories {
-        background-color: #fff;
-        width: 25%;
-        height: 100%;
-    }
-
-    .account-settings {
-        width: 100%;
-        padding: 3rem;
-
-        &__section {
+        &-section {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
         }
+    }
+
+    .account-settings {
+        width: 100%;
+        padding: 3rem;
 
         &__inputs-container {
             width: 100%;
@@ -499,6 +500,16 @@
             width: 70%;
             height: 100%;
             padding-right: 1rem;
+        }
+    }
+
+    .transaction {
+        &-container {
+            &__categories {
+                &-description {
+                    width: 45%;
+                }
+            }
         }
     }
 }
