@@ -12,12 +12,18 @@ const FilterBrowser = ({
     priceFilter,
     setPriceFilter,
 }) => {
-    const [showGenreList, setShowGenreList] = useState(false);
-    const [showPriceRangesList, setShowPriceRangesList] = useState(false);
+    const [showGenreList, setShowGenreList] = useState(activeFilters.length > 0 ? true : false);
+    const [showPriceRangesList, setShowPriceRangesList] = useState(priceFilter !== "" ? true : false);
     const [showPlatformList, setShowPlatformList] = useState(false);
+    const [testingValues, setTestingValues] = useState([]);
 
     const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())], [games]);
     const gamesPlatforms = useMemo(() => [...new Set(games.map((game) => game.platform).flat())], [games]);
+
+    const testing = (value) => {
+        if (testingValues.includes(value)) setTestingValues((state) => state.filter((val) => val !== value));
+        else setTestingValues((state) => [...state, value]);
+    };
 
     return (
         <div className="filter-browser">
@@ -88,7 +94,10 @@ const FilterBrowser = ({
                                             ? "filter-browser__item filter-browser__item-active"
                                             : "filter-browser__item filter-browser__item"
                                     }
-                                    onClick={() => addGenreToActiveFilters(genre)}
+                                    onClick={() => {
+                                        addGenreToActiveFilters(genre);
+                                        testing(genre);
+                                    }}
                                 >
                                     <div className="filter-browser__item-inner space-between">
                                         <div>{genre}</div>

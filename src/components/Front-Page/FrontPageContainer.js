@@ -20,7 +20,7 @@ const FrontPageContainer = () => {
             <Routes>
                 {/* Browse, Wishlist, an Cart page containers/links go here */}
                 <Route path="/" element={<DiscoverContainer />} />
-                <Route path="browse" element={<BrowseContainer />} />
+                <Route path="browse/*" element={<BrowseContainer />} />
                 <Route path="wishlist" element={<WishlistContainer />} />
                 <Route path="cart" element={<CartContainer />} />
             </Routes>

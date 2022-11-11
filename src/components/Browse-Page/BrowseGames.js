@@ -3,11 +3,15 @@ import React, { useState, useEffect } from "react";
 import GameItem from "../UI/GameItem";
 import FilterBrowser from "../UI/FilterBrowser";
 
+import { useNavigate, useLocation } from "react-router-dom";
+
 import { calculateDiscount, compareTwoArrays } from "../../Helpers/HelperFunctions";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
 const BrowseGames = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [games, setGames] = useState(DUMMY_CAROUSEL_GAMES);
     const [activeFilters, setActiveFilters] = useState([]);
     const [priceFilter, setPriceFilter] = useState("");
@@ -19,7 +23,7 @@ const BrowseGames = () => {
 
     const addGenreToActiveFilters = (genre) => {
         if (activeFilters.includes(genre)) setActiveFilters((state) => state.filter((gnr) => gnr !== genre));
-        else setActiveFilters((state) => [genre, ...state]);
+        else setActiveFilters((state) => [...state, genre]);
     };
 
     const filterGameByPrice = (game) => {
@@ -53,6 +57,30 @@ const BrowseGames = () => {
         });
 
         setGames(filteredGames);
+    }, [activeFilters, priceFilter]);
+
+    useEffect(() => {
+        if (activeFilters.length === 0) {
+            console.log(location.search.split("-")[1].replaceAll("%20", " ").split("=")[1]);
+
+            setPriceFilter(location.search.split("-")[1].replaceAll("%20", " ").split("=")[1]);
+
+            const test = location.search
+                .split("-")[0]
+                .split("&")
+                .map((item) => item.replace("genre=", ""))
+                .map((item) => item.replace("?", ""));
+
+            if (test[0] === "") return;
+
+            setActiveFilters(test);
+        }
+    }, []);
+
+    useEffect(() => {
+        const searchParams = activeFilters.map((value) => `genre=${value}`).join("&");
+
+        navigate(`/store/browse?${searchParams}${priceFilter === "" ? "" : `-price=${priceFilter}`}`);
     }, [activeFilters, priceFilter]);
 
     return (

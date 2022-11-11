@@ -118,6 +118,7 @@ const Wishlist = () => {
                 </div>
             </div>
 
+            {/* different filter for wishlist games */}
             <div className="wishlist-right">
                 <FilterBrowser
                     games={wishlistedGames}
