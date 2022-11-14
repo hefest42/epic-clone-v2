@@ -1,9 +1,10 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 
 import { AiOutlineDown, AiOutlineCheck } from "react-icons/ai";
 
 const PRICE_RANGES = ["Free", "Under $5.00", "Under $10.00", "Under $20.00", "Under $30.00", "$14.99 and above"];
 
+//TODO opening price/genre list in case any of them are selected
 const FilterBrowser = ({
     games,
     addGenreToActiveFilters,
@@ -12,18 +13,20 @@ const FilterBrowser = ({
     priceFilter,
     setPriceFilter,
 }) => {
-    const [showGenreList, setShowGenreList] = useState(activeFilters.length > 0 ? true : false);
-    const [showPriceRangesList, setShowPriceRangesList] = useState(priceFilter !== "" ? true : false);
-    const [showPlatformList, setShowPlatformList] = useState(false);
-    const [testingValues, setTestingValues] = useState([]);
+    const [showGenreList, setShowGenreList] = useState(false);
+    const [showPriceRangesList, setShowPriceRangesList] = useState(false);
 
     const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())], [games]);
-    const gamesPlatforms = useMemo(() => [...new Set(games.map((game) => game.platform).flat())], [games]);
 
-    const testing = (value) => {
-        if (testingValues.includes(value)) setTestingValues((state) => state.filter((val) => val !== value));
-        else setTestingValues((state) => [...state, value]);
-    };
+    useEffect(() => {
+        console.log(activeFilters.length);
+
+        const priceTest = priceFilter === "" ? false : true;
+        const test = activeFilters.length > 0 ? true : false;
+
+        setShowPriceRangesList(priceTest);
+        setShowGenreList(test);
+    }, []);
 
     return (
         <div className="filter-browser">
@@ -94,48 +97,10 @@ const FilterBrowser = ({
                                             ? "filter-browser__item filter-browser__item-active"
                                             : "filter-browser__item filter-browser__item"
                                     }
-                                    onClick={() => {
-                                        addGenreToActiveFilters(genre);
-                                        testing(genre);
-                                    }}
+                                    onClick={() => addGenreToActiveFilters(genre)}
                                 >
                                     <div className="filter-browser__item-inner space-between">
                                         <div>{genre}</div>
-                                        <div>
-                                            <AiOutlineCheck />
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <div className="filter-browser__container">
-                    <button onClick={() => setShowPlatformList((state) => !state)}>
-                        <div>PLATFORM</div>
-                        <AiOutlineDown
-                            style={{
-                                transform: `rotate(${showPlatformList ? "-180deg" : "0"})`,
-                            }}
-                        />
-                    </button>
-
-                    <div>
-                        {showPlatformList &&
-                            gamesPlatforms.map((platform) => (
-                                <div
-                                    key={platform}
-                                    className={
-                                        activeFilters.includes(platform)
-                                            ? "filter-browser__item filter-browser__item-active"
-                                            : "filter-browser__item filter-browser__item"
-                                    }
-                                    onClick={() => addGenreToActiveFilters(platform)}
-                                >
-                                    <div className="filter-browser__item-inner space-between">
-                                        <div>{platform}</div>
                                         <div>
                                             <AiOutlineCheck />
                                         </div>

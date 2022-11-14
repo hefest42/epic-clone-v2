@@ -57,31 +57,30 @@ const BrowseGames = () => {
         });
 
         setGames(filteredGames);
+
+        // put these 2 lines in seperate useEffect in case of error
+        const searchParams = activeFilters.map((value) => `genre=${value}`).join("&");
+
+        navigate(`/store/browse?${searchParams}${priceFilter === "" ? "" : `-price=${priceFilter}`}`);
     }, [activeFilters, priceFilter]);
 
     useEffect(() => {
         if (activeFilters.length === 0) {
-            console.log(location.search.split("-")[1].replaceAll("%20", " ").split("=")[1]);
+            if (location.search === "") return;
 
             setPriceFilter(location.search.split("-")[1].replaceAll("%20", " ").split("=")[1]);
 
-            const test = location.search
+            const filters = location.search
                 .split("-")[0]
                 .split("&")
                 .map((item) => item.replace("genre=", ""))
                 .map((item) => item.replace("?", ""));
 
-            if (test[0] === "") return;
+            if (filters[0] === "") return;
 
-            setActiveFilters(test);
+            setActiveFilters(filters);
         }
     }, []);
-
-    useEffect(() => {
-        const searchParams = activeFilters.map((value) => `genre=${value}`).join("&");
-
-        navigate(`/store/browse?${searchParams}${priceFilter === "" ? "" : `-price=${priceFilter}`}`);
-    }, [activeFilters, priceFilter]);
 
     return (
         <div className="browse">
