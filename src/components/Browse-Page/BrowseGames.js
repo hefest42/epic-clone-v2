@@ -49,6 +49,7 @@ const BrowseGames = () => {
     useEffect(() => {
         if (priceFilter === "" && activeFilters.length === 0) {
             setGames(DUMMY_CAROUSEL_GAMES);
+            navigate(`/store/browse`);
             return;
         }
 

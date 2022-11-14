@@ -19,14 +19,12 @@ const FilterBrowser = ({
     const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())], [games]);
 
     useEffect(() => {
-        console.log(activeFilters.length);
+        const isPriceListOpen = priceFilter === "" ? false : true;
+        const isGenreListOpen = activeFilters.length > 0 ? true : false;
 
-        const priceTest = priceFilter === "" ? false : true;
-        const test = activeFilters.length > 0 ? true : false;
-
-        setShowPriceRangesList(priceTest);
-        setShowGenreList(test);
-    }, []);
+        setShowPriceRangesList(isPriceListOpen);
+        setShowGenreList(isGenreListOpen);
+    }, [activeFilters, priceFilter]);
 
     return (
         <div className="filter-browser">
