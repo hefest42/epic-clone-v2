@@ -67,9 +67,9 @@ const BrowseGames = () => {
 
     useEffect(() => {
         if (activeFilters.length === 0) {
-            if (location.search === "") return;
+            const price = location.search?.split("-")[1]?.replaceAll("%20", " ").split("=")[1];
 
-            setPriceFilter(location.search.split("-")[1].replaceAll("%20", " ").split("=")[1]);
+            setPriceFilter(price ? price : "");
 
             const filters = location.search
                 .split("-")[0]
@@ -81,7 +81,7 @@ const BrowseGames = () => {
 
             setActiveFilters(filters);
         }
-    }, []);
+    }, [location.search]);
 
     return (
         <div className="browse">
@@ -94,7 +94,7 @@ const BrowseGames = () => {
             </div>
             <div className="browse-right">
                 <FilterBrowser
-                    games={DUMMY_CAROUSEL_GAMES}
+                    games={games}
                     addGenreToActiveFilters={addGenreToActiveFilters}
                     activeFilters={activeFilters}
                     resetActiveFilters={resetActiveFilters}

@@ -4,7 +4,6 @@ import { AiOutlineDown, AiOutlineCheck } from "react-icons/ai";
 
 const PRICE_RANGES = ["Free", "Under $5.00", "Under $10.00", "Under $20.00", "Under $30.00", "$14.99 and above"];
 
-//TODO opening price/genre list in case any of them are selected
 const FilterBrowser = ({
     games,
     addGenreToActiveFilters,
@@ -13,18 +12,10 @@ const FilterBrowser = ({
     priceFilter,
     setPriceFilter,
 }) => {
-    const [showGenreList, setShowGenreList] = useState(false);
-    const [showPriceRangesList, setShowPriceRangesList] = useState(false);
+    const [showGenreList, setShowGenreList] = useState(true);
+    const [showPriceRangesList, setShowPriceRangesList] = useState(true);
 
     const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())], [games]);
-
-    useEffect(() => {
-        const isPriceListOpen = priceFilter === "" ? false : true;
-        const isGenreListOpen = activeFilters.length > 0 ? true : false;
-
-        setShowPriceRangesList(isPriceListOpen);
-        setShowGenreList(isGenreListOpen);
-    }, [activeFilters, priceFilter]);
 
     return (
         <div className="filter-browser">
