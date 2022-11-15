@@ -47,39 +47,74 @@ const BrowseGames = () => {
     };
 
     useEffect(() => {
-        if (priceFilter === "" && activeFilters.length === 0) {
-            setGames(DUMMY_CAROUSEL_GAMES);
-            return;
-        }
-
-        const filteredGames = DUMMY_CAROUSEL_GAMES.filter((game) => {
-            if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
-        });
-
-        setGames(filteredGames);
-
-        // put these 2 lines in seperate useEffect in case of error
         const searchParams = activeFilters.map((value) => `genre=${value}`).join("&");
 
         navigate(`/store/browse?${searchParams}${priceFilter === "" ? "" : `-price=${priceFilter}`}`);
     }, [activeFilters, priceFilter]);
 
     useEffect(() => {
-        if (activeFilters.length === 0) {
-            const price = location.search?.split("-")[1]?.replaceAll("%20", " ").split("=")[1];
+        // both genres & price
+        if (location.search.includes("genre=") && location.search.includes("-price=")) {
+            const [genres, price] = location.search.split("-");
 
-            setPriceFilter(price ? price : "");
+            const genreFilters = genres
+                .split("&")
+                .map((item) => item.replace("genre=", ""))
+                .map((item) => item.replace("?", ""))
+                .map((item) => item.replace("%20", " "));
 
-            const filters = location.search
+            const priceFilters = price.replaceAll("%20", " ").split("=")[1];
+
+            console.log(genreFilters, priceFilters);
+
+            const gamesFilteredByGenreAndByPrice = DUMMY_CAROUSEL_GAMES.filter((game) => {
+                if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
+            });
+
+            setGames(gamesFilteredByGenreAndByPrice);
+
+            if (activeFilters.length === 0 && priceFilter === "") {
+                setActiveFilters(genreFilters);
+                setPriceFilter(priceFilters);
+            }
+
+            return;
+        }
+
+        // just price
+        if (!location.search.includes("genre") && location.search.includes("-price=")) {
+            const price = location.search.split("-")[1].replaceAll("%20", " ").split("=")[1];
+
+            const gamesFilteredByPrice = DUMMY_CAROUSEL_GAMES.filter((game) => filterGameByPrice(game));
+            setGames(gamesFilteredByPrice);
+
+            if (priceFilter === "") setPriceFilter(price);
+
+            return;
+        }
+
+        // just genres
+        if (location.search.includes("genre=") && !location.search.includes("-price=")) {
+            const genreFilters = location.search
                 .split("-")[0]
                 .split("&")
                 .map((item) => item.replace("genre=", ""))
-                .map((item) => item.replace("?", ""));
+                .map((item) => item.replace("?", ""))
+                .map((item) => item.replace("%20", " "));
 
-            if (filters[0] === "") return;
+            const gamesFilteredByGenre = DUMMY_CAROUSEL_GAMES.filter((game) =>
+                compareTwoArrays(game.genres, genreFilters)
+            );
 
-            setActiveFilters(filters);
+            setGames(gamesFilteredByGenre);
+
+            if (activeFilters.length === 0) setActiveFilters(genreFilters);
+
+            return;
         }
+
+        // neither
+        if (location.search === "") setGames(DUMMY_CAROUSEL_GAMES);
     }, [location.search]);
 
     return (
