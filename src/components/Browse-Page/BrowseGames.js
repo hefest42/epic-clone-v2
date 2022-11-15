@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import GameItem from "../UI/GameItem";
 import FilterBrowser from "../UI/FilterBrowser";
+import BrowseFilters from "./BrowseFilters";
 
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -127,7 +128,7 @@ const BrowseGames = () => {
                 ))}
             </div>
             <div className="browse-right">
-                <FilterBrowser
+                <BrowseFilters
                     games={games}
                     addGenreToActiveFilters={addGenreToActiveFilters}
                     activeFilters={activeFilters}

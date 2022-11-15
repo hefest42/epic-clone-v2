@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import WishlistItem from "./WishlistItem";
-import FilterBrowser from "../../UI/FilterBrowser";
+import WishlistFilters from "./WishlistFilters";
 import useComponentVisible from "../../../Helpers/useComponentVisible";
 
 import { AiOutlineDown } from "react-icons/ai";
@@ -120,7 +120,7 @@ const Wishlist = () => {
 
             {/* different filter for wishlist games */}
             <div className="wishlist-right">
-                <FilterBrowser
+                <WishlistFilters
                     games={wishlistedGames}
                     addGenreToActiveFilters={addGenreToActiveFilters}
                     activeFilters={activeFilters}

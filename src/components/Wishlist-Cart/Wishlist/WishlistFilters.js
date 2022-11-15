@@ -1,10 +1,10 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 
 import { AiOutlineDown, AiOutlineCheck } from "react-icons/ai";
 
 const PRICE_RANGES = ["Free", "Under $5.00", "Under $10.00", "Under $20.00", "Under $30.00", "$14.99 and above"];
 
-const FilterBrowser = ({
+const WishlistFilters = ({
     games,
     addGenreToActiveFilters,
     activeFilters,
@@ -103,4 +103,4 @@ const FilterBrowser = ({
     );
 };
 
-export default FilterBrowser;
+export default WishlistFilters;
