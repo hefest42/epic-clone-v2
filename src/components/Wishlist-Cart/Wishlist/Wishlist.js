@@ -53,7 +53,7 @@ const Wishlist = () => {
 
     const sortWishlistItems = (type) => {
         setSortByText(type);
-        const wishlist = account.wishlist.slice(1);
+        const wishlist = wishlistedGames;
 
         switch (type) {
             case "Alphabetical":
