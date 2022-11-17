@@ -51,6 +51,33 @@ const Wishlist = () => {
         else return false;
     };
 
+    const sortWishlistItems = (type) => {
+        setSortByText(type);
+        const wishlist = account.wishlist.slice(1);
+
+        switch (type) {
+            case "Alphabetical":
+                const gamesSortedAlphabetically = wishlist?.sort((a, b) => a.name.localeCompare(b.name));
+                setWishlistedGames(gamesSortedAlphabetically);
+                break;
+
+            case "Price: Low to High":
+                const gamesSortedByPriceLowToHigh = wishlist?.sort((a, b) => +a.price - +b.price);
+                setWishlistedGames(gamesSortedByPriceLowToHigh);
+
+                break;
+
+            case "Price: High to Low":
+                const gamesSortedByPriceHighToLow = wishlist?.sort((a, b) => +a.price + +b.price);
+                setWishlistedGames(gamesSortedByPriceHighToLow);
+                break;
+
+            default:
+                setWishlistedGames(wishlist);
+                break;
+        }
+    };
+
     useEffect(() => {
         setWishlistedGames(account.wishlist.slice(1));
     }, [account.wishlist]);
@@ -94,7 +121,7 @@ const Wishlist = () => {
                         {isComponentVisible && (
                             <ul className="wishlist-dropdown">
                                 {SORT_BY_ITEMS.map((item) => (
-                                    <li key={item} onClick={() => setSortByText(item)}>
+                                    <li key={item} onClick={() => sortWishlistItems(item)}>
                                         <button
                                             className={
                                                 item === sortByText
