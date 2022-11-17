@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Price: High to Low"];
 
 //TODO fix media query
-
+//TODO for some reason it lists uncharted price higher than spider-man price (49.99 > 59.99)????
 const Wishlist = () => {
     const account = useSelector((state) => state.account.account);
     const [wishlistedGames, setWishlistedGames] = useState([]);
@@ -53,42 +53,44 @@ const Wishlist = () => {
 
     const sortWishlistItems = (type) => {
         setSortByText(type);
-        const wishlist = wishlistedGames;
+        const wishlist = activeFilters.length > 0 && priceFilter !== "" ? [...wishlistedGames] : [...account.wishlist];
+
+        console.log([...account.wishlist].sort((a, b) => a.price + b.price));
 
         switch (type) {
             case "Alphabetical":
-                const gamesSortedAlphabetically = wishlist?.sort((a, b) => a.name.localeCompare(b.name));
+                const gamesSortedAlphabetically = wishlist.sort((a, b) => a.name.localeCompare(b.name));
                 setWishlistedGames(gamesSortedAlphabetically);
                 break;
 
             case "Price: Low to High":
-                const gamesSortedByPriceLowToHigh = wishlist?.sort((a, b) => +a.price - +b.price);
+                const gamesSortedByPriceLowToHigh = wishlist.sort((a, b) => +a.price - +b.price);
                 setWishlistedGames(gamesSortedByPriceLowToHigh);
 
                 break;
 
             case "Price: High to Low":
-                const gamesSortedByPriceHighToLow = wishlist?.sort((a, b) => +a.price + +b.price);
+                const gamesSortedByPriceHighToLow = wishlist.sort((a, b) => +b.price + +a.price);
                 setWishlistedGames(gamesSortedByPriceHighToLow);
                 break;
 
             default:
-                setWishlistedGames(wishlist);
+                setWishlistedGames(account.wishlist);
                 break;
         }
     };
 
     useEffect(() => {
-        setWishlistedGames(account.wishlist.slice(1));
+        setWishlistedGames(account.wishlist);
     }, [account.wishlist]);
 
     useEffect(() => {
         if (priceFilter === "" && activeFilters.length === 0) {
-            setWishlistedGames(account.wishlist.slice(1));
+            setWishlistedGames(account.wishlist);
             return;
         }
 
-        const filteredGames = account.wishlist.slice(1).filter((game) => {
+        const filteredGames = account.wishlist.filter((game) => {
             if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
         });
 

@@ -14,6 +14,8 @@ const accountSlice = createSlice({
         addGameToWishlist(state, action) {
             if (!state.isAccountLoggedIn) return;
 
+            if (!state.account.wishlist) state.account.wishlist = [];
+
             state.account.wishlist.push(action.payload);
         },
         removeGameFromWishlist(state, action) {

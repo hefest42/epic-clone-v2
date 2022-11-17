@@ -14,13 +14,13 @@ export const WishlistButton = ({ game, mouseEnter }) => {
     const wishlistingGameHandler = () => {
         if (!isAccountLoggedIn) return;
 
-        if (account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name).length > 0)
+        if (account.wishlist?.filter((wishlistGame) => wishlistGame.name === game.name).length > 0)
             dispatch(removeGameFromWishlist(game));
         else dispatch(addGameToWishlist(game));
     };
 
     const wishlistButtonHandler = (wishlist) => {
-        if (!isAccountLoggedIn) return <IoMdAddCircle />;
+        if (!isAccountLoggedIn || !wishlist) return <IoMdAddCircle />;
 
         return wishlist.filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
             <IoMdAddCircle />
