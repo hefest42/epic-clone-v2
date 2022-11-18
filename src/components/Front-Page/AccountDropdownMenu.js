@@ -16,9 +16,18 @@ const AccountDropdownMenu = () => {
         navigate("/store");
     };
 
+    const settingsHandler = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        navigate("/account/settings");
+    };
+
     return (
-        <div className="header-dropdown">
-            <button className="header-dropdown__item center-column">Settings</button>
+        <div className="header-dropdown center-column">
+            <button className="header-dropdown__item center-column" onClick={(e) => settingsHandler(e)}>
+                Settings
+            </button>
             <button className="header-dropdown__item center-column" onClick={(e) => logOutAccountHandler(e)}>
                 Sign Out
             </button>

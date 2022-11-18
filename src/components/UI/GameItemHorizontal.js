@@ -25,6 +25,7 @@ const GameItemHorizontal = ({ game }) => {
                 onMouseLeave={() => setShowImageCover(false)}
             >
                 <img src={game.posterBig} alt={`${game.name} poster`} />
+
                 {showImageCover && <ImageCover />}
             </div>
             <div className="game-horizontal__info">

@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 
 import GameItem from "../UI/GameItem";
-import FilterBrowser from "../UI/FilterBrowser";
+import BrowseFilters from "./BrowseFilters";
+
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { calculateDiscount, compareTwoArrays } from "../../Helpers/HelperFunctions";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
 const BrowseGames = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [games, setGames] = useState(DUMMY_CAROUSEL_GAMES);
     const [activeFilters, setActiveFilters] = useState([]);
     const [priceFilter, setPriceFilter] = useState("");
@@ -19,7 +23,7 @@ const BrowseGames = () => {
 
     const addGenreToActiveFilters = (genre) => {
         if (activeFilters.includes(genre)) setActiveFilters((state) => state.filter((gnr) => gnr !== genre));
-        else setActiveFilters((state) => [genre, ...state]);
+        else setActiveFilters((state) => [...state, genre]);
     };
 
     const filterGameByPrice = (game) => {
@@ -43,17 +47,75 @@ const BrowseGames = () => {
     };
 
     useEffect(() => {
-        if (priceFilter === "" && activeFilters.length === 0) {
-            setGames(DUMMY_CAROUSEL_GAMES);
+        const searchParams = activeFilters.map((value) => `genre=${value}`).join("&");
+
+        navigate(`/store/browse?${searchParams}${priceFilter === "" ? "" : `-price=${priceFilter}`}`);
+    }, [activeFilters, priceFilter]);
+
+    useEffect(() => {
+        // both genres & price
+        if (location.search.includes("genre=") && location.search.includes("-price=")) {
+            const [genres, price] = location.search.split("-");
+
+            const genreFilters = genres
+                .split("&")
+                .map((item) => item.replace("genre=", ""))
+                .map((item) => item.replace("?", ""))
+                .map((item) => item.replace("%20", " "));
+
+            const priceFilters = price.replaceAll("%20", " ").split("=")[1];
+
+            console.log(genreFilters, priceFilters);
+
+            const gamesFilteredByGenreAndByPrice = DUMMY_CAROUSEL_GAMES.filter((game) => {
+                if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
+            });
+
+            setGames(gamesFilteredByGenreAndByPrice);
+
+            if (activeFilters.length === 0 && priceFilter === "") {
+                setActiveFilters(genreFilters);
+                setPriceFilter(priceFilters);
+            }
+
             return;
         }
 
-        const filteredGames = DUMMY_CAROUSEL_GAMES.filter((game) => {
-            if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
-        });
+        // just price
+        if (!location.search.includes("genre") && location.search.includes("-price=")) {
+            const price = location.search.split("-")[1].replaceAll("%20", " ").split("=")[1];
 
-        setGames(filteredGames);
-    }, [activeFilters, priceFilter]);
+            const gamesFilteredByPrice = DUMMY_CAROUSEL_GAMES.filter((game) => filterGameByPrice(game));
+            setGames(gamesFilteredByPrice);
+
+            if (priceFilter === "") setPriceFilter(price);
+
+            return;
+        }
+
+        // just genres
+        if (location.search.includes("genre=") && !location.search.includes("-price=")) {
+            const genreFilters = location.search
+                .split("-")[0]
+                .split("&")
+                .map((item) => item.replace("genre=", ""))
+                .map((item) => item.replace("?", ""))
+                .map((item) => item.replace("%20", " "));
+
+            const gamesFilteredByGenre = DUMMY_CAROUSEL_GAMES.filter((game) =>
+                compareTwoArrays(game.genres, genreFilters)
+            );
+
+            setGames(gamesFilteredByGenre);
+
+            if (activeFilters.length === 0) setActiveFilters(genreFilters);
+
+            return;
+        }
+
+        // neither
+        if (location.search === "") setGames(DUMMY_CAROUSEL_GAMES);
+    }, [location.search]);
 
     return (
         <div className="browse">
@@ -65,8 +127,8 @@ const BrowseGames = () => {
                 ))}
             </div>
             <div className="browse-right">
-                <FilterBrowser
-                    games={DUMMY_CAROUSEL_GAMES}
+                <BrowseFilters
+                    games={games}
                     addGenreToActiveFilters={addGenreToActiveFilters}
                     activeFilters={activeFilters}
                     resetActiveFilters={resetActiveFilters}

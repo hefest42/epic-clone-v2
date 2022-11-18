@@ -43,7 +43,7 @@ const FeaturedGames = () => {
             );
 
         if (isAccountLoggedIn) {
-            return account.wishlist.slice(1).filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
+            return account.wishlist?.filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
                 <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
                     <IoMdAddCircle /> ADD TO WISHLIST
                 </button>

@@ -4,8 +4,11 @@
 @import "./logIn-createAccount.scss";
 @import "./wishlist-cart.scss";
 @import "./browse-page.scss";
+@import "./account.scss";
 
 :root {
+    --background-white: #f8f8f8;
+    --account-text: #999;
     --background-black: rgb(18, 18, 18);
     --light-gray: #2a2a2a;
     --dark-gray: #2a2a2a8f;
@@ -193,13 +196,49 @@ body {
     }
 }
 
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid var(--main-blue);
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: var(--main-blue) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @media only screen and (max-width: 1000px) {
     .game {
         width: 100%;
         min-height: 15rem;
 
         &-image {
-            height: 12rem; // might not work
+            height: 10rem; // might not work
         }
 
         &-info {
@@ -213,6 +252,10 @@ body {
 
             &__price {
                 margin-top: 0.5rem;
+
+                &-old {
+                    display: none;
+                }
             }
         }
     }

@@ -35,7 +35,7 @@ const LogIn = () => {
             const data = await response.json();
 
             for (const key in data) {
-                allAccounts.push(data[key]);
+                allAccounts.push({ accountId: key, ...data[key] });
             }
         } catch (error) {
             setErrorMessage("Something f'd up");
@@ -50,7 +50,6 @@ const LogIn = () => {
         }
 
         if (account.password === password) {
-            console.log("LOG IN ACCOUNT");
             dispatch(setLoggedInAccount(account));
             navigate("/store");
         } else {

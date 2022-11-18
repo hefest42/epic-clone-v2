@@ -42,7 +42,6 @@ const SignUp = () => {
             displayName,
             emailAddress,
             password,
-            wishlist: ["slice here"],
             userRecivesNews: newsRef.current.checked,
         };
 

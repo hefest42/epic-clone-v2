@@ -1,0 +1,515 @@
+.account {
+    background-color: var(--background-white);
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-container {
+        width: 65%;
+        height: auto;
+        margin: 3rem 0;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        &__left {
+            background-color: #fff;
+            width: 20rem;
+        }
+
+        &__right {
+            background-color: #fff;
+            width: 55rem;
+        }
+    }
+
+    &-section {
+        margin: 3rem 0;
+    }
+
+    &-title {
+        font-size: 1.7rem;
+    }
+
+    &-subtitle {
+        color: var(--account-text);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+    }
+
+    &-id {
+        margin-top: 2rem;
+        color: var(--account-text);
+
+        span {
+            color: #111;
+            font-weight: bold;
+        }
+    }
+}
+
+.account-categories {
+    &__item {
+        background-color: #fff;
+        color: var(--account-text);
+        border: 1px solid #ebebeb;
+        padding: 18px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease-in-out;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 0.5rem;
+        }
+
+        &:hover {
+            color: black;
+            border-left: 5px solid var(--main-blue);
+            transition: all 0.15s ease-in-out;
+        }
+    }
+
+    &__active {
+        color: black;
+        border-left: 5px solid var(--main-blue);
+    }
+}
+
+.account-settings {
+    width: 100%;
+    padding: 3rem;
+
+    &__inputs-container {
+        width: 48%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &__input {
+        position: relative;
+        background-color: #eee;
+        color: var(--account-text);
+        height: 3rem;
+        border: 1px solid var(--account-text);
+        cursor: not-allowed;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        label {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 0.6rem;
+            cursor: inherit;
+        }
+
+        input {
+            background-color: transparent;
+            color: inherit;
+            width: 18rem;
+            height: 60%;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            margin-left: 1rem;
+            cursor: inherit;
+        }
+    }
+
+    &__button {
+        background-color: var(--main-blue);
+        width: 4rem;
+        height: 3rem;
+        border: none;
+        border-radius: 5px;
+        margin-left: 1rem;
+        cursor: pointer;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.settings-modal {
+    background-color: rgb(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+
+    &__inner {
+        background-color: #fff;
+        width: 35rem;
+        padding: 0.5rem 1rem 2rem 1rem;
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    &__close {
+        width: 100%;
+        margin-bottom: 2rem;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        svg {
+            width: 30px;
+            height: 30px;
+            color: var(--link-gray);
+            cursor: pointer;
+
+            &:hover {
+                color: #111;
+            }
+        }
+    }
+
+    &__logo {
+        width: 100%;
+        margin-bottom: 2rem;
+
+        svg {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    &__accent {
+        margin: 1rem 0;
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    &__form {
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+
+    &__input {
+        position: relative;
+        width: 100%;
+        height: 3rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--link-gray);
+        border-radius: 3px;
+        cursor: text;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        &-desc {
+            position: absolute;
+            top: 30%;
+            width: 90%;
+            color: var(--account-text);
+            transition: all 0.1s linear;
+            pointer-events: none;
+
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        input {
+            background-color: transparent;
+            color: #111;
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            caret-color: transparent;
+
+            font-size: 1.1rem;
+        }
+    }
+
+    &__input-active {
+        border-color: var(--main-blue);
+
+        input {
+            width: 90%;
+            height: 1.5rem;
+            caret-color: auto;
+
+            outline: none;
+            border: none;
+        }
+
+        .settings-modal__input {
+            &-desc {
+                top: 10%;
+                font-size: 0.8rem;
+                transition: all 0.1s linear;
+            }
+        }
+    }
+
+    &__buttons {
+        width: 48%;
+        height: 3.5rem;
+        border-radius: 3px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    &__cancel {
+        background-color: #e6e6e6;
+
+        &:hover {
+            background-color: #d8d8d8;
+        }
+    }
+
+    &__confirm {
+        background-color: var(--main-blue);
+
+        &:hover {
+            background-color: var(--secondary-blue);
+        }
+    }
+}
+
+.email-modal {
+    background-color: rgb(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+
+    &__inner {
+        background-color: #fff;
+        width: 25rem;
+        padding: 0.5rem 1rem 2rem 1rem;
+        text-align: center;
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__info {
+        margin: 1rem 0 2rem 0;
+    }
+
+    &__form {
+        width: 100%;
+    }
+
+    &__buttons {
+        width: 100%;
+
+        button {
+            width: 100%;
+            height: 3rem;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        &-continue {
+            background-color: var(--main-blue);
+            margin-bottom: 1rem;
+
+            &:hover {
+                background-color: var(--secondary-blue);
+            }
+        }
+
+        &-cancel {
+            background-color: #e6e6e6;
+
+            &:hover {
+                background-color: #d8d8d8;
+            }
+        }
+    }
+
+    &__loading {
+        width: 23rem; // magic number
+        height: 20rem; // magic number
+    }
+}
+
+.password-settings {
+    padding: 3rem;
+
+    &__container {
+        width: 100%;
+        margin-top: 5rem;
+    }
+
+    &__form {
+        width: 50%;
+        height: 100%;
+        padding-right: 1rem;
+    }
+
+    &__information {
+        width: 50%;
+        height: 100%;
+        padding-left: 1rem;
+    }
+
+    &__section {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+
+        &-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        &-subtitle {
+            color: var(--account-text);
+            font-size: 0.8rem;
+        }
+    }
+
+    &__buttons {
+        margin-top: 2rem;
+
+        button {
+            width: 45%;
+            height: 3rem;
+        }
+    }
+}
+
+.transaction {
+    width: 100%;
+    padding: 1rem 2rem;
+
+    &-container {
+        width: 100%;
+        margin-top: 3rem;
+
+        &__categories {
+            width: 100%;
+            font-weight: bold;
+
+            &-date {
+                width: 10%;
+            }
+            &-description {
+                width: 60%;
+            }
+            &-price {
+                width: 10%;
+            }
+            &-status {
+                width: 10%;
+            }
+        }
+
+        &__purchases {
+            width: 100%;
+            margin-top: 1rem;
+        }
+    }
+
+    &-item {
+        color: var(--account-text);
+        padding: 1rem 0;
+        font-size: 0.9rem;
+        white-space: nowrap;
+
+        &__description {
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .account {
+        background-color: var(--background-white);
+        width: 100%;
+        height: auto;
+
+        &-container {
+            width: 97%;
+            height: 50rem;
+            margin: 5rem 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            &__left {
+                width: 26%;
+            }
+
+            &__right {
+                width: 73%;
+                height: auto;
+            }
+        }
+
+        &-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+
+    .account-settings {
+        width: 100%;
+        padding: 3rem;
+
+        &__inputs-container {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .password-settings {
+        &__form {
+            width: 70%;
+            height: 100%;
+            padding-right: 1rem;
+        }
+    }
+
+    .transaction {
+        &-container {
+            &__categories {
+                &-description {
+                    width: 45%;
+                }
+            }
+        }
+    }
+}
