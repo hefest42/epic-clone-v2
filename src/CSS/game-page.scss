@@ -1,0 +1,98 @@
+.game-page {
+    position: relative;
+    width: 75%;
+    height: 70rem;
+    margin-top: 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &__left {
+        width: 70%;
+        height: 100%;
+    }
+
+    &__right {
+        position: relative;
+        width: 20%;
+        height: 100%;
+    }
+}
+
+.game-page__price {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &-logo {
+        width: 100%;
+        padding: 5rem 0;
+
+        &-container {
+            width: 250px;
+            height: auto;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &-prices {
+        color: #fff;
+        margin-top: 0.5rem;
+
+        span + span {
+            margin-left: 1rem;
+        }
+    }
+}
+
+.game-page__buttons {
+    width: 100%;
+    margin-top: 0.5rem;
+
+    button {
+        width: 100%;
+        margin-top: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    &-buy {
+        background-color: var(--main-blue);
+        color: #fff;
+        height: 3rem;
+
+        &:hover {
+            font-weight: bold;
+        }
+    }
+
+    &-cart {
+        background-color: transparent;
+        color: var(--account-text);
+        height: 3rem;
+        border: 1px solid var(--account-text);
+
+        &:hover {
+            background-color: var(--account-text);
+            color: #fff;
+        }
+    }
+
+    &-wishlist {
+        background-color: transparent;
+        color: var(--account-text);
+        height: 2rem;
+        border: 1px solid var(--account-text);
+
+        &:hover {
+            background-color: var(--account-text);
+            color: #fff;
+        }
+    }
+}
