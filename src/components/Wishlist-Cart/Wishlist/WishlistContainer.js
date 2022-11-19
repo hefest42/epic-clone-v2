@@ -14,7 +14,7 @@ const WishlistContainer = () => {
     useEffect(() => {
         if (!isAccountLoggedIn) return;
 
-        setWishlist(loggedInAccount.wishlist.slice(1));
+        setWishlist(loggedInAccount.wishlist);
     }, [loggedInAccount.wishlist, isAccountLoggedIn]);
 
     return <PageContainer>{wishlist.length === 0 ? <WishlistEmpty /> : <Wishlist />}</PageContainer>;

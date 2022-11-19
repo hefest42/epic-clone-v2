@@ -16,8 +16,6 @@ const GamePagePrice = ({ game }) => {
     const wishlistButtonHandler = () => {
         if (!isAccountLoggedIn) return;
 
-        console.log("hello");
-
         return account.wishlist.filter((g) => g.name === game.name).length === 0 ? (
             <IoMdAddCircle />
         ) : (
