@@ -4,10 +4,12 @@ import { IoMdAddCircle, IoMdCheckmarkCircle } from "react-icons/io";
 import { AiFillWindows } from "react-icons/ai";
 
 import { useDispatch, useSelector } from "react-redux";
+import { addGameToWishlist } from "../../store/AccountSlice";
 
 import { gamePriceHandler } from "../../Helpers/HelperFunctions";
 
 const GamePagePrice = ({ game }) => {
+    const dispatch = useDispatch();
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const account = useSelector((state) => state.account.account);
 
@@ -21,6 +23,12 @@ const GamePagePrice = ({ game }) => {
         ) : (
             <IoMdCheckmarkCircle />
         );
+    };
+
+    const addGameToWishlistHandler = (game) => {
+        if (account.wishlist.filter((g) => g.name === game.name).length === 1) return;
+
+        dispatch(addGameToWishlist(game));
     };
 
     const releaseDateHandler = (gameDate) => {
@@ -41,7 +49,7 @@ const GamePagePrice = ({ game }) => {
             <div className="game-page__buttons center-column">
                 <button className="game-page__buttons-buy">BUY NOW</button>
                 <button className="game-page__buttons-cart">ADD TO CART</button>
-                <button className="game-page__buttons-wishlist center">
+                <button className="game-page__buttons-wishlist center" onClick={() => addGameToWishlistHandler(game)}>
                     {wishlistButtonHandler()}
                     <p>ADD TO WISHLIST</p>
                 </button>
