@@ -66,6 +66,8 @@
         background-color: var(--main-blue);
         color: #fff;
         height: 3rem;
+        outline: none;
+        border: none;
 
         &:hover {
             font-weight: bold;
@@ -90,9 +92,42 @@
         height: 2rem;
         border: 1px solid var(--account-text);
 
+        svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.3rem;
+        }
+
         &:hover {
             background-color: var(--account-text);
             color: #fff;
         }
+    }
+}
+
+.game-page__information {
+    width: 100%;
+    margin-top: 0.5rem;
+
+    &-container {
+        width: 100%;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--account-text);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-key {
+        color: var(--account-text);
+        width: 40%;
+    }
+
+    &-value {
+        color: #fff;
+        width: 50%;
+        white-space: normal;
+        text-align: end;
     }
 }

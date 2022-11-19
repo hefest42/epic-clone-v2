@@ -9,7 +9,6 @@ import FrontPageContainer from "./components/Front-Page/FrontPageContainer";
 import LogInContainer from "./components/Log-In-Sign-Up/LogInContainer";
 import SignUpContainer from "./components/Log-In-Sign-Up/SignUpContainer";
 import AccountSettingsContainer from "./components/Account-Settings/AccountSettingsContainer";
-import GamePageContainer from "./components/Game-Page/GamePageContainer";
 
 function App() {
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
@@ -40,7 +39,6 @@ function App() {
             <Route path="log-in" element={<LogInContainer />} />
             <Route path="sign-up" element={<SignUpContainer />} />
             <Route path="account/*" element={<AccountSettingsContainer />} />
-            <Route path="game/*" element={<GamePageContainer />} />
         </Routes>
     );
 }

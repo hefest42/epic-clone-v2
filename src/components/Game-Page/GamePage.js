@@ -9,7 +9,7 @@ const GamePage = () => {
         <div className="game-page">
             <div className="game-page__left"></div>
             <div className="game-page__right">
-                <GamePagePrice game={DUMMY_CAROUSEL_GAMES[4]} />
+                <GamePagePrice game={DUMMY_CAROUSEL_GAMES[1]} />
             </div>
         </div>
     );
