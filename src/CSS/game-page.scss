@@ -171,5 +171,49 @@
 
     &-reviews {
         width: 100%;
+        margin-top: 2rem;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-review {
+            background-color: var(--light-gray);
+            width: calc(100% / 3 - 1rem);
+            height: 20rem;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: 3px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        &-author {
+            width: 100%;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--account-text);
+
+            div {
+                color: #fff;
+
+                & + div {
+                    color: var(--account-text);
+                }
+            }
+        }
+
+        &-score {
+            color: #fff;
+            padding: 1rem 0;
+            flex: 1;
+
+            p {
+                color: var(--account-text);
+                margin-top: 2rem;
+            }
+        }
     }
 }

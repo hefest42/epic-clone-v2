@@ -21,7 +21,18 @@ const GamePageLeft = ({ game }) => {
             </div>
 
             <div className="game-page__info-reviews">
-                <div className="game-page__info-reviews-review"></div>
+                <div className="game-page__info-reviews-review">
+                    <div className="game-page__info-reviews-author">
+                        <div>Eurogamer</div>
+                        <div>by Martin Robinson</div>
+                    </div>
+                    <div className="game-page__info-reviews-score">
+                        <div>Recommended</div>
+                        <p>{`"A standalone expansion for 2018's excellent original, with enchanced action and an irresistible new lead."`}</p>
+                    </div>
+
+                    <div>READ THE FULLREVIEW</div>
+                </div>
                 <div className="game-page__info-reviews-review"></div>
                 <div className="game-page__info-reviews-review"></div>
             </div>
