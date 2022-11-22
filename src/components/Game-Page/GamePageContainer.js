@@ -17,29 +17,40 @@ const GamePageContainer = () => {
         setGame(filteredGame[0]);
 
         //TODO GET 3 GAME REVIEWS
-        // const fetchTest = async () => {
-        //     try {
-        //         const response = await fetch(
-        //             `https://opencritic-api.p.rapidapi.com/game/search?criteria=Marvel's%20Spider-Man%20Remastered`,
-        //             {
-        //                 method: "GET",
-        //                 headers: {
-        //                     "X-RapidAPI-Key": "a3d147fab7msh00956640f11a890p1c1f32jsn7faec2c28528",
-        //                     "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
-        //                 },
-        //             }
-        //         );
+        const fetchTest = async () => {
+            try {
+                const response = await fetch(`https://opencritic-api.p.rapidapi.com/game/search?criteria=${gameName}`, {
+                    method: "GET",
+                    headers: {
+                        "X-RapidAPI-Key": "a3d147fab7msh00956640f11a890p1c1f32jsn7faec2c28528",
+                        "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
+                    },
+                });
 
-        //         const data = await response.json();
+                const data = await response.json();
 
-        //         console.log(data);
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
-        // };
+                console.log(data);
+
+                const gameID = data[0].id;
+
+                const reviewResponse = await fetch(`https://opencritic-api.p.rapidapi.com/review/game/${gameID}`, {
+                    method: "GET",
+                    headers: {
+                        "X-RapidAPI-Key": "a3d147fab7msh00956640f11a890p1c1f32jsn7faec2c28528",
+                        "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
+                    },
+                });
+
+                const reviewData = await reviewResponse.json();
+
+                console.log(reviewData);
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
         // fetchTest();
-    });
+    }, [location.pathname]);
 
     return (
         <PageContainer>
