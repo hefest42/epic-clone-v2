@@ -1,6 +1,6 @@
 import React from "react";
 
-const GamePageLeft = ({ game }) => {
+const GamePageLeft = ({ game, gameReviews }) => {
     return (
         <div className="game-page__left">
             <div className="game-page__info">
@@ -21,22 +21,30 @@ const GamePageLeft = ({ game }) => {
                     </div>
                 </div>
 
-                <div className="game-page__info-reviews">
-                    <div className="game-page__info-reviews-review">
-                        <div className="game-page__info-reviews-author">
-                            <div>Eurogamer</div>
-                            <div>by Martin Robinson</div>
-                        </div>
-                        <div className="game-page__info-reviews-score">
-                            <div>Recommended</div>
-                            <p>{`"A standalone expansion for 2018's excellent original, with enchanced action and an irresistible new lead."`}</p>
-                        </div>
+                {gameReviews.length > 0 && (
+                    <div className="game-page__info-reviews">
+                        {gameReviews.map((review, i) => (
+                            <div key={i} className="game-page__info-reviews-review">
+                                <div className="game-page__info-reviews-author">
+                                    <div>{review.Outlet.name}</div>
+                                    {review.Authors[0] ? (
+                                        <div>{`by ${review.Authors[0].name}`}</div>
+                                    ) : (
+                                        <div className="game-page__info-reviews-author-empty"></div>
+                                    )}
+                                </div>
+                                <div className="game-page__info-reviews-score">
+                                    <div>Recommended</div>
+                                    <p>{`"${review.snippet}"`}</p>
+                                </div>
 
-                        <div>READ THE FULLREVIEW</div>
+                                <a href={review.externalUrl} target="_blank">
+                                    READ THE FULLREVIEW
+                                </a>
+                            </div>
+                        ))}
                     </div>
-                    <div className="game-page__info-reviews-review"></div>
-                    <div className="game-page__info-reviews-review"></div>
-                </div>
+                )}
             </div>
         </div>
     );

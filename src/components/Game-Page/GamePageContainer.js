@@ -10,6 +10,7 @@ import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 const GamePageContainer = () => {
     const location = useLocation();
     const [game, setGame] = useState({});
+    const [gameReviews, setGameReviews] = useState([]);
 
     useEffect(() => {
         const gameName = location.pathname.split("/")[location.pathname.split("/").length - 1].replaceAll("%20", " ");
@@ -29,8 +30,6 @@ const GamePageContainer = () => {
 
                 const data = await response.json();
 
-                console.log(data);
-
                 const gameID = data[0].id;
 
                 const reviewResponse = await fetch(`https://opencritic-api.p.rapidapi.com/review/game/${gameID}`, {
@@ -43,18 +42,20 @@ const GamePageContainer = () => {
 
                 const reviewData = await reviewResponse.json();
 
-                console.log(reviewData);
+                console.log(reviewData.map((review) => review.ScoreFormat.name));
+
+                setGameReviews(reviewData.slice(0, 3));
             } catch (error) {
                 console.log(error);
             }
         };
 
-        // fetchTest();
+        fetchTest();
     }, [location.pathname]);
 
     return (
         <PageContainer>
-            <GamePage game={game} />
+            <GamePage game={game} gameReviews={gameReviews} />
         </PageContainer>
     );
 };

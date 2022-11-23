@@ -1,5 +1,4 @@
 .game-page {
-    background-color: peru;
     position: relative;
     width: 75%;
     height: 80rem;
@@ -15,7 +14,6 @@
     }
 
     &__right {
-        background-color: brown;
         position: relative;
         width: 20%;
         height: 100%;
@@ -182,7 +180,7 @@
         &-review {
             background-color: var(--light-gray);
             width: calc(100% / 3 - 1rem);
-            height: 20rem;
+            height: 26rem;
             padding: 1rem;
             font-size: 1.1rem;
             border-radius: 3px;
@@ -195,6 +193,7 @@
 
         &-author {
             width: 100%;
+            height: 4.5rem;
             padding: 1rem 0;
             border-bottom: 1px solid var(--account-text);
 
@@ -214,7 +213,18 @@
 
             p {
                 color: var(--account-text);
-                margin-top: 2rem;
+                height: 7rem;
+                width: 18rem;
+                margin-top: 1rem;
+            }
+        }
+
+        a {
+            color: var(--account-text);
+            text-decoration: underline;
+
+            &:hover {
+                color: #fff;
             }
         }
     }
