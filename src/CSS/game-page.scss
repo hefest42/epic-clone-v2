@@ -213,18 +213,22 @@
 
             p {
                 color: var(--account-text);
-                height: 7rem;
+                height: 12rem;
                 width: 18rem;
                 margin-top: 1rem;
             }
         }
 
-        a {
+        &-link {
             color: var(--account-text);
             text-decoration: underline;
 
             &:hover {
                 color: #fff;
+            }
+
+            svg {
+                margin-left: 0.5rem;
             }
         }
     }

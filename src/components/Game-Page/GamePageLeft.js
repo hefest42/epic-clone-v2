@@ -1,5 +1,7 @@
 import React from "react";
 
+import { FiExternalLink } from "react-icons/fi";
+
 const GamePageLeft = ({ game, gameReviews }) => {
     const gameScoreHandler = (type, score) => {
         if (type === "No Verdict") return `No Verdict`;
@@ -45,12 +47,15 @@ const GamePageLeft = ({ game, gameReviews }) => {
                                 </div>
                                 <div className="game-page__info-reviews-score">
                                     <div>{gameScoreHandler(review.ScoreFormat.name, review.score)}</div>
-                                    <p>{`"${review.snippet}"`}</p>
+                                    <p>{`"${review.snippet.split(".")[0]}."`}</p>
                                 </div>
 
-                                <a href={review.externalUrl} target="_blank">
-                                    READ THE FULLREVIEW
-                                </a>
+                                <div className="game-page__info-reviews-link center">
+                                    <a href={review.externalUrl} target="_blank">
+                                        READ THE FULLREVIEW
+                                    </a>
+                                    <FiExternalLink />
+                                </div>
                             </div>
                         ))}
                     </div>
