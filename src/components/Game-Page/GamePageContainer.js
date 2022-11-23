@@ -42,7 +42,7 @@ const GamePageContainer = () => {
 
                 const reviewData = await reviewResponse.json();
 
-                console.log(reviewData.map((review) => review.ScoreFormat.name));
+                console.log(reviewData);
 
                 setGameReviews(reviewData.slice(0, 3));
             } catch (error) {

@@ -1,6 +1,16 @@
 import React from "react";
 
 const GamePageLeft = ({ game, gameReviews }) => {
+    const gameScoreHandler = (type, score) => {
+        if (type === "No Verdict") return `No Verdict`;
+
+        if (type === "0 to 100, whole numbers") return `${score}/100`;
+
+        if (type === "0 to 10 incl decimals" || type === "0 to 10, whole numbers") return `${score / 10} / 10`;
+
+        if (type === "0 to 5 stars, incl half stars") return `${score / 20} / 5`;
+    };
+
     return (
         <div className="game-page__left">
             <div className="game-page__info">
@@ -34,7 +44,7 @@ const GamePageLeft = ({ game, gameReviews }) => {
                                     )}
                                 </div>
                                 <div className="game-page__info-reviews-score">
-                                    <div>Recommended</div>
+                                    <div>{gameScoreHandler(review.ScoreFormat.name, review.score)}</div>
                                     <p>{`"${review.snippet}"`}</p>
                                 </div>
 
