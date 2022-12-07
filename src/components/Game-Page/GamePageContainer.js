@@ -42,8 +42,6 @@ const GamePageContainer = () => {
 
                 const reviewData = await reviewResponse.json();
 
-                console.log(reviewData);
-
                 setGameReviews(reviewData.slice(0, 3));
             } catch (error) {
                 console.log(error);

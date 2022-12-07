@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { FiExternalLink } from "react-icons/fi";
 
 const GamePageLeft = ({ game, gameReviews }) => {
@@ -26,11 +28,15 @@ const GamePageLeft = ({ game, gameReviews }) => {
 
                 <div className="game-page__info-genres">
                     <div className="game-page__info-genre">Genres</div>
-                    <div className="center">
-                        <p>Action</p>
-                        <p>Action-Adventure</p>
-                        <p>Action-Adventure</p>
-                    </div>
+                    {game.genres && (
+                        <div className="center">
+                            {game.genres.map((genre) => (
+                                <Link to={`/store/browse?genre=${genre}`} key={genre}>
+                                    {genre}
+                                </Link>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 {gameReviews.length > 0 && (

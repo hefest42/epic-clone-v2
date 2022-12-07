@@ -1,7 +1,7 @@
 .game-page {
     position: relative;
     width: 75%;
-    height: 80rem;
+    height: 74rem;
     margin-top: 2rem;
 
     display: flex;
@@ -160,10 +160,11 @@
         padding: 1rem 1rem;
         border-left: 1px solid var(--account-text);
 
-        p {
+        a {
             color: #fff;
+            text-decoration: underline;
 
-            & + p {
+            & + a {
                 margin-left: 0.5rem;
             }
         }

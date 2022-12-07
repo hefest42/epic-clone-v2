@@ -13,7 +13,7 @@ export const DUMMY_CAROUSEL_GAMES = [
         discount: "50",
         gameOnSale: false,
         gameFeatured: true,
-        genres: ["Action", "Adventure"],
+        genres: ["Action", "Adventure", "Open World"],
         developer: "Insomniac Games",
         publisher: "PlayStation",
         platform: ["Windows"],
