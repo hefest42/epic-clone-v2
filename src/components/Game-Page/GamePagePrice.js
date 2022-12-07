@@ -14,7 +14,7 @@ const GamePagePrice = ({ game }) => {
     const account = useSelector((state) => state.account.account);
 
     const wishlistButtonHandler = () => {
-        if (!isAccountLoggedIn) return;
+        if (!isAccountLoggedIn || !account.wishlist) return;
 
         return account.wishlist.filter((g) => g.name === game.name).length === 0 ? (
             <IoMdAddCircle />
@@ -24,7 +24,7 @@ const GamePagePrice = ({ game }) => {
     };
 
     const addGameToWishlistHandler = (game) => {
-        if (account.wishlist.filter((g) => g.name === game.name).length === 1) return;
+        if (account.wishlist?.filter((g) => g.name === game.name).length === 1) return;
 
         dispatch(addGameToWishlist(game));
     };
