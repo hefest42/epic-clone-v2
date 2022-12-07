@@ -128,7 +128,7 @@ const PasswordSettings = () => {
                         }
                     >
                         <div className="settings-modal__input-desc">
-                            <label htmlFor="newPassword">Current Password</label>
+                            <label htmlFor="newPassword">New Password</label>
                         </div>
 
                         <input
@@ -155,7 +155,7 @@ const PasswordSettings = () => {
                         }
                     >
                         <div className="settings-modal__input-desc">
-                            <label htmlFor="retypePassword">Current Password</label>
+                            <label htmlFor="retypePassword">Retype New Password</label>
                         </div>
 
                         <input
