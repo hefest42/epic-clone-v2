@@ -244,6 +244,58 @@
     height: 100vh;
     z-index: 1001;
 
+    &__loading {
+        background-color: var(--background-black);
+        width: 40rem;
+        height: 40rem;
+        padding: 2rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        &-close {
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-end;
+
+            svg {
+                color: var(--account-text);
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+
+        &-title {
+            color: #fff;
+            font-size: 2rem;
+
+            svg {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        &-container {
+            width: 100%;
+            flex: 1;
+        }
+
+        &-thanks {
+            color: #fff;
+            flex: 1;
+            font-size: 1.5rem;
+        }
+    }
+
     &__inner {
         background-color: var(--background-white);
         width: 20rem;
