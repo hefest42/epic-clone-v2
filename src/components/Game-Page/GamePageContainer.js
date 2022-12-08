@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import PageContainer from "../UI/PageContainer";
 import GamePage from "./GamePage";
+import ConfirmGamePurchase from "./ConfirmGamePurchase";
 
 import { useLocation } from "react-router-dom";
 
@@ -11,13 +12,13 @@ const GamePageContainer = () => {
     const location = useLocation();
     const [game, setGame] = useState({});
     const [gameReviews, setGameReviews] = useState([]);
+    const [showConfirmGamePurchase, setShowConfirmGamePurchase] = useState(true);
 
     useEffect(() => {
         const gameName = location.pathname.split("/")[location.pathname.split("/").length - 1].replaceAll("%20", " ");
         const filteredGame = DUMMY_CAROUSEL_GAMES.filter((game) => game.name === gameName);
         setGame(filteredGame[0]);
 
-        //TODO GET 3 GAME REVIEWS
         const fetchTest = async () => {
             try {
                 const response = await fetch(`https://opencritic-api.p.rapidapi.com/game/search?criteria=${gameName}`, {
@@ -53,7 +54,10 @@ const GamePageContainer = () => {
 
     return (
         <PageContainer>
-            <GamePage game={game} gameReviews={gameReviews} />
+            <GamePage game={game} gameReviews={gameReviews} setShowConfirmGamePurchase={setShowConfirmGamePurchase} />
+            {showConfirmGamePurchase && (
+                <ConfirmGamePurchase game={game} setShowConfirmGamePurchase={setShowConfirmGamePurchase} />
+            )}
         </PageContainer>
     );
 };

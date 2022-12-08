@@ -8,7 +8,7 @@ import { addGameToWishlist } from "../../store/AccountSlice";
 
 import { gamePriceHandler } from "../../Helpers/HelperFunctions";
 
-const GamePagePrice = ({ game }) => {
+const GamePagePrice = ({ game, setShowConfirmGamePurchase }) => {
     const dispatch = useDispatch();
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const account = useSelector((state) => state.account.account);
@@ -46,7 +46,9 @@ const GamePagePrice = ({ game }) => {
                     {gamePriceHandler(game.gameOnSale, game.price, game.discount)}
                 </div>
                 <div className="game-page__buttons center-column">
-                    <button className="game-page__buttons-buy">BUY NOW</button>
+                    <button className="game-page__buttons-buy" onClick={() => setShowConfirmGamePurchase(true)}>
+                        BUY NOW
+                    </button>
                     <button className="game-page__buttons-cart">ADD TO CART</button>
                     <button
                         className="game-page__buttons-wishlist center"
