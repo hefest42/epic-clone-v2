@@ -33,17 +33,23 @@ const GamePageContainer = () => {
 
                 const gameID = data[0].id;
 
-                const reviewResponse = await fetch(`https://opencritic-api.p.rapidapi.com/review/game/${gameID}`, {
-                    method: "GET",
-                    headers: {
-                        "X-RapidAPI-Key": "a3d147fab7msh00956640f11a890p1c1f32jsn7faec2c28528",
-                        "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
-                    },
-                });
+                console.log(data);
+
+                // no longer working???
+                const reviewResponse = await fetch(
+                    `https://opencritic-api.p.rapidapi.com/review/game/${gameID}?sort=score&order=desc`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "X-RapidAPI-Key": "a3d147fab7msh00956640f11a890p1c1f32jsn7faec2c28528",
+                            "X-RapidAPI-Host": "opencritic-api.p.rapidapi.com",
+                        },
+                    }
+                );
 
                 const reviewData = await reviewResponse.json();
 
-                setGameReviews(reviewData.slice(0, 3));
+                // setGameReviews(reviewData.slice(0, 3));
             } catch (error) {
                 console.log(error);
             }

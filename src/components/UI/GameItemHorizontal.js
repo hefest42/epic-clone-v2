@@ -18,7 +18,6 @@ const GameItemHorizontal = ({ game, clickHandler }) => {
         <div
             to={`/store/game/${game.name}`}
             className="game-horizontal center-column"
-            onClick={(e) => clickHandler(e, game)}
             onMouseEnter={() => setShowWishlistButton(true)}
             onMouseLeave={() => setShowWishlistButton(false)}
         >
@@ -26,6 +25,7 @@ const GameItemHorizontal = ({ game, clickHandler }) => {
                 className="game-horizontal__image"
                 onMouseEnter={() => setShowImageCover(true)}
                 onMouseLeave={() => setShowImageCover(false)}
+                onClick={(e) => clickHandler(e, game)}
             >
                 <img src={game.posterBig} alt={`${game.name} poster`} />
 
