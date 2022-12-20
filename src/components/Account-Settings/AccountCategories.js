@@ -7,7 +7,6 @@ import { ImKey } from "react-icons/im";
 
 const AccountCategories = () => {
     const location = useLocation();
-
     const [activeCategory, setActiveCategory] = useState("");
 
     useEffect(() => {

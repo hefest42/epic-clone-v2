@@ -10,6 +10,7 @@ import DiscoverContainer from "../Discover-Page/DiscoverContainer";
 import BrowseContainer from "../Browse-Page/BrowseContainer";
 import WishlistContainer from "../Wishlist-Cart/Wishlist/WishlistContainer";
 import CartContainer from "../Wishlist-Cart/Cart/CartContainer";
+import GamePageContainer from "../Game-Page/GamePageContainer";
 
 const FrontPageContainer = () => {
     return (
@@ -23,6 +24,7 @@ const FrontPageContainer = () => {
                 <Route path="browse/*" element={<BrowseContainer />} />
                 <Route path="wishlist" element={<WishlistContainer />} />
                 <Route path="cart" element={<CartContainer />} />
+                <Route path="game/*" element={<GamePageContainer />} />
             </Routes>
 
             <Footer />

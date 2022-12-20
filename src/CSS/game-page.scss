@@ -1,0 +1,367 @@
+.game-page {
+    position: relative;
+    width: 75%;
+    height: 74rem;
+    margin-top: 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &__left {
+        width: 70%;
+        height: 100%;
+    }
+
+    &__right {
+        position: relative;
+        width: 20%;
+        height: 100%;
+    }
+}
+
+.game-page__price {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &-logo {
+        width: 100%;
+        padding: 5rem 0;
+
+        &-container {
+            width: 250px;
+            height: auto;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &-prices {
+        color: #fff;
+        margin-top: 0.5rem;
+
+        span + span {
+            margin-left: 1rem;
+        }
+    }
+}
+
+.game-page__buttons {
+    width: 100%;
+    margin-top: 0.5rem;
+
+    button {
+        width: 100%;
+        margin-top: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    &-buy {
+        background-color: var(--main-blue);
+        color: #fff;
+        height: 3rem;
+        outline: none;
+        border: none;
+
+        &:hover {
+            font-weight: bold;
+        }
+    }
+
+    &-cart {
+        background-color: transparent;
+        color: var(--account-text);
+        height: 3rem;
+        border: 1px solid var(--account-text);
+
+        &:hover {
+            background-color: var(--account-text);
+            color: #fff;
+        }
+    }
+
+    &-wishlist {
+        background-color: transparent;
+        color: var(--account-text);
+        height: 2rem;
+        border: 1px solid var(--account-text);
+
+        svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.3rem;
+        }
+
+        &:hover {
+            background-color: var(--account-text);
+            color: #fff;
+        }
+    }
+}
+
+.game-page__information {
+    width: 100%;
+    margin-top: 0.5rem;
+
+    &-container {
+        width: 100%;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--account-text);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-key {
+        color: var(--account-text);
+        width: 40%;
+    }
+
+    &-value {
+        color: #fff;
+        width: 50%;
+        white-space: normal;
+        text-align: end;
+    }
+}
+
+.game-page__info {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &-poster {
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &-description {
+        margin-top: 1rem;
+        color: #fff;
+        font-size: 1.5rem;
+    }
+
+    &-genres {
+        color: var(--account-text);
+        margin-top: 1rem;
+        padding: 1rem 1rem;
+        border-left: 1px solid var(--account-text);
+
+        a {
+            color: #fff;
+            text-decoration: underline;
+
+            & + a {
+                margin-left: 0.5rem;
+            }
+        }
+    }
+
+    &-reviews {
+        width: 100%;
+        margin-top: 2rem;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-review {
+            background-color: var(--light-gray);
+            width: calc(100% / 3 - 1rem);
+            height: 26rem;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: 3px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        &-author {
+            width: 100%;
+            height: 4.5rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--account-text);
+
+            div {
+                color: #fff;
+
+                & + div {
+                    color: var(--account-text);
+                }
+            }
+        }
+
+        &-score {
+            color: #fff;
+            padding: 1rem 0;
+            flex: 1;
+
+            p {
+                color: var(--account-text);
+                height: 12rem;
+                width: 18rem;
+                margin-top: 1rem;
+            }
+        }
+
+        &-link {
+            color: var(--account-text);
+            text-decoration: underline;
+
+            &:hover {
+                color: #fff;
+            }
+
+            svg {
+                margin-left: 0.5rem;
+            }
+        }
+    }
+}
+
+.game-purchase {
+    background-color: rgb(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1001;
+
+    &__loading {
+        background-color: var(--background-black);
+        width: 40rem;
+        height: 40rem;
+        padding: 2rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        &-close {
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-end;
+
+            svg {
+                color: var(--account-text);
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+
+        &-title {
+            color: #fff;
+            font-size: 2rem;
+
+            svg {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        &-container {
+            width: 100%;
+            flex: 1;
+        }
+
+        &-thanks {
+            color: #fff;
+            flex: 1;
+            font-size: 1.5rem;
+        }
+    }
+
+    &__inner {
+        background-color: var(--background-white);
+        width: 20rem;
+        height: auto;
+        padding: 1rem;
+        border-radius: 3px;
+
+        &-summary {
+            margin-bottom: 1rem;
+
+            svg {
+                color: var(--account-text);
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+
+        &-poster {
+            width: 100%;
+            border-radius: 3px;
+
+            img {
+                width: 100%;
+                border-radius: 3px;
+            }
+        }
+
+        &-name {
+            font-weight: bold;
+        }
+
+        &-price {
+            width: 100%;
+            margin: 1rem 0;
+
+            &-divider {
+                background-color: black;
+                width: 100%;
+                height: 1px;
+                margin: 0.5rem 0;
+            }
+        }
+
+        &-cofirm {
+            p {
+                font-size: 0.8rem;
+            }
+
+            button {
+                color: #fff;
+                background-color: var(--main-blue);
+                width: 100%;
+                height: 3rem;
+                border: none;
+                margin-top: 1rem;
+                cursor: pointer;
+
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

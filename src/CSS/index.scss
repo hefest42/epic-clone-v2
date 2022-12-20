@@ -5,6 +5,7 @@
 @import "./wishlist-cart.scss";
 @import "./browse-page.scss";
 @import "./account.scss";
+@import "./game-page.scss";
 
 :root {
     --background-white: #f8f8f8;
@@ -128,6 +129,7 @@ body {
         width: 100%;
         border-radius: 10px;
         overflow: hidden;
+        cursor: pointer;
 
         img {
             width: 100%;

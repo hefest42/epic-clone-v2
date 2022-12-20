@@ -11,7 +11,9 @@ export const WishlistButton = ({ game, mouseEnter }) => {
     const account = useSelector((state) => state.account.account);
     const [showWishlistInfo, setShowWishlistInfo] = useState(false);
 
-    const wishlistingGameHandler = () => {
+    const wishlistingGameHandler = (e) => {
+        e.stopPropagation();
+
         if (!isAccountLoggedIn) return;
 
         if (account.wishlist?.filter((wishlistGame) => wishlistGame.name === game.name).length > 0)
@@ -50,7 +52,7 @@ export const WishlistButton = ({ game, mouseEnter }) => {
                         mouseEnter();
                     }}
                     onMouseLeave={() => setShowWishlistInfo(false)}
-                    onClick={wishlistingGameHandler}
+                    onClick={(e) => wishlistingGameHandler(e)}
                 >
                     {wishlistButtonHandler(account.wishlist)}
                 </button>

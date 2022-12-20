@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 import { WishlistButton, ImageCover } from "./CoverAndWishlistButton";
 
 import { gamePriceHandler } from "../../Helpers/HelperFunctions";
@@ -15,9 +17,8 @@ const GameItem = ({ game }) => {
 
     return (
         <>
-            <a
-                href="test"
-                target="_blank"
+            <Link
+                to={`/store/game/${game.name}`}
                 className="game"
                 onMouseEnter={() => setShowWishlistButton(true)}
                 onMouseLeave={() => setShowWishlistButton(false)}
@@ -38,7 +39,7 @@ const GameItem = ({ game }) => {
                         {gamePriceHandler(game.gameOnSale, game.price, game.discount)}
                     </div>
                 </div>
-            </a>
+            </Link>
             {showWishlistButton && <WishlistButton game={game} mouseEnter={mouseEnterWishlistButtonHandler} />}
         </>
     );

@@ -1,10 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+
+import { Link } from "react-router-dom";
 
 import { WishlistButton, ImageCover } from "../UI/CoverAndWishlistButton";
 import { gamePriceHandler } from "../../Helpers/HelperFunctions";
 
-const GameItemHorizontal = ({ game }) => {
+const GameItemHorizontal = ({ game, clickHandler }) => {
     const [showImageCover, setShowImageCover] = useState(false);
     const [showWishlistButton, setShowWishlistButton] = useState(false);
 
@@ -15,6 +16,7 @@ const GameItemHorizontal = ({ game }) => {
 
     return (
         <div
+            to={`/store/game/${game.name}`}
             className="game-horizontal center-column"
             onMouseEnter={() => setShowWishlistButton(true)}
             onMouseLeave={() => setShowWishlistButton(false)}
@@ -23,6 +25,7 @@ const GameItemHorizontal = ({ game }) => {
                 className="game-horizontal__image"
                 onMouseEnter={() => setShowImageCover(true)}
                 onMouseLeave={() => setShowImageCover(false)}
+                onClick={(e) => clickHandler(e, game)}
             >
                 <img src={game.posterBig} alt={`${game.name} poster`} />
 
