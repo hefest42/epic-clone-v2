@@ -4,9 +4,28 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { SiEpicgames } from "react-icons/si";
+import { useEffect } from "react";
 
 const ConfirmGamePurchase = ({ game, setShowConfirmGamePurchase }) => {
-    const [stepper, setStepper] = useState(2);
+    const [stepper, setStepper] = useState(0);
+
+    useEffect(() => {
+        if (stepper !== 0) return;
+
+        const timer = setTimeout(() => {
+            setStepper(1);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    });
+
+    const placeOrderHandler = () => {
+        setStepper(0);
+
+        setTimeout(() => {
+            setStepper(2);
+        }, 1000);
+    };
 
     return (
         <div className="game-purchase center">
@@ -57,7 +76,7 @@ const ConfirmGamePurchase = ({ game, setShowConfirmGamePurchase }) => {
                             By clicking "Place Order" below, I represent that I am over 18 and an authorized user of
                             this payment method, and I agree to the End User Licence Agreement.
                         </p>
-                        <button>PLACE ORDER</button>
+                        <button onClick={placeOrderHandler}>PLACE ORDER</button>
                     </div>
                 </div>
             )}

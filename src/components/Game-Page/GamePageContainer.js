@@ -12,7 +12,7 @@ const GamePageContainer = () => {
     const location = useLocation();
     const [game, setGame] = useState({});
     const [gameReviews, setGameReviews] = useState([]);
-    const [showConfirmGamePurchase, setShowConfirmGamePurchase] = useState(true);
+    const [showConfirmGamePurchase, setShowConfirmGamePurchase] = useState(false);
 
     useEffect(() => {
         const gameName = location.pathname.split("/")[location.pathname.split("/").length - 1].replaceAll("%20", " ");
