@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import { WishlistButton } from "../UI/CoverAndWishlistButton";
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 import { gamePriceHandler } from "../../Helpers/HelperFunctions";
@@ -10,8 +12,17 @@ const DUMMY_TITLES = ["New Releases", "Top Selling", "Coming Soon"];
 //TODO make the container a link to the game page
 //TODO add pricing depending whether the game is on sale/free
 const NewTopComingGames = () => {
+    const navigate = useNavigate();
     const [columnWishlistButton, setColumnWishlistButton] = useState("");
     const [showWishlistButtonInx, setShowWishlistButtonIdx] = useState("");
+
+    const clickHandler = (e, game) => {
+        e.stopPropagation();
+
+        navigate(`/store/game/${game.name}`);
+
+        console.log("test");
+    };
 
     return (
         <div className="column">
@@ -33,6 +44,7 @@ const NewTopComingGames = () => {
                                 <div
                                     key={i}
                                     className="column-item"
+                                    onClick={(e) => clickHandler(e, game)}
                                     onMouseEnter={() => setShowWishlistButtonIdx(i)}
                                     onMouseLeave={() => setShowWishlistButtonIdx("")}
                                 >

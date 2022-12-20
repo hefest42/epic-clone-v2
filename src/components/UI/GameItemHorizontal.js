@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { WishlistButton, ImageCover } from "../UI/CoverAndWishlistButton";
 import { gamePriceHandler } from "../../Helpers/HelperFunctions";
 
-const GameItemHorizontal = ({ game }) => {
+const GameItemHorizontal = ({ game, clickHandler }) => {
     const [showImageCover, setShowImageCover] = useState(false);
     const [showWishlistButton, setShowWishlistButton] = useState(false);
 
@@ -15,9 +15,10 @@ const GameItemHorizontal = ({ game }) => {
     };
 
     return (
-        <Link
+        <div
             to={`/store/game/${game.name}`}
             className="game-horizontal center-column"
+            onClick={(e) => clickHandler(e, game)}
             onMouseEnter={() => setShowWishlistButton(true)}
             onMouseLeave={() => setShowWishlistButton(false)}
         >
@@ -43,7 +44,7 @@ const GameItemHorizontal = ({ game }) => {
                 </div>
             </div>
             {showWishlistButton && <WishlistButton game={game} mouseEnter={mouseEnterWishlistButtonHandler} />}
-        </Link>
+        </div>
     );
 };
 
