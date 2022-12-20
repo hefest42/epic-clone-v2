@@ -1,5 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+
+import { Link } from "react-router-dom";
 
 import { WishlistButton, ImageCover } from "../UI/CoverAndWishlistButton";
 import { gamePriceHandler } from "../../Helpers/HelperFunctions";
@@ -14,7 +15,8 @@ const GameItemHorizontal = ({ game }) => {
     };
 
     return (
-        <div
+        <Link
+            to={`/store/game/${game.name}`}
             className="game-horizontal center-column"
             onMouseEnter={() => setShowWishlistButton(true)}
             onMouseLeave={() => setShowWishlistButton(false)}
@@ -41,7 +43,7 @@ const GameItemHorizontal = ({ game }) => {
                 </div>
             </div>
             {showWishlistButton && <WishlistButton game={game} mouseEnter={mouseEnterWishlistButtonHandler} />}
-        </div>
+        </Link>
     );
 };
 
