@@ -10,6 +10,7 @@ import { addGameToWishlist, removeGameFromWishlist } from "../../store/AccountSl
 
 //TODO add links to the games ergo fix clickOnFeaturedListItemHandler
 const FeaturedGames = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const account = useSelector((state) => state.account.account);
@@ -17,10 +18,9 @@ const FeaturedGames = () => {
     const GAMES = useMemo(() => DUMMY_CAROUSEL_GAMES.slice(0, 6), []);
     const currentDate = new Date();
 
-    const clickOnFeaturedListItemHandler = (index) => {
+    const clickOnFeaturedListItemHandler = (index, game) => {
         if (index === activeListItem) {
-            console.log("LINK TO THE GAME");
-            return;
+            navigate(`/store/game/${game.name}`);
         } else setActiveListItem(index);
     };
 
@@ -91,7 +91,7 @@ const FeaturedGames = () => {
                             <div className="featured-cover__info-buttons">
                                 <div className="featured-cover__info-buy">
                                     <p>{game.price === "0" ? "Free to Play" : `$${game.price}`}</p>
-                                    <button onClick={() => console.log("bought the game")}>
+                                    <button onClick={() => navigate(`/store/game/${game.name}`)}>
                                         {buyButtonTextHandler(game.releaseDate)}
                                     </button>
                                 </div>
@@ -110,7 +110,7 @@ const FeaturedGames = () => {
                         className={
                             activeListItem === i ? "featured-item featured-active featured-fill" : "featured-item"
                         }
-                        onClick={() => clickOnFeaturedListItemHandler(i)}
+                        onClick={() => clickOnFeaturedListItemHandler(i, game)}
                     >
                         <div className="featured-item__image">
                             <img src={`${game.posterSmall}`} alt="poster" />
