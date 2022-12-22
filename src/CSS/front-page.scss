@@ -134,10 +134,12 @@
         height: 100%;
 
         &__form {
+            position: relative;
             background-color: var(--input-gray);
             height: 55%;
             padding: 0 0.5rem;
             border-radius: 20px;
+            z-index: 150;
 
             svg {
                 color: #fff;
@@ -157,6 +159,31 @@
                 &:focus {
                     border: none;
                     outline: none;
+                }
+            }
+
+            &-search {
+                position: absolute;
+                top: 120%;
+                left: 0;
+                background-color: var(--input-gray);
+                width: 250%;
+                padding: 1rem;
+                border-radius: 5px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+
+                &-item {
+                    color: #fff;
+                    font-size: 0.95rem;
+                    margin: 0.5rem 0;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
         }
