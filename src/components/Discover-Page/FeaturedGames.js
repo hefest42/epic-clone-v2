@@ -19,9 +19,8 @@ const FeaturedGames = () => {
     const currentDate = new Date();
 
     const clickOnFeaturedListItemHandler = (index, game) => {
-        if (index === activeListItem) {
-            navigate(`/store/game/${game.name}`);
-        } else setActiveListItem(index);
+        if (index === activeListItem) navigate(`/store/game/${game.name}`);
+        else setActiveListItem(index);
     };
 
     const gameReleaseDate = (releaseDate) => {
@@ -37,7 +36,7 @@ const FeaturedGames = () => {
     const wishlistButtonHandler = (game) => {
         if (!isAccountLoggedIn)
             return (
-                <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
+                <button className="center" onClick={() => navigate("/log-in")}>
                     <IoMdAddCircle /> ADD TO WISHLIST
                 </button>
             );
@@ -106,7 +105,6 @@ const FeaturedGames = () => {
                 {GAMES.map((game, i) => (
                     <div
                         key={i}
-                        to={"/game"}
                         className={
                             activeListItem === i ? "featured-item featured-active featured-fill" : "featured-item"
                         }

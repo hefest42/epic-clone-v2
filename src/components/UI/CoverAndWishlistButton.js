@@ -2,10 +2,12 @@ import React, { useState } from "react";
 
 import { IoMdAddCircle, IoMdCheckmarkCircle } from "react-icons/io";
 
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addGameToWishlist, removeGameFromWishlist } from "../../store/AccountSlice";
 
 export const WishlistButton = ({ game, mouseEnter }) => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const account = useSelector((state) => state.account.account);
@@ -14,7 +16,7 @@ export const WishlistButton = ({ game, mouseEnter }) => {
     const wishlistingGameHandler = (e) => {
         e.stopPropagation();
 
-        if (!isAccountLoggedIn) return;
+        if (!isAccountLoggedIn) navigate("/log-in");
 
         if (account.wishlist?.filter((wishlistGame) => wishlistGame.name === game.name).length > 0)
             dispatch(removeGameFromWishlist(game));
@@ -33,30 +35,26 @@ export const WishlistButton = ({ game, mouseEnter }) => {
 
     return (
         <>
-            {isAccountLoggedIn && (
-                <div
-                    className="wishlist-info"
-                    style={{
-                        opacity: `${showWishlistInfo ? "100" : "0"}`,
-                    }}
-                >
-                    Add to Wishlist
-                </div>
-            )}
+            <div
+                className="wishlist-info"
+                style={{
+                    opacity: `${showWishlistInfo ? "100" : "0"}`,
+                }}
+            >
+                Add to Wishlist
+            </div>
 
-            {isAccountLoggedIn && (
-                <button
-                    className="wishlist-button"
-                    onMouseEnter={() => {
-                        setShowWishlistInfo(true);
-                        mouseEnter();
-                    }}
-                    onMouseLeave={() => setShowWishlistInfo(false)}
-                    onClick={(e) => wishlistingGameHandler(e)}
-                >
-                    {wishlistButtonHandler(account.wishlist)}
-                </button>
-            )}
+            <button
+                className="wishlist-button"
+                onMouseEnter={() => {
+                    setShowWishlistInfo(true);
+                    mouseEnter();
+                }}
+                onMouseLeave={() => setShowWishlistInfo(false)}
+                onClick={(e) => wishlistingGameHandler(e)}
+            >
+                {wishlistButtonHandler(account.wishlist)}
+            </button>
         </>
     );
 };
