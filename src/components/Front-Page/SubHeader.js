@@ -1,33 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 
 import { useSelector } from "react-redux";
 
+import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
+
 const SubHeader = () => {
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const cart = useSelector((state) => state.cart.cart);
-    const [searchInput, setSearchInput] = useState("");
+    const [searchResult, setSearchResult] = useState([]);
 
-    const highlightString = (string) => {
-        const searchValue = searchInput;
+    const highlightString = (input) => {
+        if (input === "") {
+            setSearchResult([]);
+            return;
+        }
 
-        const reg = new RegExp(searchValue, "gi");
+        const searchInput = new RegExp(input, "gi");
 
-        const response = string.replace(reg, function (str) {
-            return "<span style='fontWeight: bold;'>" + str + "</span>";
-        });
+        const searchResultGames = DUMMY_CAROUSEL_GAMES.filter((game) => game.name.toLowerCase().includes(input)).slice(
+            0,
+            5
+        );
 
-        // console.log(reg);
-        console.log(response);
+        const highlightedSearchResults = searchResultGames.map((game) =>
+            game.name.replace(searchInput, function (str) {
+                return "<span>" + str + "</span>";
+            })
+        );
 
-        return response;
+        setSearchResult(highlightedSearchResults);
     };
-
-    useEffect(() => {
-        highlightString("UNCHARTED: Legacy of Thieves Collection");
-    }, [searchInput]);
 
     return (
         <div className="subHeader space-between">
@@ -38,27 +43,19 @@ const SubHeader = () => {
                         <input
                             type="text"
                             placeholder="Search the store"
-                            onChange={(e) => setSearchInput(e.target.value)}
+                            onChange={(e) => highlightString(e.target.value)}
                         />
                     </form>
 
-                    <ul className="subHeader-left__form-search">
-                        <Link to="/store" className="subHeader-left__form-search-item">
-                            {highlightString("UNCHARTED: Legacy of Thieves Collection")}
-                        </Link>
-                        <Link to="/store" className="subHeader-left__form-search-item">
-                            UNCHARTED: Legacy of Thieves Collection
-                        </Link>
-                        <Link to="/store" className="subHeader-left__form-search-item">
-                            UNCHARTED: Legacy of Thieves Collection
-                        </Link>
-                        <Link to="/store" className="subHeader-left__form-search-item">
-                            UNCHARTED: Legacy of Thieves Collection
-                        </Link>
-                        <Link to="/store" className="subHeader-left__form-search-item">
-                            UNCHARTED: Legacy of Thieves Collection
-                        </Link>
-                    </ul>
+                    {searchResult.length > 0 && (
+                        <ul className="subHeader-left__form-search">
+                            {searchResult.map((result, i) => (
+                                <Link key={i} to={`/store/game/${result}`} className="subHeader-left__form-search-item">
+                                    <div dangerouslySetInnerHTML={{ __html: result }}></div>
+                                </Link>
+                            ))}
+                        </ul>
+                    )}
                 </div>
 
                 <NavLink
@@ -116,3 +113,9 @@ const SubHeader = () => {
 };
 
 export default SubHeader;
+
+// const reg = new RegExp(searchValue, "gi");
+
+// const response = string.replace(reg, function (str) {
+//     return "<span style='fontWeight: bold;'>" + str + "</span>";
+// });

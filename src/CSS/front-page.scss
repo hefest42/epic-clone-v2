@@ -177,9 +177,14 @@
                 align-items: flex-start;
 
                 &-item {
-                    color: #fff;
+                    color: var(--account-text);
                     font-size: 0.95rem;
                     margin: 0.5rem 0;
+
+                    span {
+                        color: #fff;
+                        font-weight: bold;
+                    }
 
                     &:hover {
                         text-decoration: underline;
