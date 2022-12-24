@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
@@ -10,21 +10,22 @@ import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 const SubHeader = () => {
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const cart = useSelector((state) => state.cart.cart);
-    const [searchResulInput, setSearchResultInput] = useState("");
-    const [searchResult, setSearchResult] = useState([]);
+    const [searchResultInput, setSearchResultInput] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
 
-    const highlightString = (input) => {
-        if (input === "") {
-            setSearchResult([]);
+    useEffect(() => {
+        const inputedString = searchResultInput;
+
+        if (inputedString === "") {
+            setSearchResults([]);
             return;
         }
 
-        const searchInput = new RegExp(input, "gi");
+        const searchInput = new RegExp(inputedString, "gi");
 
-        const searchResultGames = DUMMY_CAROUSEL_GAMES.filter((game) => game.name.toLowerCase().includes(input)).slice(
-            0,
-            5
-        );
+        const searchResultGames = DUMMY_CAROUSEL_GAMES.filter((game) =>
+            game.name.toLowerCase().includes(inputedString)
+        ).slice(0, 5);
 
         const highlightedSearchResults = searchResultGames.map((game) =>
             game.name.replace(searchInput, function (str) {
@@ -32,8 +33,8 @@ const SubHeader = () => {
             })
         );
 
-        setSearchResult(highlightedSearchResults);
-    };
+        setSearchResults(highlightedSearchResults);
+    }, [searchResultInput]);
 
     return (
         <div className="subHeader space-between">
@@ -44,20 +45,24 @@ const SubHeader = () => {
                         <input
                             type="text"
                             placeholder="Search the store"
-                            onChange={(e) => highlightString(e.target.value)}
+                            onChange={(e) => setSearchResultInput(e.target.value)}
+                            value={searchResultInput}
                         />
                     </form>
 
-                    {searchResult.length > 0 && (
+                    {searchResults.length > 0 && (
                         <ul className="subHeader-left__form-search">
-                            {searchResult.map((result, i) => (
+                            {searchResults.map((result, i) => (
                                 <Link
                                     key={i}
-                                    to={`/store/game/${result.replace(/\s*\<.*?\>\s*/g, "")}`} // .replace until i figure out a better way
+                                    to={`/store/game/${result.replace(/\s*\<.*?\>\s*/g, " ")}`}
                                     className="subHeader-left__form-search-item"
                                 >
                                     <div
-                                        onClick={() => setSearchResult([])}
+                                        onClick={() => {
+                                            setSearchResults([]);
+                                            setSearchResultInput("");
+                                        }}
                                         dangerouslySetInnerHTML={{ __html: result }}
                                     ></div>
                                 </Link>
@@ -122,8 +127,24 @@ const SubHeader = () => {
 
 export default SubHeader;
 
-// const reg = new RegExp(searchValue, "gi");
+// const highlightString = (input) => {
+//     if (input === "") {
+//         setSearchResults([]);
+//         return;
+//     }
 
-// const response = string.replace(reg, function (str) {
-//     return "<span style='fontWeight: bold;'>" + str + "</span>";
-// });
+//     const searchInput = new RegExp(input, "gi");
+
+//     const searchResultGames = DUMMY_CAROUSEL_GAMES.filter((game) => game.name.toLowerCase().includes(input)).slice(
+//         0,
+//         5
+//     );
+
+//     const highlightedSearchResults = searchResultGames.map((game) =>
+//         game.name.replace(searchInput, function (str) {
+//             return "<span>" + str + "</span>";
+//         })
+//     );
+
+//     setSearchResults(highlightedSearchResults);
+// };

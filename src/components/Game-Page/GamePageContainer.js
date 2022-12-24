@@ -16,7 +16,9 @@ const GamePageContainer = () => {
 
     useEffect(() => {
         const gameName = location.pathname.split("/")[location.pathname.split("/").length - 1].replaceAll("%20", " ");
-        const filteredGame = DUMMY_CAROUSEL_GAMES.filter((game) => game.name === gameName);
+        const filteredGame = DUMMY_CAROUSEL_GAMES.filter(
+            (game) => game.name.replaceAll(" ", "") === gameName.replaceAll(" ", "")
+        );
         setGame(filteredGame[0]);
 
         const fetchTest = async () => {
