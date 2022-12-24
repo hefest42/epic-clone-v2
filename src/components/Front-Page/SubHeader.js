@@ -10,6 +10,7 @@ import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 const SubHeader = () => {
     const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
     const cart = useSelector((state) => state.cart.cart);
+    const [searchResulInput, setSearchResultInput] = useState("");
     const [searchResult, setSearchResult] = useState([]);
 
     const highlightString = (input) => {
@@ -50,8 +51,15 @@ const SubHeader = () => {
                     {searchResult.length > 0 && (
                         <ul className="subHeader-left__form-search">
                             {searchResult.map((result, i) => (
-                                <Link key={i} to={`/store/game/${result}`} className="subHeader-left__form-search-item">
-                                    <div dangerouslySetInnerHTML={{ __html: result }}></div>
+                                <Link
+                                    key={i}
+                                    to={`/store/game/${result.replace(/\s*\<.*?\>\s*/g, "")}`} // .replace until i figure out a better way
+                                    className="subHeader-left__form-search-item"
+                                >
+                                    <div
+                                        onClick={() => setSearchResult([])}
+                                        dangerouslySetInnerHTML={{ __html: result }}
+                                    ></div>
                                 </Link>
                             ))}
                         </ul>
