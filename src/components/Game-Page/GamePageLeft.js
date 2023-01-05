@@ -58,7 +58,7 @@ const GamePageLeft = ({ game, gameReviews }) => {
 
                                 <div className="game-page__info-reviews-link center">
                                     <a href={review.externalUrl} target="_blank">
-                                        READ THE FULLREVIEW
+                                        READ THE FULL REVIEW
                                     </a>
                                     <FiExternalLink />
                                 </div>
