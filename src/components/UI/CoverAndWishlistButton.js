@@ -13,7 +13,7 @@ export const WishlistButton = ({ game, mouseEnter }) => {
     const account = useSelector((state) => state.account.account);
     const [showWishlistInfo, setShowWishlistInfo] = useState(false);
 
-    const wishlistingGameHandler = (e) => {
+    const addOrRemoveGameFromWishlist = (e) => {
         e.stopPropagation();
 
         if (!isAccountLoggedIn) navigate("/log-in");
@@ -23,7 +23,7 @@ export const WishlistButton = ({ game, mouseEnter }) => {
         else dispatch(addGameToWishlist(game));
     };
 
-    const wishlistButtonHandler = (wishlist) => {
+    const displayCorrectWishlistButton = (wishlist) => {
         if (!isAccountLoggedIn || !wishlist) return <IoMdAddCircle />;
 
         return wishlist.filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
@@ -51,9 +51,9 @@ export const WishlistButton = ({ game, mouseEnter }) => {
                     mouseEnter(e);
                 }}
                 onMouseLeave={() => setShowWishlistInfo(false)}
-                onClick={(e) => wishlistingGameHandler(e)}
+                onClick={(e) => addOrRemoveGameFromWishlist(e)}
             >
-                {wishlistButtonHandler(account.wishlist)}
+                {displayCorrectWishlistButton(account.wishlist)}
             </button>
         </>
     );
