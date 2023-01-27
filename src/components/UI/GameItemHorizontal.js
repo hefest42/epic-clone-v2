@@ -9,14 +9,16 @@ const GameItemHorizontal = ({ game, clickHandler }) => {
     const [showImageCover, setShowImageCover] = useState(false);
     const [showWishlistButton, setShowWishlistButton] = useState(false);
 
-    const mouseEnterWishlistButtonHandler = () => {
+    const mouseEnterWishlistButtonHandler = (e) => {
+        e.stopPropagation();
         setShowWishlistButton(true);
         setShowImageCover(false);
     };
 
     return (
-        <div
+        <Link
             to={`/store/game/${game.name}`}
+            state={game}
             className="game-horizontal center-column"
             onMouseEnter={() => setShowWishlistButton(true)}
             onMouseLeave={() => setShowWishlistButton(false)}
@@ -25,7 +27,6 @@ const GameItemHorizontal = ({ game, clickHandler }) => {
                 className="game-horizontal__image"
                 onMouseEnter={() => setShowImageCover(true)}
                 onMouseLeave={() => setShowImageCover(false)}
-                onClick={(e) => clickHandler(e, game)}
             >
                 <img src={game.posterBig} alt={`${game.name} poster`} />
 
@@ -44,7 +45,7 @@ const GameItemHorizontal = ({ game, clickHandler }) => {
                 </div>
             </div>
             {showWishlistButton && <WishlistButton game={game} mouseEnter={mouseEnterWishlistButtonHandler} />}
-        </div>
+        </Link>
     );
 };
 
