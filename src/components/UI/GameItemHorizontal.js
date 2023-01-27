@@ -16,36 +16,38 @@ const GameItemHorizontal = ({ game, clickHandler }) => {
     };
 
     return (
-        <Link
-            to={`/store/game/${game.name}`}
-            state={game}
-            className="game-horizontal center-column"
-            onMouseEnter={() => setShowWishlistButton(true)}
-            onMouseLeave={() => setShowWishlistButton(false)}
-        >
-            <div
-                className="game-horizontal__image"
-                onMouseEnter={() => setShowImageCover(true)}
-                onMouseLeave={() => setShowImageCover(false)}
+        <>
+            <Link
+                to={`/store/game/${game.name}`}
+                state={game}
+                className="game-horizontal center-column"
+                onMouseEnter={() => setShowWishlistButton(true)}
+                onMouseLeave={() => setShowWishlistButton(false)}
             >
-                <img src={game.posterBig} alt={`${game.name} poster`} />
+                <div
+                    className="game-horizontal__image"
+                    onMouseEnter={() => setShowImageCover(true)}
+                    onMouseLeave={() => setShowImageCover(false)}
+                >
+                    <img src={game.posterBig} alt={`${game.name} poster`} />
 
-                {showImageCover && <ImageCover />}
-            </div>
-            <div className="game-horizontal__info">
-                <div className="game-horizontal__info-name">{game.name}</div>
-                <div className="game-horizontal__info-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id temporibus mollitia nobis possimus
-                    consequatur repellendus voluptas minima est tempore assumenda?
+                    {showImageCover && <ImageCover />}
                 </div>
-                <div className="game-horizontal__info-price">
-                    {game.price === "0"
-                        ? "Free to Play"
-                        : gamePriceHandler(game.gamegameOnSale, game.price, game.discount)}
+                <div className="game-horizontal__info">
+                    <div className="game-horizontal__info-name">{game.name}</div>
+                    <div className="game-horizontal__info-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Id temporibus mollitia nobis possimus
+                        consequatur repellendus voluptas minima est tempore assumenda?
+                    </div>
+                    <div className="game-horizontal__info-price">
+                        {game.price === "0"
+                            ? "Free to Play"
+                            : gamePriceHandler(game.gamegameOnSale, game.price, game.discount)}
+                    </div>
                 </div>
-            </div>
+            </Link>
             {showWishlistButton && <WishlistButton game={game} mouseEnter={mouseEnterWishlistButtonHandler} />}
-        </Link>
+        </>
     );
 };
 

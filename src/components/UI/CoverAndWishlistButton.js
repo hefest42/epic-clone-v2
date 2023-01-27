@@ -46,9 +46,9 @@ export const WishlistButton = ({ game, mouseEnter }) => {
 
             <button
                 className="wishlist-button"
-                onMouseEnter={() => {
+                onMouseEnter={(e) => {
                     setShowWishlistInfo(true);
-                    mouseEnter();
+                    mouseEnter(e);
                 }}
                 onMouseLeave={() => setShowWishlistInfo(false)}
                 onClick={(e) => wishlistingGameHandler(e)}

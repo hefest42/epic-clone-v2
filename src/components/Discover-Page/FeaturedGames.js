@@ -19,7 +19,7 @@ const FeaturedGames = () => {
     const currentDate = new Date();
 
     const clickOnFeaturedListItemHandler = (index, game) => {
-        if (index === activeListItem) navigate(`/store/game/${game.name}`);
+        if (index === activeListItem) navigate(`/store/game/${game.name}`, { state: game });
         else setActiveListItem(index);
     };
 
@@ -90,7 +90,7 @@ const FeaturedGames = () => {
                             <div className="featured-cover__info-buttons">
                                 <div className="featured-cover__info-buy">
                                     <p>{game.price === "0" ? "Free to Play" : `$${game.price}`}</p>
-                                    <button onClick={() => navigate(`/store/game/${game.name}`)}>
+                                    <button onClick={() => navigate(`/store/game/${game.name}`, { state: game })}>
                                         {buyButtonTextHandler(game.releaseDate)}
                                     </button>
                                 </div>
