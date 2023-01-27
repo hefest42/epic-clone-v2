@@ -19,6 +19,7 @@ const GameItem = ({ game }) => {
         <>
             <Link
                 to={`/store/game/${game.name}`}
+                state={game}
                 className="game"
                 onMouseEnter={() => setShowWishlistButton(true)}
                 onMouseLeave={() => setShowWishlistButton(false)}

@@ -53,7 +53,7 @@ const BrowseGames = () => {
     }, [activeFilters, priceFilter]);
 
     useEffect(() => {
-        // both genres & price
+        // checks for both genres & price in the url
         if (location.search.includes("genre=") && location.search.includes("-price=")) {
             const [genres, price] = location.search.split("-");
 

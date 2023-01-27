@@ -1,4 +1,4 @@
-export const API_URL = `https://epic-clone-53757-default-rtdb.europe-west1.firebasedatabase.app`;
+export const API_URL = `https://epic-clone-5fa09-default-rtdb.europe-west1.firebasedatabase.app`;
 
 export const calculateDiscount = (price, discount) => {
     return (price - price * (discount / 100)).toFixed(2);
