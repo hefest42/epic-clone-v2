@@ -103,6 +103,18 @@ const SignUpFormInputs = ({
                     onBlur={() => !passwordValue && setIsPasswordInputActive(false)}
                 />
             </div>
+
+            <div className="test" id="nav">
+                <input className="test-input" type="text" name="test-input" id="test-input" />
+                <label id="two" className="test-label" htmlFor="test-input">
+                    test
+                </label>
+            </div>
+
+            {/* <div id="nav">
+                <input type="text" placeholder="Search" name="search" />
+            </div>
+            <div id="two">Two jfjsoijfoisoivnosnovdnsnnoivnoinsionvonoiniso</div> */}
         </div>
     );
 };
