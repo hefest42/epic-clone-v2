@@ -19,7 +19,7 @@ const NewTopComingGames = () => {
     const clickHandler = (e, game) => {
         e.stopPropagation();
 
-        navigate(`/store/game/${game.name}`);
+        navigate(`/store/game/${game.name}`, { state: game });
 
         console.log("test");
     };
