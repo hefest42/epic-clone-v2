@@ -105,16 +105,11 @@ const SignUpFormInputs = ({
             </div>
 
             <div className="test" id="nav">
-                <input className="test-input" type="text" name="test-input" id="test-input" />
+                <input className="test-input" type="text" name="test-input" id="test-input" placeholder="test" />
                 <label id="two" className="test-label" htmlFor="test-input">
-                    test
+                    <span>test</span>
                 </label>
             </div>
-
-            {/* <div id="nav">
-                <input type="text" placeholder="Search" name="search" />
-            </div>
-            <div id="two">Two jfjsoijfoisoivnosnovdnsnnoivnoinsionvonoiniso</div> */}
         </div>
     );
 };
