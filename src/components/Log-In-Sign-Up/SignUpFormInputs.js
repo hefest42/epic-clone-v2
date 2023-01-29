@@ -93,9 +93,9 @@ const SignUpFormInputs = ({}) => {
                 </div>
             </div>
 
-            <div className={""}>
-                <button disabled={true}>SIGN UP</button>
-            </div>
+            <button className="button-blue" disabled={true}>
+                SIGN UP
+            </button>
         </form>
     );
 };
