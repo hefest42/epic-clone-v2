@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ inputType, inputName, inputValue, setInputValue }) => {
+const Input = ({ inputType, inputName, inputId, inputValue, setInputValue }) => {
     return (
         <div
             className={inputValue !== "" ? "input input-active input-color" : "input input-color"}
@@ -9,11 +9,11 @@ const Input = ({ inputType, inputName, inputValue, setInputValue }) => {
             <input
                 className="input-input"
                 type={inputType}
-                name="test-input"
-                id="test-input"
+                name={inputId}
+                id={inputId}
                 onChange={(e) => setInputValue(e.target.value)}
             />
-            <label id="two" className="input-label" htmlFor="test-input">
+            <label className="input-label" htmlFor={inputId}>
                 <span>{inputName}</span>
             </label>
         </div>

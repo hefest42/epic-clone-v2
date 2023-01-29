@@ -8,25 +8,14 @@ import { BiErrorCircle } from "react-icons/bi";
 import { API_URL } from "../../Helpers/HelperFunctions";
 
 const SignUp = () => {
-    const [firstNameInputValue, setFirstNameInputValue] = useState("");
-    const [lastNameInputValue, setLastNameInputValue] = useState("");
-    const [displayNameInputValue, setDisplayNameInputValue] = useState("");
-    const [emailAdressInputValue, setEmailAdressInputValue] = useState("");
-    const [passwordInputValue, setPasswordInputValue] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
     const newsRef = useRef();
     const termsOfServiceRef = useRef();
+    const [errorMessage, setErrorMessage] = useState("");
 
     const signUpSubmitHandler = async (e) => {
         e.preventDefault();
 
-        const firstName = firstNameInputValue;
-        const lastName = lastNameInputValue;
-        const displayName = displayNameInputValue;
-        const emailAddress = emailAdressInputValue;
-        const password = passwordInputValue;
-
-        if (!firstName || !lastName || !displayName || !emailAddress || !password) {
+        if (false) {
             setErrorMessage("Please make sure all input fields are filled out.");
             return;
         }
@@ -36,32 +25,18 @@ const SignUp = () => {
             return;
         }
 
-        const account = {
-            firstName,
-            lastName,
-            displayName,
-            emailAddress,
-            password,
-            userRecivesNews: newsRef.current.checked,
-        };
+        // try {
+        //     await fetch(`${API_URL}/accounts.json`, {
+        //         method: "POST",
+        //         body: JSON.stringify(account),
+        //         headers: {
+        //             "CONTENT-TYPE": "application/json",
+        //         },
+        //     });
+        // } catch (error) {
+        //     setErrorMessage("Oops. Something went wrong, please wait a bit and try again.");
+        // }
 
-        try {
-            await fetch(`${API_URL}/accounts.json`, {
-                method: "POST",
-                body: JSON.stringify(account),
-                headers: {
-                    "CONTENT-TYPE": "application/json",
-                },
-            });
-        } catch (error) {
-            setErrorMessage("Oops. Something went wrong, please wait a bit and try again.");
-        }
-
-        setFirstNameInputValue("");
-        setLastNameInputValue("");
-        setDisplayNameInputValue("");
-        setEmailAdressInputValue("");
-        setPasswordInputValue("");
         newsRef.current.checked = false;
         termsOfServiceRef.current.checked = false;
     };
@@ -85,18 +60,7 @@ const SignUp = () => {
                     </div>
                 )}
 
-                <SignUpFormInputs
-                    firstNameValue={firstNameInputValue}
-                    changeFirstNameValue={setFirstNameInputValue}
-                    lastNameValue={lastNameInputValue}
-                    changeLastNameValue={setLastNameInputValue}
-                    displayNameValue={displayNameInputValue}
-                    changeDisplayNameValue={setDisplayNameInputValue}
-                    emailAddressValue={emailAdressInputValue}
-                    changeEmailAddressValue={setEmailAdressInputValue}
-                    passwordValue={passwordInputValue}
-                    changePasswordValue={setPasswordInputValue}
-                />
+                <SignUpFormInputs />
 
                 <div className="sign-up__check">
                     <div className="sign-up__check-container">
@@ -119,17 +83,7 @@ const SignUp = () => {
                     </div>
                 </div>
 
-                <div
-                    className={
-                        firstNameInputValue &&
-                        lastNameInputValue &&
-                        displayNameInputValue &&
-                        emailAdressInputValue &&
-                        passwordInputValue
-                            ? "form-button form-button__active"
-                            : "form-button"
-                    }
-                >
+                <div className={""}>
                     <button>SIGN UP</button>
                 </div>
 
@@ -143,3 +97,6 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+// ? "form-button form-button__active"
+// : "form-button"
