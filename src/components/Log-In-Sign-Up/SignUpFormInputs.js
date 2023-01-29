@@ -106,15 +106,18 @@ const SignUpFormInputs = ({
                 />
             </div>
 
-            <div className={test !== "" ? "test test-active test-color" : "test test-color"} id="nav">
+            <div
+                className={test !== "" ? "input input-active input-color" : "input input-color"}
+                data-border={test ? "yes" : "no"}
+            >
                 <input
-                    className="test-input"
+                    className="input-input"
                     type="text"
                     name="test-input"
                     id="test-input"
                     onChange={(e) => setTest(e.target.value)}
                 />
-                <label id="two" className="test-label" htmlFor="test-input">
+                <label id="two" className="input-label" htmlFor="test-input">
                     <span>test</span>
                 </label>
             </div>
