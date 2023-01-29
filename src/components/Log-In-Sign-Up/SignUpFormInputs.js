@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import Input from "../UI/Input";
 
@@ -8,9 +8,15 @@ const SignUpFormInputs = ({}) => {
     const [displayNameValue, setDisplayNameValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
+    const newsRef = useRef();
+    const termsOfServiceRef = useRef();
+
+    const handleFormSubmit = (e) => {
+        console.log("hello");
+    };
 
     return (
-        <div className="sign-up__inputs">
+        <form onSubmit={handleFormSubmit} className="sign-up__inputs">
             <div className="sign-up__names">
                 <div className="sign-up__name">
                     <Input
@@ -19,6 +25,7 @@ const SignUpFormInputs = ({}) => {
                         inputId="first-name"
                         inputValue={firstNameValue}
                         setInputValue={setFirstNameValue}
+                        autocomplete="no"
                     />
                 </div>
                 <div className="sign-up__name">
@@ -28,6 +35,7 @@ const SignUpFormInputs = ({}) => {
                         inputId="last-name"
                         inputValue={lastNameValue}
                         setInputValue={setLastNameValue}
+                        autocomplete="no"
                     />
                 </div>
             </div>
@@ -39,6 +47,7 @@ const SignUpFormInputs = ({}) => {
                     inputId="display-name"
                     inputValue={displayNameValue}
                     setInputValue={setDisplayNameValue}
+                    autocomplete="no"
                 />
             </div>
 
@@ -49,6 +58,7 @@ const SignUpFormInputs = ({}) => {
                     inputId="email"
                     inputValue={emailValue}
                     setInputValue={setEmailValue}
+                    autocomplete="yes"
                 />
             </div>
             <div className="sign-up__inputs">
@@ -58,9 +68,35 @@ const SignUpFormInputs = ({}) => {
                     inputId="password"
                     inputValue={passwordValue}
                     setInputValue={setPasswordValue}
+                    autocomplete="yes"
                 />
             </div>
-        </div>
+
+            <div className="sign-up__check">
+                <div className="sign-up__check-container">
+                    <div>
+                        <input type="checkbox" name="offers" id="offers" ref={newsRef} />
+                    </div>
+                    <div>
+                        <label htmlFor="offers">
+                            I would like to receive news, surveys and special offers from Game Store
+                        </label>
+                    </div>
+                </div>
+                <div className="sign-up__check-container">
+                    <div>
+                        <input type="checkbox" name="terms" id="terms" ref={termsOfServiceRef} />
+                    </div>
+                    <div>
+                        <label htmlFor="terms">I have read and agree to the terms of service</label>
+                    </div>
+                </div>
+            </div>
+
+            <div className={""}>
+                <button disabled={true}>SIGN UP</button>
+            </div>
+        </form>
     );
 };
 

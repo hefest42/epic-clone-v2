@@ -115,6 +115,9 @@
 
     &__name {
         width: calc(50% - 0.5rem);
+        input {
+            width: 90%;
+        }
     }
 
     &__inputs {
