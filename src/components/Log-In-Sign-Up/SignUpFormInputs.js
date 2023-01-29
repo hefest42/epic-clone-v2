@@ -19,6 +19,8 @@ const SignUpFormInputs = ({
     const [isEmailInputActive, setIsEmailInputActive] = useState(false);
     const [isPasswordInputActive, setIsPasswordInputActive] = useState(false);
 
+    const [test, setTest] = useState("");
+
     return (
         <div className="sign-up__inputs">
             <div className="sign-up__names space-between">
@@ -104,8 +106,14 @@ const SignUpFormInputs = ({
                 />
             </div>
 
-            <div className="test" id="nav">
-                <input className="test-input" type="text" name="test-input" id="test-input" placeholder="test" />
+            <div className={test !== "" ? "test test-active test-color" : "test test-color"} id="nav">
+                <input
+                    className="test-input"
+                    type="text"
+                    name="test-input"
+                    id="test-input"
+                    onChange={(e) => setTest(e.target.value)}
+                />
                 <label id="two" className="test-label" htmlFor="test-input">
                     <span>test</span>
                 </label>
