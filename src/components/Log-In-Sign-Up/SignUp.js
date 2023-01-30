@@ -27,7 +27,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className="form sign-up center-column">
+        <div className="form center-column">
             <div className="form-inner">
                 <div className="form-logo center-column">
                     <Link to="/">

@@ -13,21 +13,12 @@ import { setLoggedInAccount } from "../../store/AccountSlice";
 const LogIn = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [emailInputValue, setEmailInputValue] = useState("");
-    const [passwordInputValue, setPasswordInputValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    const resetInputValues = () => {
-        setEmailInputValue("");
-        setPasswordInputValue("");
-    };
-
-    const formSubmitHandler = async (e) => {
-        e.preventDefault();
+    const logInAccountHandler = async (info) => {
         const allAccounts = [];
 
-        const email = emailInputValue;
-        const password = passwordInputValue;
+        const { email, password } = info;
 
         try {
             const response = await fetch(`${API_URL}/accounts.json`);
@@ -45,7 +36,6 @@ const LogIn = () => {
 
         if (!account) {
             setErrorMessage("Check your credentials and try again.");
-            resetInputValues();
             return;
         }
 
@@ -54,15 +44,12 @@ const LogIn = () => {
             navigate("/store");
         } else {
             setErrorMessage("Check your credentials and try again.");
-            resetInputValues();
             return;
         }
-
-        resetInputValues();
     };
 
     return (
-        <form className="form log-in center-column" onSubmit={formSubmitHandler}>
+        <div className="form log-in center-column">
             <div className="form-inner">
                 <div className="form-logo center-column">
                     <Link to="/">
@@ -80,27 +67,14 @@ const LogIn = () => {
                     </div>
                 )}
 
-                <LogInFormInputs
-                    emailValue={emailInputValue}
-                    changeEmailValue={setEmailInputValue}
-                    passwordValue={passwordInputValue}
-                    changePasswordValue={setPasswordInputValue}
-                />
-
-                <div
-                    className={
-                        emailInputValue && passwordInputValue ? "form-button form-button__active" : "form-button"
-                    }
-                >
-                    <button>LOG IN NOW</button>
-                </div>
+                <LogInFormInputs logInAccountHandler={logInAccountHandler} />
 
                 <div className="form-link center">
                     <div>Don't have an Game Store Account?</div>
                     <Link to="/sign-up">Sign Up</Link>
                 </div>
             </div>
-        </form>
+        </div>
     );
 };
 

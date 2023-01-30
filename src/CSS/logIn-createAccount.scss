@@ -5,6 +5,7 @@
     height: auto;
     padding: 3rem 1rem;
     border-radius: 5px;
+    margin-top: 8rem;
 
     &-inner {
         width: 80%;
@@ -52,9 +53,42 @@
         }
     }
 
+    &-names {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-name {
+        width: calc(50% - 0.5rem);
+        input {
+            width: 90%;
+        }
+    }
+
     &-inputs {
         width: 100%;
         margin-top: 1rem;
+    }
+
+    &-check {
+        width: 100%;
+        height: auto;
+
+        &-container {
+            font-size: 0.9rem;
+            margin: 1rem 0;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            input {
+                margin-right: 1rem;
+                width: 20px;
+                height: 20px;
+            }
+        }
     }
 
     &-link {
