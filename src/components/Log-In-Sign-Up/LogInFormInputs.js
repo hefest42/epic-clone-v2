@@ -1,43 +1,47 @@
 import React, { useState } from "react";
 
-const FormInputs = ({ emailValue, changeEmailValue, passwordValue, changePasswordValue }) => {
-    const [emailInputActive, setEmailInputActive] = useState(false);
-    const [passwordInputActive, setPasswordInputActive] = useState(false);
+import Input from "../UI/Input";
+
+const FormInputs = ({ logInAccountHandler }) => {
+    const [emailValue, setEmailValue] = useState("");
+    const [passwordValue, setPasswordValue] = useState("");
+
+    const isButtonDisabled = !emailValue.length > 0 || !passwordValue.length > 0;
+
+    const submitLoginInformation = (e) => {
+        e.preventDefault();
+
+        logInAccountHandler({ email: emailValue, password: passwordValue });
+    };
 
     return (
-        <div className="form-inputs">
-            <div className={emailInputActive ? "form-input form-input__active" : "form-input"}>
-                <div className="form-input__desc">
-                    <label htmlFor="email">Email Address</label>
-                </div>
-
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    onClick={() => setEmailInputActive(true)}
-                    onChange={(e) => changeEmailValue(e.target.value)}
-                    onBlur={() => !emailValue && setEmailInputActive(false)}
-                    value={emailValue}
+        <form className="form-inputs" onSubmit={submitLoginInformation}>
+            <div className="sign-up__inputs">
+                <Input
+                    inputType="email"
+                    inputName="Email"
+                    inputId="email"
+                    inputValue={emailValue}
+                    setInputValue={setEmailValue}
+                    autocomplete="yes"
                 />
             </div>
 
-            <div className={passwordInputActive ? "form-input form-input__active" : "form-input"}>
-                <div className="form-input__desc">
-                    <label htmlFor="password">Password</label>
-                </div>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    onClick={() => setPasswordInputActive(true)}
-                    onChange={(e) => changePasswordValue(e.target.value)}
-                    onBlur={() => !passwordValue && setPasswordInputActive(false)}
-                    value={passwordValue}
-                    autoComplete="yes"
+            <div className="sign-up__inputs">
+                <Input
+                    inputType="password"
+                    inputName="Password"
+                    inputId="password"
+                    inputValue={passwordValue}
+                    setInputValue={setPasswordValue}
+                    autocomplete="yes"
                 />
             </div>
-        </div>
+
+            <button className="button-blue sign-up__inputs" disabled={isButtonDisabled}>
+                LOG IN NOW
+            </button>
+        </form>
     );
 };
 
