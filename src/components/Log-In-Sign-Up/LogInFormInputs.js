@@ -30,7 +30,7 @@ const FormInputs = ({ logInAccountHandler }) => {
                 />
             </div>
 
-            <div className="sign-up__inputs">
+            <div className="form-inputs">
                 <Input
                     inputType="password"
                     inputName="Password"
@@ -41,7 +41,7 @@ const FormInputs = ({ logInAccountHandler }) => {
                 />
             </div>
 
-            <button className="button-blue sign-up__inputs" disabled={isButtonDisabled}>
+            <button className="button-blue form-inputs" disabled={isButtonDisabled}>
                 LOG IN NOW
             </button>
         </form>

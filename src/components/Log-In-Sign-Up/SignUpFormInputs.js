@@ -48,8 +48,8 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
 
     return (
         <form onSubmit={handleFormSubmit} className="sign-up__inputs">
-            <div className="sign-up__names">
-                <div className="sign-up__name">
+            <div className="form-names">
+                <div className="form-name">
                     <Input
                         inputType="text"
                         inputName="First Name"
@@ -59,7 +59,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                         autocomplete="no"
                     />
                 </div>
-                <div className="sign-up__name">
+                <div className="form-name">
                     <Input
                         inputType="text"
                         inputName="Last Name"
@@ -71,7 +71,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                 </div>
             </div>
 
-            <div className="sign-up__inputs">
+            <div className="form-inputs">
                 <Input
                     inputType="text"
                     inputName="Display Name"
@@ -82,7 +82,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                 />
             </div>
 
-            <div className="sign-up__inputs">
+            <div className="form-inputs">
                 <Input
                     inputType="email"
                     inputName="Email"
@@ -92,7 +92,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                     autocomplete="yes"
                 />
             </div>
-            <div className="sign-up__inputs">
+            <div className="form-inputs">
                 <Input
                     inputType="password"
                     inputName="Password"
@@ -103,8 +103,8 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                 />
             </div>
 
-            <div className="sign-up__check">
-                <div className="sign-up__check-container">
+            <div className="form-check">
+                <div className="form-check-container">
                     <div>
                         <input type="checkbox" name="offers" id="offers" ref={newsRef} />
                     </div>
@@ -114,7 +114,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                         </label>
                     </div>
                 </div>
-                <div className="sign-up__check-container">
+                <div className="form-check-container">
                     <div>
                         <input type="checkbox" name="terms" id="terms" ref={termsOfServiceRef} />
                     </div>
