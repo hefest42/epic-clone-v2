@@ -4,7 +4,7 @@ import Input from "../UI/Input";
 
 //TODO make css for LogIn & SignUp more uniform
 
-const SignUpFormInputs = ({}) => {
+const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
     const [firstNameValue, setFirstNameValue] = useState("");
     const [lastNameValue, setLastNameValue] = useState("");
     const [displayNameValue, setDisplayNameValue] = useState("");
@@ -21,7 +21,29 @@ const SignUpFormInputs = ({}) => {
         passwordValue.length < 5;
 
     const handleFormSubmit = (e) => {
-        console.log("hello");
+        e.preventDefault();
+
+        if (!termsOfServiceRef.current.checked) {
+            setErrorMessageHandler("In order to make an account, you need to agree to the terms of service.");
+            return;
+        }
+
+        const account = {
+            firstName: firstNameValue,
+            lastNameValue: lastNameValue,
+            displayName: displayNameValue,
+            emailAddress: emailValue,
+            password: passwordValue,
+            userRecivesNews: newsRef.current.checked,
+        };
+
+        setFirstNameValue("");
+        setLastNameValue("");
+        setDisplayNameValue("");
+        setEmailValue("");
+        setPasswordValue("");
+
+        createANewAccount(account);
     };
 
     return (

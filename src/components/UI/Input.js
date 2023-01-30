@@ -12,6 +12,7 @@ const Input = ({ inputType, inputName, inputId, inputValue, setInputValue, autoc
                 name={inputId}
                 id={inputId}
                 autoComplete={autocomplete}
+                value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
             />
             <label className="input-label" htmlFor={inputId}>
