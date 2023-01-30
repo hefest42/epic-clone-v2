@@ -32,20 +32,20 @@ const LogIn = () => {
             setErrorMessage("Something f'd up");
         }
 
-        // const [account] = allAccounts.filter((acc) => acc.emailAddress === email);
+        const [account] = allAccounts.filter((acc) => acc.emailAddress === email);
 
-        // if (!account) {
-        //     setErrorMessage("Check your credentials and try again.");
-        //     return;
-        // }
+        if (!account) {
+            setErrorMessage("Check your credentials and try again.");
+            return;
+        }
 
-        // if (account.password === password) {
-        //     dispatch(setLoggedInAccount(account));
-        //     navigate("/store");
-        // } else {
-        //     setErrorMessage("Check your credentials and try again.");
-        //     return;
-        // }
+        if (account.password === password) {
+            dispatch(setLoggedInAccount(account));
+            navigate("/store");
+        } else {
+            setErrorMessage("Check your credentials and try again.");
+            return;
+        }
     };
 
     return (

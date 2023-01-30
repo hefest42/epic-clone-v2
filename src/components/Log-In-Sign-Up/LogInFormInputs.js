@@ -12,6 +12,9 @@ const FormInputs = ({ logInAccountHandler }) => {
         e.preventDefault();
 
         logInAccountHandler({ email: emailValue, password: passwordValue });
+
+        setEmailValue("");
+        setPasswordValue("");
     };
 
     return (
