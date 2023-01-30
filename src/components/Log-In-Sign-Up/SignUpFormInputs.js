@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 
 import Input from "../UI/Input";
 
+//TODO make css for LogIn & SignUp more uniform
+
 const SignUpFormInputs = ({}) => {
     const [firstNameValue, setFirstNameValue] = useState("");
     const [lastNameValue, setLastNameValue] = useState("");
@@ -10,6 +12,13 @@ const SignUpFormInputs = ({}) => {
     const [passwordValue, setPasswordValue] = useState("");
     const newsRef = useRef();
     const termsOfServiceRef = useRef();
+
+    const buttonDisable =
+        !firstNameValue.length < 0 ||
+        !lastNameValue.length < 0 ||
+        !displayNameValue.length < 0 ||
+        !emailValue.length < 0 ||
+        passwordValue.length < 5;
 
     const handleFormSubmit = (e) => {
         console.log("hello");
@@ -93,7 +102,7 @@ const SignUpFormInputs = ({}) => {
                 </div>
             </div>
 
-            <button className="button-blue" disabled={true}>
+            <button className="button-blue" disabled={buttonDisable}>
                 SIGN UP
             </button>
         </form>
