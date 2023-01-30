@@ -123,6 +123,7 @@ body {
 //
 .input {
     position: relative;
+    width: 100%;
     height: 4rem;
     border-radius: 5px;
     cursor: text;
@@ -202,13 +203,31 @@ body {
     }
 
     label {
-        background-color: #5c03032c;
         color: var(--link-gray);
     }
 
     input {
         background-color: transparent;
         color: #fff;
+    }
+}
+
+.button-blue {
+    background-color: var(--main-blue);
+    color: #fff;
+    width: 100%;
+    height: 3rem;
+    font-weight: bold;
+    font-size: 0.7rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    pointer-events: all;
+
+    &:disabled {
+        background-color: #004c97;
+        color: rgb(160, 160, 160);
+        pointer-events: none;
     }
 }
 

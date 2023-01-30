@@ -1,127 +1,133 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
-//TODO change Input names to be more descriptive
-const SignUpFormInputs = ({
-    firstNameValue,
-    changeFirstNameValue,
-    lastNameValue,
-    changeLastNameValue,
-    displayNameValue,
-    changeDisplayNameValue,
-    emailAddressValue,
-    changeEmailAddressValue,
-    passwordValue,
-    changePasswordValue,
-}) => {
-    const [isFirstNameInputActive, setIsFirstNameInputActive] = useState(false);
-    const [isLastNameInputActive, setIsLastNameInputActive] = useState(false);
-    const [isDisplayNameInputActive, setIsDisplayNameInputActive] = useState(false);
-    const [isEmailInputActive, setIsEmailInputActive] = useState(false);
-    const [isPasswordInputActive, setIsPasswordInputActive] = useState(false);
+import Input from "../UI/Input";
 
-    const [test, setTest] = useState("");
+//TODO make css for LogIn & SignUp more uniform
+
+const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
+    const [firstNameValue, setFirstNameValue] = useState("");
+    const [lastNameValue, setLastNameValue] = useState("");
+    const [displayNameValue, setDisplayNameValue] = useState("");
+    const [emailValue, setEmailValue] = useState("");
+    const [passwordValue, setPasswordValue] = useState("");
+    const newsRef = useRef();
+    const termsOfServiceRef = useRef();
+
+    const buttonDisable =
+        !firstNameValue.length < 0 ||
+        !lastNameValue.length < 0 ||
+        !displayNameValue.length < 0 ||
+        !emailValue.length < 0 ||
+        passwordValue.length < 5;
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+
+        if (!termsOfServiceRef.current.checked) {
+            setErrorMessageHandler("In order to make an account, you need to agree to the terms of service.");
+            return;
+        }
+
+        const account = {
+            firstName: firstNameValue,
+            lastNameValue: lastNameValue,
+            displayName: displayNameValue,
+            emailAddress: emailValue,
+            password: passwordValue,
+            userRecivesNews: newsRef.current.checked,
+        };
+
+        setFirstNameValue("");
+        setLastNameValue("");
+        setDisplayNameValue("");
+        setEmailValue("");
+        setPasswordValue("");
+
+        createANewAccount(account);
+    };
 
     return (
-        <div className="sign-up__inputs">
-            <div className="sign-up__names space-between">
-                <div className={isFirstNameInputActive ? "form-input form-input__active" : "form-input"}>
-                    <div className="form-input__desc">
-                        <label htmlFor="fname">First Name</label>
-                    </div>
-
-                    <input
-                        type="text"
-                        id="fname"
-                        name="fname"
-                        value={firstNameValue ? firstNameValue : ""} // not really sure about this but i'll leave it for now
-                        onClick={() => setIsFirstNameInputActive(true)}
-                        onChange={(e) => changeFirstNameValue(e.target.value)}
-                        onBlur={() => !firstNameValue && setIsFirstNameInputActive(false)}
+        <form onSubmit={handleFormSubmit} className="sign-up__inputs">
+            <div className="sign-up__names">
+                <div className="sign-up__name">
+                    <Input
+                        inputType="text"
+                        inputName="First Name"
+                        inputId="first-name"
+                        inputValue={firstNameValue}
+                        setInputValue={setFirstNameValue}
+                        autocomplete="no"
                     />
                 </div>
-
-                <div className={isLastNameInputActive ? "form-input form-input__active" : "form-input"}>
-                    <div className="form-input__desc">
-                        <label htmlFor="lname">Last Name</label>
-                    </div>
-
-                    <input
-                        type="text"
-                        id="lname"
-                        name="lname"
-                        value={lastNameValue ? lastNameValue : ""}
-                        onClick={() => setIsLastNameInputActive(true)}
-                        onChange={(e) => changeLastNameValue(e.target.value)}
-                        onBlur={() => !lastNameValue && setIsLastNameInputActive(false)}
+                <div className="sign-up__name">
+                    <Input
+                        inputType="text"
+                        inputName="Last Name"
+                        inputId="last-name"
+                        inputValue={lastNameValue}
+                        setInputValue={setLastNameValue}
+                        autocomplete="no"
                     />
                 </div>
             </div>
 
-            <div className={isDisplayNameInputActive ? "form-input form-input__active" : "form-input"}>
-                <div className="form-input__desc">
-                    <label htmlFor="dname">Display Name</label>
+            <div className="sign-up__inputs">
+                <Input
+                    inputType="text"
+                    inputName="Display Name"
+                    inputId="display-name"
+                    inputValue={displayNameValue}
+                    setInputValue={setDisplayNameValue}
+                    autocomplete="no"
+                />
+            </div>
+
+            <div className="sign-up__inputs">
+                <Input
+                    inputType="email"
+                    inputName="Email"
+                    inputId="email"
+                    inputValue={emailValue}
+                    setInputValue={setEmailValue}
+                    autocomplete="yes"
+                />
+            </div>
+            <div className="sign-up__inputs">
+                <Input
+                    inputType="password"
+                    inputName="Password"
+                    inputId="password"
+                    inputValue={passwordValue}
+                    setInputValue={setPasswordValue}
+                    autocomplete="yes"
+                />
+            </div>
+
+            <div className="sign-up__check">
+                <div className="sign-up__check-container">
+                    <div>
+                        <input type="checkbox" name="offers" id="offers" ref={newsRef} />
+                    </div>
+                    <div>
+                        <label htmlFor="offers">
+                            I would like to receive news, surveys and special offers from Game Store
+                        </label>
+                    </div>
                 </div>
-
-                <input
-                    type="text"
-                    id="dname"
-                    name="dname"
-                    value={displayNameValue ? displayNameValue : ""}
-                    onClick={() => setIsDisplayNameInputActive(true)}
-                    onChange={(e) => changeDisplayNameValue(e.target.value)}
-                    onBlur={() => !displayNameValue && setIsDisplayNameInputActive(false)}
-                />
-            </div>
-
-            <div className={isEmailInputActive ? "form-input form-input__active" : "form-input"}>
-                <div className="form-input__desc">
-                    <label htmlFor="email">Email Address</label>
+                <div className="sign-up__check-container">
+                    <div>
+                        <input type="checkbox" name="terms" id="terms" ref={termsOfServiceRef} />
+                    </div>
+                    <div>
+                        <label htmlFor="terms">I have read and agree to the terms of service</label>
+                    </div>
                 </div>
-
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={emailAddressValue ? emailAddressValue : ""}
-                    onClick={() => setIsEmailInputActive(true)}
-                    onChange={(e) => changeEmailAddressValue(e.target.value)}
-                    onBlur={() => !emailAddressValue && setIsEmailInputActive(false)}
-                />
             </div>
 
-            <div className={isPasswordInputActive ? "form-input form-input__active" : "form-input"}>
-                <div className="form-input__desc">
-                    <label htmlFor="password">Password</label>
-                </div>
-
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={passwordValue ? passwordValue : ""}
-                    autoComplete="yes"
-                    onClick={() => setIsPasswordInputActive(true)}
-                    onChange={(e) => changePasswordValue(e.target.value)}
-                    onBlur={() => !passwordValue && setIsPasswordInputActive(false)}
-                />
-            </div>
-
-            <div
-                className={test !== "" ? "input input-active input-color" : "input input-color"}
-                data-border={test ? "yes" : "no"}
-            >
-                <input
-                    className="input-input"
-                    type="text"
-                    name="test-input"
-                    id="test-input"
-                    onChange={(e) => setTest(e.target.value)}
-                />
-                <label id="two" className="input-label" htmlFor="test-input">
-                    <span>test</span>
-                </label>
-            </div>
-        </div>
+            <button className="button-blue" disabled={buttonDisable}>
+                SIGN UP
+            </button>
+        </form>
     );
 };
 
