@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import AccountSettingsInput from "../UI/AccountSettingsInput";
+
 import { FiEdit2 } from "react-icons/fi";
 
 import { useNavigate } from "react-router-dom";
@@ -33,6 +35,8 @@ const AccountSettings = ({
         };
     };
 
+    console.log(accountInformation);
+
     useEffect(() => {
         if (!isAccountLoggedIn) {
             navigate("/log-in");
@@ -58,30 +62,19 @@ const AccountSettings = ({
             </div>
 
             <div className="account-section space-between">
-                <div className="account-settings__inputs-container">
-                    <div className={"account-settings__input"}>
-                        <label htmlFor="">DISPLAY NAME</label>
-                        <div className="account-settings__input-filler"></div>
-                        <input type="text" defaultValue={isAccountLoggedIn ? account.displayName : ""} />
-                    </div>
-                    <button className="account-settings__button" onClick={() => setShowDisplayNameModal(true)}>
-                        <FiEdit2 />
-                    </button>
-                </div>
+                <AccountSettingsInput
+                    name="DISPLAY NAME"
+                    isAccountLoggedIn={isAccountLoggedIn}
+                    value={account.displayName}
+                    showModal={setShowDisplayNameModal}
+                />
 
-                <div className="account-settings__inputs-container">
-                    <div className={"account-settings__input"}>
-                        <label htmlFor="">EMAIL ADDRESS</label>
-                        <div className="account-settings__input-filler"></div>
-                        <input
-                            type="text"
-                            defaultValue={isAccountLoggedIn ? accountInformation.hiddenEmailAddress : ""}
-                        />
-                    </div>
-                    <button className="account-settings__button" onClick={() => setShowChangeEmailAddressModal(true)}>
-                        <FiEdit2 />
-                    </button>
-                </div>
+                <AccountSettingsInput
+                    name={"EMAIL ADDRESS"}
+                    isAccountLoggedIn={isAccountLoggedIn}
+                    value={accountInformation.hiddenEmailAddress}
+                    showModal={setShowChangeEmailAddressModal}
+                />
             </div>
 
             <div>
@@ -93,27 +86,19 @@ const AccountSettings = ({
             </div>
 
             <div className="account-section space-between">
-                <div className="account-settings__inputs-container">
-                    <div className={"account-settings__input"}>
-                        <label htmlFor="">FIRST NAME</label>
-                        <div className="account-settings__input-filler"></div>
-                        <input type="text" defaultValue={isAccountLoggedIn ? accountInformation.hiddenFirstName : ""} />
-                    </div>
-                    <button className="account-settings__button" onClick={() => setShowChangeFirstNameModal(true)}>
-                        <FiEdit2 />
-                    </button>
-                </div>
+                <AccountSettingsInput
+                    name={"FIRST NAME"}
+                    isAccountLoggedIn={isAccountLoggedIn}
+                    value={accountInformation.hiddenFirstName}
+                    showModal={setShowChangeFirstNameModal}
+                />
 
-                <div className="account-settings__inputs-container">
-                    <div className={"account-settings__input"}>
-                        <label htmlFor="">LAST NAME</label>
-                        <div className="account-settings__input-filler"></div>
-                        <input type="text" defaultValue={isAccountLoggedIn ? accountInformation.hiddenFirstName : ""} />
-                    </div>
-                    <button className="account-settings__button" onClick={() => setShowChangeLastNameModal(true)}>
-                        <FiEdit2 />
-                    </button>
-                </div>
+                <AccountSettingsInput
+                    name={"LAST NAME"}
+                    isAccountLoggedIn={isAccountLoggedIn}
+                    value={accountInformation.hiddenLastName}
+                    showModal={setShowChangeLastNameModal}
+                />
             </div>
 
             <div className="account-id">
