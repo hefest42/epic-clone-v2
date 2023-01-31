@@ -7,13 +7,13 @@ import { ImKey } from "react-icons/im";
 
 const AccountCategories = () => {
     const location = useLocation();
-    const [activeCategory, setActiveCategory] = useState("");
+    const [activeCategory, setActiveCategory] = useState("settings");
 
-    useEffect(() => {
-        const path = location.pathname.split("/")[location.pathname.split("/").length - 1];
+    // useEffect(() => {
+    //     const path = location.state.path;
 
-        setActiveCategory(path);
-    }, [location.pathname]);
+    //     setActiveCategory(path);
+    // }, [location.pathname]);
 
     return (
         <div className="account-container__left">

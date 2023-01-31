@@ -42,8 +42,6 @@ const AccountSettings = ({
         setAccountInformation(displayAccountInformation());
     }, []);
 
-    // const { hiddenEmailAddress, hiddenFirstName, hiddenLastName } = displayAccountInformation();
-
     return (
         <div className="account-settings">
             <div>
@@ -61,7 +59,7 @@ const AccountSettings = ({
 
             <div className="account-section space-between">
                 <div className="account-settings__inputs-container">
-                    <div className={isAccountLoggedIn ? "account-settings__input" : "account-settings__input"}>
+                    <div className={"account-settings__input"}>
                         <label htmlFor="">DISPLAY NAME</label>
                         <div className="account-settings__input-filler"></div>
                         <input type="text" defaultValue={isAccountLoggedIn ? account.displayName : ""} />
@@ -72,7 +70,7 @@ const AccountSettings = ({
                 </div>
 
                 <div className="account-settings__inputs-container">
-                    <div className={isAccountLoggedIn ? "account-settings__input" : "account-settings__input"}>
+                    <div className={"account-settings__input"}>
                         <label htmlFor="">EMAIL ADDRESS</label>
                         <div className="account-settings__input-filler"></div>
                         <input
@@ -96,7 +94,7 @@ const AccountSettings = ({
 
             <div className="account-section space-between">
                 <div className="account-settings__inputs-container">
-                    <div className={isAccountLoggedIn ? "account-settings__input" : "account-settings__input"}>
+                    <div className={"account-settings__input"}>
                         <label htmlFor="">FIRST NAME</label>
                         <div className="account-settings__input-filler"></div>
                         <input type="text" defaultValue={isAccountLoggedIn ? accountInformation.hiddenFirstName : ""} />
@@ -107,7 +105,7 @@ const AccountSettings = ({
                 </div>
 
                 <div className="account-settings__inputs-container">
-                    <div className={isAccountLoggedIn ? "account-settings__input" : "account-settings__input"}>
+                    <div className={"account-settings__input"}>
                         <label htmlFor="">LAST NAME</label>
                         <div className="account-settings__input-filler"></div>
                         <input type="text" defaultValue={isAccountLoggedIn ? accountInformation.hiddenFirstName : ""} />

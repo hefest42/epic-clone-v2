@@ -20,7 +20,7 @@ const AccountDropdownMenu = () => {
         e.preventDefault();
         e.stopPropagation();
 
-        navigate("/account/settings");
+        navigate("/account/settings", { state: { path: "settings" } });
     };
 
     return (
