@@ -98,6 +98,7 @@
     }
 
     &__input {
+        width: 100%;
         position: relative;
         background-color: #eee;
         color: var(--account-text);
@@ -110,15 +111,16 @@
         justify-content: space-between;
         align-items: flex-start;
 
-        label {
-            position: absolute;
-            top: 5%;
-            left: 5%;
+        &-label {
+            width: 100%;
+            height: 40%;
+            margin-left: 1rem;
+            margin-top: 0.3rem;
             font-size: 0.6rem;
             cursor: inherit;
         }
 
-        input {
+        &-value {
             background-color: transparent;
             color: inherit;
             width: 18rem;
@@ -488,6 +490,7 @@
     .account-settings {
         width: 100%;
         padding: 3rem;
+        pointer-events: none;
 
         &__inputs-container {
             width: 100%;
