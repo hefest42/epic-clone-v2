@@ -57,6 +57,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                         inputValue={firstNameValue}
                         setInputValue={setFirstNameValue}
                         autocomplete="no"
+                        theme="dark"
                     />
                 </div>
                 <div className="form-name">
@@ -67,6 +68,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                         inputValue={lastNameValue}
                         setInputValue={setLastNameValue}
                         autocomplete="no"
+                        theme="dark"
                     />
                 </div>
             </div>
@@ -79,6 +81,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                     inputValue={displayNameValue}
                     setInputValue={setDisplayNameValue}
                     autocomplete="no"
+                    theme="dark"
                 />
             </div>
 
@@ -90,6 +93,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                     inputValue={emailValue}
                     setInputValue={setEmailValue}
                     autocomplete="yes"
+                    theme="dark"
                 />
             </div>
             <div className="form-inputs">
@@ -100,6 +104,7 @@ const SignUpFormInputs = ({ setErrorMessageHandler, createANewAccount }) => {
                     inputValue={passwordValue}
                     setInputValue={setPasswordValue}
                     autocomplete="yes"
+                    theme="dark"
                 />
             </div>
 

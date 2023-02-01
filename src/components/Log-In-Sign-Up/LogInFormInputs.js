@@ -27,6 +27,7 @@ const FormInputs = ({ logInAccountHandler }) => {
                     inputValue={emailValue}
                     setInputValue={setEmailValue}
                     autocomplete="yes"
+                    theme="dark"
                 />
             </div>
 
@@ -38,6 +39,7 @@ const FormInputs = ({ logInAccountHandler }) => {
                     inputValue={passwordValue}
                     setInputValue={setPasswordValue}
                     autocomplete="yes"
+                    theme="dark"
                 />
             </div>
 
