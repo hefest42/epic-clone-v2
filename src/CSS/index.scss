@@ -186,7 +186,7 @@ body {
     }
 }
 
-.input-color {
+.input-color__dark {
     border-style: solid;
     border-width: 1px;
 
@@ -209,6 +209,32 @@ body {
     input {
         background-color: transparent;
         color: #fff;
+    }
+}
+
+.input-color__light {
+    border-style: solid;
+    border-width: 1px;
+
+    &[data-border="yes"] {
+        border-color: var(--main-blue);
+    }
+
+    &[data-border="no"] {
+        border-color: var(--link-gray);
+    }
+
+    &:focus-within {
+        border-color: var(--main-blue);
+    }
+
+    label {
+        color: var(--link-gray);
+    }
+
+    input {
+        background-color: transparent;
+        color: var(--account-text);
     }
 }
 

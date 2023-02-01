@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import Input from "../UI/Input";
+
 import { BiErrorCircle } from "react-icons/bi";
 
 import { useNavigate } from "react-router-dom";
@@ -13,59 +15,54 @@ const PasswordSettings = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const account = useSelector((state) => state.account.account);
-    const [isCurrentPasswordActive, setIsCurrentPasswordActive] = useState(false);
     const [currentPasswordValue, setCurrentPasswordValue] = useState("");
-    const [isNewPasswordActive, setIsNewPasswordActive] = useState(false);
     const [newPasswordValue, setNewPasswordValue] = useState("");
-    const [isRetypePasswordActive, setIsRetypePasswordActive] = useState(false);
-    const [retypePasswordValue, setRetypePasswordValue] = useState("");
+    const [retypeNewPasswordValue, setRetypeNewPasswordValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    const clearAllFields = () => {
-        setCurrentPasswordValue("");
-        setNewPasswordValue("");
-        setRetypePasswordValue("");
-    };
+    // const clearAllFields = () => {
+    //     setCurrentPasswordValue("");
+    //     setNewPasswordValue("");
+    //     setRetypePasswordValue("");
+    // };
+
     const changePasswordHandler = async (e) => {
         e.preventDefault();
 
         const password = account.password;
-        const currentPassword = currentPasswordValue;
-        const newPassword = newPasswordValue;
-        const retypedNewPassword = retypePasswordValue;
 
-        if (!currentPassword || !newPassword || !retypedNewPassword) {
+        if (false) {
             setErrorMessage("Please fill out all fields before continuing.");
-            clearAllFields();
+            // clearAllFields();
             return;
         }
-        if (currentPassword !== password) {
+        if (false) {
             setErrorMessage("Password don't match. Please try again.");
-            clearAllFields();
+            // clearAllFields();
             return;
         }
 
-        if (newPassword !== retypedNewPassword) {
+        if (false) {
             setErrorMessage("Password don't match. Please try again. test");
-            clearAllFields();
+            // clearAllFields();
             return;
         }
 
-        try {
-            const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
-                method: "PATCH",
-                body: JSON.stringify({ password: newPassword }),
-                headers: {
-                    "CONTENT-TYPE": "application/json",
-                },
-            });
-        } catch (error) {
-            console.error(error);
-            setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
-        }
+        // try {
+        //     const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
+        //         method: "PATCH",
+        //         body: JSON.stringify({ password: newPassword }),
+        //         headers: {
+        //             "CONTENT-TYPE": "application/json",
+        //         },
+        //     });
+        // } catch (error) {
+        //     console.error(error);
+        //     setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
+        // }
 
-        navigate("/log-in");
-        dispatch(logOutAccount());
+        // navigate("/log-in");
+        // dispatch(logOutAccount());
     };
 
     return (
@@ -93,26 +90,15 @@ const PasswordSettings = () => {
                         <div className="password-settings__section-title">CURRENT PASSWORD</div>
                         <div className="password-settings__section-subtitle">REQUIRED</div>
                     </div>
-                    <div
-                        className={
-                            isCurrentPasswordActive
-                                ? "settings-modal__input settings-modal__input-active"
-                                : "settings-modal__input"
-                        }
-                    >
-                        <div className="settings-modal__input-desc">
-                            <label htmlFor="currentPassword">Current Password</label>
-                        </div>
-
-                        <input
-                            type="password"
-                            id="currentPassword"
-                            name="currentPassword"
-                            autoComplete="no"
-                            onClick={() => setIsCurrentPasswordActive(true)}
-                            onChange={(e) => setCurrentPasswordValue(e.target.value)}
-                            onBlur={() => !currentPasswordValue && setIsCurrentPasswordActive(false)}
-                            value={currentPasswordValue}
+                    <div className={""}>
+                        <Input
+                            inputType="password"
+                            inputName="Current Password"
+                            inputId="current-password"
+                            inputValue={currentPasswordValue}
+                            setInputValue={setCurrentPasswordValue}
+                            autocomplete="yes"
+                            theme="light"
                         />
                     </div>
 
@@ -120,26 +106,15 @@ const PasswordSettings = () => {
                         <div className="password-settings__section-title">NEW PASSWORD</div>
                         <div className="password-settings__section-subtitle">REQUIRED</div>
                     </div>
-                    <div
-                        className={
-                            isNewPasswordActive
-                                ? "settings-modal__input settings-modal__input-active"
-                                : "settings-modal__input"
-                        }
-                    >
-                        <div className="settings-modal__input-desc">
-                            <label htmlFor="newPassword">New Password</label>
-                        </div>
-
-                        <input
-                            type="password"
-                            id="newPassword"
-                            name="newPassword"
-                            autoComplete="no"
-                            onClick={() => setIsNewPasswordActive(true)}
-                            onChange={(e) => setNewPasswordValue(e.target.value)}
-                            onBlur={() => !newPasswordValue && setIsNewPasswordActive(false)}
-                            value={newPasswordValue}
+                    <div>
+                        <Input
+                            inputType="password"
+                            inputName="New Password"
+                            inputId="new-password"
+                            inputValue={newPasswordValue}
+                            setInputValue={setNewPasswordValue}
+                            autocomplete="no"
+                            theme="light"
                         />
                     </div>
 
@@ -147,26 +122,15 @@ const PasswordSettings = () => {
                         <div className="password-settings__section-title">RETYPE NEW PASSWORD</div>
                         <div className="password-settings__section-subtitle">REQUIRED</div>
                     </div>
-                    <div
-                        className={
-                            isRetypePasswordActive
-                                ? "settings-modal__input settings-modal__input-active"
-                                : "settings-modal__input"
-                        }
-                    >
-                        <div className="settings-modal__input-desc">
-                            <label htmlFor="retypePassword">Retype New Password</label>
-                        </div>
-
-                        <input
-                            type="password"
-                            id="retypePassword"
-                            name="retypePassword"
-                            autoComplete="no"
-                            onClick={() => setIsRetypePasswordActive(true)}
-                            onChange={(e) => setRetypePasswordValue(e.target.value)}
-                            onBlur={() => !retypePasswordValue && setIsRetypePasswordActive(false)}
-                            value={retypePasswordValue}
+                    <div>
+                        <Input
+                            inputType="password"
+                            inputName="Retype New Password"
+                            inputId="retype-password"
+                            inputValue={retypeNewPasswordValue}
+                            setInputValue={setRetypeNewPasswordValue}
+                            autocomplete="no"
+                            theme="light"
                         />
                     </div>
 

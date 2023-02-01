@@ -1,11 +1,13 @@
 import React from "react";
 
-const Input = ({ inputType, inputName, inputId, inputValue, setInputValue, autocomplete }) => {
+const Input = ({ inputType, inputName, inputId, inputValue, setInputValue, autocomplete, theme }) => {
+    const lightStyles = inputValue !== "" ? "input input-active input-color__dark" : "input input-color__dark";
+    const darkStyles = inputValue !== "" ? "input input-active input-color__light" : "input input-color__light";
+
+    const test = theme === "light" ? lightStyles : darkStyles;
+
     return (
-        <div
-            className={inputValue !== "" ? "input input-active input-color" : "input input-color"}
-            data-border={inputValue ? "yes" : "no"}
-        >
+        <div className={test} data-border={inputValue ? "yes" : "no"}>
             <input
                 className="input-input"
                 type={inputType}
