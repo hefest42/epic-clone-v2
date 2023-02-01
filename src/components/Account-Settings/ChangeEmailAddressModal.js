@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import LoadingSpinner from "../UI/LoadingSpinner";
+import Input from "../UI/Input";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { SiEpicgames } from "react-icons/si";
@@ -18,9 +19,7 @@ const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
     const dispatch = useDispatch();
     const account = useSelector((state) => state.account.account);
     const [stepper, setStepper] = useState(1);
-    const [isPasswordActive, setIsPasswordActive] = useState(false);
     const [passwordValue, setPasswordValue] = useState("");
-    const [isEmailActive, setIsEmailActive] = useState(false);
     const [emailValue, setEmailValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -100,30 +99,17 @@ const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
                             </div>
 
                             <form onSubmit={confirmPasswordHandler} className="email-modal__form">
-                                <div
-                                    className={
-                                        isPasswordActive
-                                            ? "settings-modal__input settings-modal__input-active"
-                                            : "settings-modal__input"
-                                    }
-                                >
-                                    <div className="settings-modal__input-desc">
-                                        <label htmlFor="password">Your Password</label>
-                                    </div>
+                                <Input
+                                    inputType="password"
+                                    inputName="Confirm Password"
+                                    inputId="confirm-password"
+                                    inputValue={passwordValue}
+                                    setInputValue={setPasswordValue}
+                                    autocomplete="yes"
+                                    theme="light"
+                                />
 
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        name="password"
-                                        autoComplete="no"
-                                        onClick={() => setIsPasswordActive(true)}
-                                        onChange={(e) => setPasswordValue(e.target.value)}
-                                        onBlur={() => !passwordValue && setIsPasswordActive(false)}
-                                        value={passwordValue}
-                                    />
-                                </div>
-
-                                <div className="email-modal__buttons">
+                                <div className="email-modal__buttons mt-1">
                                     <button className="email-modal__buttons-continue">CONTINUE</button>
                                     <button
                                         className="email-modal__buttons-cancel"
@@ -148,30 +134,19 @@ const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
                             <div className="email-modal__info">Enter your new Email Address</div>
 
                             <form onSubmit={emailChangeHandler} className="email-modal__form">
-                                <div
-                                    className={
-                                        isEmailActive
-                                            ? "settings-modal__input settings-modal__input-active"
-                                            : "settings-modal__input"
-                                    }
-                                >
-                                    <div className="settings-modal__input-desc">
-                                        <label htmlFor="email">New Email Address</label>
-                                    </div>
-
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        autoComplete="no"
-                                        onClick={() => setIsEmailActive(true)}
-                                        onChange={(e) => setEmailValue(e.target.value)}
-                                        onBlur={() => !emailValue && setIsEmailActive(false)}
-                                        value={emailValue}
+                                <div>
+                                    <Input
+                                        inputType="email"
+                                        inputName="New Email"
+                                        inputId="new-email"
+                                        inputValue={emailValue}
+                                        setInputValue={setEmailValue}
+                                        autocomplete="yes"
+                                        theme="light"
                                     />
                                 </div>
 
-                                <div className="email-modal__buttons">
+                                <div className="email-modal__buttons mt-1">
                                     <button type="submit" className="email-modal__buttons-continue">
                                         CONFIRM
                                     </button>
