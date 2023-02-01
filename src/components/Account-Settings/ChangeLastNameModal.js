@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import LoadingSpinner from "../UI/LoadingSpinner";
+import Input from "../UI/Input";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { SiEpicgames } from "react-icons/si";
@@ -17,11 +18,9 @@ const ChangeLastNameModal = ({ setShowChangeLastNameModal }) => {
     const naviagate = useNavigate();
     const dispatch = useDispatch();
     const account = useSelector((state) => state.account.account);
-    const [stepper, setStepper] = useState(1);
-    const [isPasswordActive, setIsPasswordActive] = useState(false);
     const [passwordValue, setPasswordValue] = useState("");
-    const [isLastNameActive, setIsLastNameActive] = useState(false);
-    const [LastNameValue, setLastNameValue] = useState("");
+    const [lastNameValue, setLastNameValue] = useState("");
+    const [stepper, setStepper] = useState(1);
     const [errorMessage, setErrorMessage] = useState("");
 
     const confirmPasswordHandler = (e) => {
@@ -46,24 +45,22 @@ const ChangeLastNameModal = ({ setShowChangeLastNameModal }) => {
     const emailChangeHandler = async (e) => {
         e.preventDefault();
 
-        const newLastName = LastNameValue.trim();
+        // try {
+        //     const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
+        //         method: "PATCH",
+        //         body: JSON.stringify({ lastName: newLastName }),
+        //         headers: {
+        //             "CONTENT-TYPE": "application/json",
+        //         },
+        //     });
+        // } catch (error) {
+        //     console.error(error);
+        //     setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
+        // }
 
-        try {
-            const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
-                method: "PATCH",
-                body: JSON.stringify({ lastName: newLastName }),
-                headers: {
-                    "CONTENT-TYPE": "application/json",
-                },
-            });
-        } catch (error) {
-            console.error(error);
-            setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
-        }
-
-        setShowChangeLastNameModal(false);
-        dispatch(logOutAccount());
-        naviagate("/log-in");
+        // setShowChangeLastNameModal(false);
+        // dispatch(logOutAccount());
+        // naviagate("/log-in");
     };
 
     return (
@@ -77,7 +74,7 @@ const ChangeLastNameModal = ({ setShowChangeLastNameModal }) => {
                     <SiEpicgames />
                 </div>
 
-                {errorMessage !== "" && (
+                {errorMessage && (
                     <div className="form-error center">
                         <div className="form-error__svg center">
                             <BiErrorCircle />
@@ -95,30 +92,17 @@ const ChangeLastNameModal = ({ setShowChangeLastNameModal }) => {
                             </div>
 
                             <form onSubmit={confirmPasswordHandler} className="email-modal__form">
-                                <div
-                                    className={
-                                        isPasswordActive
-                                            ? "settings-modal__input settings-modal__input-active"
-                                            : "settings-modal__input"
-                                    }
-                                >
-                                    <div className="settings-modal__input-desc">
-                                        <label htmlFor="password">Your Password</label>
-                                    </div>
+                                <Input
+                                    inputType="password"
+                                    inputName="Current Password"
+                                    inputId="password"
+                                    inputValue={passwordValue}
+                                    setInputValue={setPasswordValue}
+                                    autocomplete="yes"
+                                    theme="light"
+                                />
 
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        name="password"
-                                        autoComplete="no"
-                                        onClick={() => setIsPasswordActive(true)}
-                                        onChange={(e) => setPasswordValue(e.target.value)}
-                                        onBlur={() => !passwordValue && setIsPasswordActive(false)}
-                                        value={passwordValue}
-                                    />
-                                </div>
-
-                                <div className="email-modal__buttons">
+                                <div className="email-modal__buttons mt-1">
                                     <button className="email-modal__buttons-continue">CONTINUE</button>
                                     <button
                                         className="email-modal__buttons-cancel"
@@ -143,30 +127,19 @@ const ChangeLastNameModal = ({ setShowChangeLastNameModal }) => {
                             <div className="email-modal__info">Enter your new last name.</div>
 
                             <form onSubmit={emailChangeHandler} className="email-modal__form">
-                                <div
-                                    className={
-                                        isLastNameActive
-                                            ? "settings-modal__input settings-modal__input-active"
-                                            : "settings-modal__input"
-                                    }
-                                >
-                                    <div className="settings-modal__input-desc">
-                                        <label htmlFor="lName">New Last Name</label>
-                                    </div>
-
-                                    <input
-                                        type="text"
-                                        id="lName"
-                                        name="fName"
-                                        autoComplete="no"
-                                        onClick={() => setIsLastNameActive(true)}
-                                        onChange={(e) => setLastNameValue(e.target.value)}
-                                        onBlur={() => !LastNameValue && setIsLastNameActive(false)}
-                                        value={LastNameValue}
+                                <div>
+                                    <Input
+                                        inputType="text"
+                                        inputName="New Last Name"
+                                        inputId="last-name"
+                                        inputValue={lastNameValue}
+                                        setInputValue={setLastNameValue}
+                                        autocomplete="yes"
+                                        theme="light"
                                     />
                                 </div>
 
-                                <div className="email-modal__buttons">
+                                <div className="email-modal__buttons mt-1">
                                     <button type="submit" className="email-modal__buttons-continue">
                                         CONFIRM
                                     </button>

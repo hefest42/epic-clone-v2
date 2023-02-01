@@ -35,8 +35,6 @@ const AccountSettings = ({
         };
     };
 
-    console.log(accountInformation);
-
     useEffect(() => {
         if (!isAccountLoggedIn) {
             navigate("/log-in");
@@ -70,7 +68,7 @@ const AccountSettings = ({
                 />
 
                 <AccountSettingsInput
-                    name={"EMAIL ADDRESS"}
+                    name="EMAIL ADDRESS"
                     isAccountLoggedIn={isAccountLoggedIn}
                     value={accountInformation.hiddenEmailAddress}
                     showModal={setShowChangeEmailAddressModal}

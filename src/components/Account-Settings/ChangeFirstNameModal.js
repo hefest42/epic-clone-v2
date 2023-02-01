@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import LoadingSpinner from "../UI/LoadingSpinner";
+import Input from "../UI/Input";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { SiEpicgames } from "react-icons/si";
@@ -18,10 +19,8 @@ const ChangeFirstNameModal = ({ setShowChangeFirstNameModal }) => {
     const dispatch = useDispatch();
     const account = useSelector((state) => state.account.account);
     const [stepper, setStepper] = useState(1);
-    const [isPasswordActive, setIsPasswordActive] = useState(false);
     const [passwordValue, setPasswordValue] = useState("");
-    const [isFirstNameActive, setIsFirstNameActive] = useState(false);
-    const [firstNameValue, setFirstNameValue] = useState("");
+    const [newFirstNameValue, setFirstNameValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     const confirmPasswordHandler = (e) => {
@@ -46,20 +45,18 @@ const ChangeFirstNameModal = ({ setShowChangeFirstNameModal }) => {
     const emailChangeHandler = async (e) => {
         e.preventDefault();
 
-        const newFirstName = firstNameValue.trim();
-
-        try {
-            const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
-                method: "PATCH",
-                body: JSON.stringify({ firstName: newFirstName }),
-                headers: {
-                    "CONTENT-TYPE": "application/json",
-                },
-            });
-        } catch (error) {
-            console.error(error);
-            setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
-        }
+        // try {
+        //     const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
+        //         method: "PATCH",
+        //         body: JSON.stringify({ firstName: newFirstName }),
+        //         headers: {
+        //             "CONTENT-TYPE": "application/json",
+        //         },
+        //     });
+        // } catch (error) {
+        //     console.error(error);
+        //     setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
+        // }
 
         setShowChangeFirstNameModal(false);
         dispatch(logOutAccount());
@@ -95,30 +92,19 @@ const ChangeFirstNameModal = ({ setShowChangeFirstNameModal }) => {
                             </div>
 
                             <form onSubmit={confirmPasswordHandler} className="email-modal__form">
-                                <div
-                                    className={
-                                        isPasswordActive
-                                            ? "settings-modal__input settings-modal__input-active"
-                                            : "settings-modal__input"
-                                    }
-                                >
-                                    <div className="settings-modal__input-desc">
-                                        <label htmlFor="password">Your Password</label>
-                                    </div>
-
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        name="password"
-                                        autoComplete="no"
-                                        onClick={() => setIsPasswordActive(true)}
-                                        onChange={(e) => setPasswordValue(e.target.value)}
-                                        onBlur={() => !passwordValue && setIsPasswordActive(false)}
-                                        value={passwordValue}
+                                <div>
+                                    <Input
+                                        inputType="password"
+                                        inputName="Current Password"
+                                        inputId="password"
+                                        inputValue={passwordValue}
+                                        setInputValue={setPasswordValue}
+                                        autocomplete="yes"
+                                        theme="light"
                                     />
                                 </div>
 
-                                <div className="email-modal__buttons">
+                                <div className="email-modal__buttons mt-1">
                                     <button className="email-modal__buttons-continue">CONTINUE</button>
                                     <button
                                         className="email-modal__buttons-cancel"
@@ -143,30 +129,19 @@ const ChangeFirstNameModal = ({ setShowChangeFirstNameModal }) => {
                             <div className="email-modal__info">Enter your new first name.</div>
 
                             <form onSubmit={emailChangeHandler} className="email-modal__form">
-                                <div
-                                    className={
-                                        isFirstNameActive
-                                            ? "settings-modal__input settings-modal__input-active"
-                                            : "settings-modal__input"
-                                    }
-                                >
-                                    <div className="settings-modal__input-desc">
-                                        <label htmlFor="fName">New First Name</label>
-                                    </div>
-
-                                    <input
-                                        type="text"
-                                        id="fName"
-                                        name="fName"
-                                        autoComplete="no"
-                                        onClick={() => setIsFirstNameActive(true)}
-                                        onChange={(e) => setFirstNameValue(e.target.value)}
-                                        onBlur={() => !firstNameValue && setIsFirstNameActive(false)}
-                                        value={firstNameValue}
+                                <div>
+                                    <Input
+                                        inputType="text"
+                                        inputName="New First Name"
+                                        inputId="new-first-name"
+                                        inputValue={newFirstNameValue}
+                                        setInputValue={setFirstNameValue}
+                                        autocomplete="yes"
+                                        theme="light"
                                     />
                                 </div>
 
-                                <div className="email-modal__buttons">
+                                <div className="email-modal__buttons mt-1">
                                     <button type="submit" className="email-modal__buttons-continue">
                                         CONFIRM
                                     </button>
