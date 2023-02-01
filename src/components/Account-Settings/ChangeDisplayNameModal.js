@@ -93,6 +93,7 @@ const ChangeDisplayNameModal = ({ setShowDisplayNameModal }) => {
 
                     <div className="space-between mt-1">
                         <button
+                            type="button"
                             className="settings-modal__buttons settings-modal__cancel"
                             onClick={() => setShowDisplayNameModal(false)}
                         >
