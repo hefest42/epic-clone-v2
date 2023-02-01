@@ -4,7 +4,7 @@ const Input = ({ inputType, inputName, inputId, inputValue, setInputValue, autoc
     const lightStyles = inputValue !== "" ? "input input-active input-color__dark" : "input input-color__dark";
     const darkStyles = inputValue !== "" ? "input input-active input-color__light" : "input input-color__light";
 
-    const test = theme === "light" ? lightStyles : darkStyles;
+    const test = theme === "light" ? darkStyles : lightStyles;
 
     return (
         <div className={test} data-border={inputValue ? "yes" : "no"}>
