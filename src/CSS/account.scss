@@ -213,65 +213,6 @@
         margin-top: 1.5rem;
     }
 
-    &__input {
-        position: relative;
-        width: 100%;
-        height: 3rem;
-        margin-bottom: 1.5rem;
-        border: 1px solid var(--link-gray);
-        border-radius: 3px;
-        cursor: text;
-
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-
-        &-desc {
-            position: absolute;
-            top: 30%;
-            width: 90%;
-            color: var(--account-text);
-            transition: all 0.1s linear;
-            pointer-events: none;
-
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        input {
-            background-color: transparent;
-            color: #111;
-            width: 100%;
-            height: 100%;
-            border: none;
-            outline: none;
-            caret-color: transparent;
-
-            font-size: 1.1rem;
-        }
-    }
-
-    &__input-active {
-        border-color: var(--main-blue);
-
-        input {
-            width: 90%;
-            height: 1.5rem;
-            caret-color: auto;
-
-            outline: none;
-            border: none;
-        }
-
-        .settings-modal__input {
-            &-desc {
-                top: 10%;
-                font-size: 0.8rem;
-                transition: all 0.1s linear;
-            }
-        }
-    }
-
     &__buttons {
         width: 48%;
         height: 3.5rem;
