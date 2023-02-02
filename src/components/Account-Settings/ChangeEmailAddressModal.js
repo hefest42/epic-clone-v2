@@ -137,7 +137,7 @@ const ChangeEmailAddressModal = ({ setShowChangeEmailAddressModal }) => {
                                 <div>
                                     <Input
                                         inputType="email"
-                                        inputName="New Email"
+                                        inputName="New Email Address"
                                         inputId="new-email"
                                         inputValue={emailValue}
                                         setInputValue={setEmailValue}
