@@ -29,7 +29,7 @@ const WishlistItem = ({ game }) => {
     };
 
     return (
-        <Link to={`/store/game/${game.name}`} className="wishlist-item center">
+        <Link to={`/store/game/${game.name}`} state={game} className="wishlist-item center">
             <div className="wishlist-item__inner space-between">
                 <div className="wishlist-item__image center">
                     <img src={game.posterSmall} alt={`${game.name} poster`} />
