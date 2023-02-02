@@ -45,18 +45,18 @@ const ChangeFirstNameModal = ({ setShowChangeFirstNameModal }) => {
     const emailChangeHandler = async (e) => {
         e.preventDefault();
 
-        // try {
-        //     const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
-        //         method: "PATCH",
-        //         body: JSON.stringify({ firstName: newFirstName }),
-        //         headers: {
-        //             "CONTENT-TYPE": "application/json",
-        //         },
-        //     });
-        // } catch (error) {
-        //     console.error(error);
-        //     setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
-        // }
+        try {
+            const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
+                method: "PATCH",
+                body: JSON.stringify({ firstName: newFirstNameValue }),
+                headers: {
+                    "CONTENT-TYPE": "application/json",
+                },
+            });
+        } catch (error) {
+            console.error(error);
+            setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
+        }
 
         setShowChangeFirstNameModal(false);
         dispatch(logOutAccount());
