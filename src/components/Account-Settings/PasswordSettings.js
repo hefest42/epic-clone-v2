@@ -20,49 +20,49 @@ const PasswordSettings = () => {
     const [retypeNewPasswordValue, setRetypeNewPasswordValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    // const clearAllFields = () => {
-    //     setCurrentPasswordValue("");
-    //     setNewPasswordValue("");
-    //     setRetypePasswordValue("");
-    // };
+    const clearAllFields = () => {
+        setCurrentPasswordValue("");
+        setNewPasswordValue("");
+        setRetypeNewPasswordValue("");
+    };
 
     const changePasswordHandler = async (e) => {
         e.preventDefault();
 
         const password = account.password;
 
-        if (false) {
+        if (!currentPasswordValue || !newPasswordValue || !retypeNewPasswordValue) {
             setErrorMessage("Please fill out all fields before continuing.");
-            // clearAllFields();
+            clearAllFields();
             return;
         }
-        if (false) {
+        if (currentPasswordValue !== password) {
             setErrorMessage("Password don't match. Please try again.");
-            // clearAllFields();
+            clearAllFields();
             return;
         }
 
-        if (false) {
+        if (newPasswordValue !== retypeNewPasswordValue) {
             setErrorMessage("Password don't match. Please try again. test");
-            // clearAllFields();
+            clearAllFields();
             return;
         }
 
-        // try {
-        //     const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
-        //         method: "PATCH",
-        //         body: JSON.stringify({ password: newPassword }),
-        //         headers: {
-        //             "CONTENT-TYPE": "application/json",
-        //         },
-        //     });
-        // } catch (error) {
-        //     console.error(error);
-        //     setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
-        // }
+        try {
+            const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
+                method: "PATCH",
+                body: JSON.stringify({ password: retypeNewPasswordValue }),
+                headers: {
+                    "CONTENT-TYPE": "application/json",
+                },
+            });
+        } catch (error) {
+            console.error(error);
+            setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
+        }
 
-        // navigate("/log-in");
-        // dispatch(logOutAccount());
+        navigate("/log-in");
+        dispatch(logOutAccount());
     };
 
     return (
