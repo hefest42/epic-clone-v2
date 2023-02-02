@@ -24,26 +24,26 @@ const ChangeDisplayNameModal = ({ setShowDisplayNameModal }) => {
     const displayNameChangeHandler = async (e) => {
         e.preventDefault();
 
-        if (false) {
+        if (newDisplayName !== confirmNewDisplayName) {
             setErrorMessage("Please check if the input fields match.");
             return;
         }
 
-        // try {
-        //     const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
-        //         method: "PATCH",
-        //         body: JSON.stringify({ displayName: confirmDisplayNameValue }),
-        //         headers: {
-        //             "CONTENT-TYPE": "application/json",
-        //         },
-        //     });
-        // } catch (error) {
-        //     console.error(error);
-        //     setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
-        // }
+        try {
+            const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
+                method: "PATCH",
+                body: JSON.stringify({ displayName: confirmNewDisplayName }),
+                headers: {
+                    "CONTENT-TYPE": "application/json",
+                },
+            });
+        } catch (error) {
+            console.error(error);
+            setErrorMessage("Oops.. Something went wrong. Please wait a bit and try again.");
+        }
 
-        // dispatch(logOutAccount());
-        // navigate("/log-in");
+        dispatch(logOutAccount());
+        navigate("/log-in");
     };
 
     return (
