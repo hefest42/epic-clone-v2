@@ -12,14 +12,14 @@ const DiscoverContainer = () => {
     return (
         <>
             <FeaturedGames />
-            <GameCarousel title="Games on Sale" />
+            <GameCarousel title="Games" />
             <PromotedGames games={DUMMY_CAROUSEL_GAMES.slice(0, 3)} />
             <FreeGames />
             <NewTopComingGames />
-            <GameCarousel title="Games on Sale" />
+            <GameCarousel title="Games" />
             <PromotedGames games={DUMMY_CAROUSEL_GAMES.slice(0, 2)} />
-            <GameCarousel title="Games on Sale" />
-            <GameCarousel title="Games on Sale" />
+            <GameCarousel title="Games" />
+            <GameCarousel title="Games" />
             <NewToTheStore />
         </>
     );

@@ -615,9 +615,12 @@
 
     .new-to-store {
         width: 100%;
+        height: auto;
 
         &-item {
-            height: auto;
+            position: relative;
+            width: calc(100% / 5 - 0.5rem);
+            height: 25rem;
 
             &:last-child {
                 .wishlist-info {
