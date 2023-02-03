@@ -181,8 +181,8 @@
         &-review {
             background-color: var(--light-gray);
             width: calc(100% / 3 - 1rem);
-            height: 26rem;
-            padding: 1rem;
+            height: auto;
+            padding: 0.5rem 0.5rem;
             font-size: 1.1rem;
             border-radius: 3px;
 
@@ -215,8 +215,9 @@
             p {
                 color: var(--account-text);
                 height: 12rem;
-                width: 18rem;
+                width: 100%;
                 margin-top: 1rem;
+                padding: 0rem 0;
             }
         }
 
