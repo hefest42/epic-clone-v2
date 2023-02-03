@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useMemo } from "react";
 
+import { gameReleaseDate } from "../../Helpers/FeaturedGamesUtils";
+import { IoMdAddCircle, IoMdCheckmarkCircle } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addGameToWishlist, removeGameFromWishlist } from "../../store/AccountSlice";
 
-const FeaturedGamesGame = ({ game, index, activeListItem, setActiveListItem }) => {
+const FeaturedGamesGame = ({ game, index, activeListItem }) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { isAccountLoggedIn, account } = useSelector((state) => state.account);
+
+    const gameDateRelease = useMemo(() => gameReleaseDate(game.releaseDate), [game.releaseDate]);
 
     return (
         <div className={activeListItem === index ? "featured-poster" : "featured-poster featured-hidden"}>
@@ -14,7 +22,7 @@ const FeaturedGamesGame = ({ game, index, activeListItem, setActiveListItem }) =
                     <img src={`${game.logo}`} alt="logo" />
                 </div>
                 <div className="featured-cover__info-description">
-                    <p>releaseDate</p>
+                    <p>{gameDateRelease}</p>
                     <div>{game.shortDescription}</div>
                 </div>
                 <div className="featured-cover__info-buttons">
@@ -32,3 +40,24 @@ const FeaturedGamesGame = ({ game, index, activeListItem, setActiveListItem }) =
 };
 
 export default FeaturedGamesGame;
+
+// const wishlistButtonHandler = (game) => {
+//     if (!isAccountLoggedIn)
+//         return (
+//             <button className="center" onClick={() => navigate("/log-in")}>
+//                 <IoMdAddCircle /> ADD TO WISHLIST
+//             </button>
+//         );
+
+//     if (isAccountLoggedIn) {
+//         return account.wishlist?.filter((wishlistGame) => wishlistGame.name === game.name).length === 0 ? (
+//             <button className="center" onClick={() => dispatch(addGameToWishlist(game))}>
+//                 <IoMdAddCircle /> ADD TO WISHLIST
+//             </button>
+//         ) : (
+//             <button className="center" onClick={() => dispatch(removeGameFromWishlist(game))}>
+//                 <IoMdCheckmarkCircle /> ADDED TO WISHLIST
+//             </button>
+//         );
+//     }
+// };
