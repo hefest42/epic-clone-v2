@@ -20,7 +20,7 @@ export const DUMMY_CAROUSEL_GAMES = [
     },
     {
         name: "UNCHARTED: Legacy of Thieves Collection",
-        releaseDate: "2022.10.19",
+        releaseDate: "2023.10.19",
         posterBig:
             "https://cdn2.unrealengine.com/egs-fn-uncharted-carousel-desktop-1920x1080-e3dc0549a62d.jpg?h=1080&resize=1&w=1920",
         posterSmall:

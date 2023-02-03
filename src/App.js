@@ -17,7 +17,7 @@ function App() {
     useEffect(() => {
         if (!isAccountLoggedIn) return;
 
-        const test = async () => {
+        (() => async () => {
             try {
                 const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
                     method: "PATCH",
@@ -27,9 +27,7 @@ function App() {
                     },
                 });
             } catch (error) {}
-        };
-
-        test();
+        })();
     }, [account.wishlist]);
 
     return (

@@ -8,8 +8,19 @@ const accountSlice = createSlice({
     },
     reducers: {
         setLoggedInAccount(state, action) {
-            state.account = action.payload;
-            state.isAccountLoggedIn = true;
+            console.log("hello");
+
+            if (!action.payload.hasOwnProperty("wishlist")) {
+                state.account = { ...action.payload, wishlist: [] };
+                state.isAccountLoggedIn = true;
+                return;
+            }
+
+            if (action.payload.wishlist.lenght > 0) {
+                state.account = action.payload;
+                state.isAccountLoggedIn = true;
+                return;
+            }
         },
         addGameToWishlist(state, action) {
             if (!state.isAccountLoggedIn) return;
