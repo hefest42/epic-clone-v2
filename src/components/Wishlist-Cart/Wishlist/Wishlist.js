@@ -11,8 +11,7 @@ import { useSelector } from "react-redux";
 
 const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Price: High to Low"];
 
-//TODO fix media query
-//TODO for some reason it lists uncharted price higher than spider-man price (49.99 > 59.99)????
+//TODO not happy with solution, try again tomorrow
 const Wishlist = () => {
     const account = useSelector((state) => state.account.account);
     const [sortedWishlistGames, setSortedWishlistGames] = useState([]);
@@ -33,14 +32,7 @@ const Wishlist = () => {
 
     const sortWishlistItems = (type) => {
         setSortByText(type);
-
         const wishlistedGames = [...account.wishlist];
-
-        console.log(
-            wishlistedGames.sort(
-                (a, b) => calculateDiscount(b.price, b.discount) - calculateDiscount(a.price, a.discount)
-            )
-        );
 
         switch (type) {
             case "Alphabetical":
