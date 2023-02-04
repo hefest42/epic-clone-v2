@@ -5,7 +5,7 @@ import { AiOutlineDown, AiOutlineCheck } from "react-icons/ai";
 const PRICE_RANGES = ["Free", "Under $5.00", "Under $10.00", "Under $20.00", "Under $30.00", "$14.99 and above"];
 
 const WishlistFilters = ({
-    games,
+    wishlistGenres,
     addGenreToActiveFilters,
     activeFilters,
     resetActiveFilters,
@@ -15,7 +15,7 @@ const WishlistFilters = ({
     const [showGenreList, setShowGenreList] = useState(true);
     const [showPriceRangesList, setShowPriceRangesList] = useState(true);
 
-    const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())], [games]);
+    const gamesGenres = useMemo(() => [...new Set(wishlistGenres.map((game) => game.genres).flat())], [wishlistGenres]);
 
     return (
         <div className="filter-browser">

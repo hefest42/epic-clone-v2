@@ -10,17 +10,11 @@ const accountSlice = createSlice({
         setLoggedInAccount(state, action) {
             console.log("hello");
 
-            if (!action.payload.hasOwnProperty("wishlist")) {
-                state.account = { ...action.payload, wishlist: [] };
-                state.isAccountLoggedIn = true;
-                return;
-            }
+            const wishlist = action.payload.hasOwnProperty("wishlist") ? action.payload.wishlist : [];
 
-            if (action.payload.wishlist.lenght > 0) {
-                state.account = action.payload;
-                state.isAccountLoggedIn = true;
-                return;
-            }
+            state.isAccountLoggedIn = true;
+
+            state.account = { ...action.payload, wishlist: wishlist };
         },
         addGameToWishlist(state, action) {
             if (!state.isAccountLoggedIn) return;

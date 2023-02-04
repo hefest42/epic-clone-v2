@@ -15,7 +15,7 @@ const SORT_BY_ITEMS = ["Date Added", "Alphabetical", "Price: Low to High", "Pric
 //TODO for some reason it lists uncharted price higher than spider-man price (49.99 > 59.99)????
 const Wishlist = () => {
     const account = useSelector((state) => state.account.account);
-    const [wishlistedGames, setWishlistedGames] = useState([]);
+    const [sortedWishlistGames, setSortedWishlistGames] = useState([]);
     const [sortByText, setSortByText] = useState("Date Added");
     const [activeFilters, setActiveFilters] = useState([]);
     const [priceFilter, setPriceFilter] = useState("");
@@ -31,71 +31,32 @@ const Wishlist = () => {
         setPriceFilter("");
     };
 
-    const filterGameByPrice = (game) => {
-        if (priceFilter === "") return true;
-
-        const priceRange = priceFilter.replace(/[^0-9.]/g, "");
-        const gamePrice = game.gameOnSale ? calculateDiscount(game.price, game.discount) : game.price;
-
-        if (priceFilter === "Free") {
-            if (+gamePrice === 0) return true;
-            else return false;
-        }
-
-        if (priceFilter === "$14.99 and above") {
-            if (+gamePrice >= 14.99) return true;
-            else return false;
-        }
-
-        if (+priceRange >= +gamePrice) return true;
-        else return false;
-    };
-
     const sortWishlistItems = (type) => {
         setSortByText(type);
-        const wishlist = activeFilters.length > 0 && priceFilter !== "" ? [...wishlistedGames] : [...account.wishlist];
-
-        console.log([...account.wishlist].sort((a, b) => a.price + b.price));
 
         switch (type) {
             case "Alphabetical":
-                const gamesSortedAlphabetically = wishlist.sort((a, b) => a.name.localeCompare(b.name));
-                setWishlistedGames(gamesSortedAlphabetically);
+                const gamesSortedAlphabetically = account.wishlist.sort((a, b) => a.name.localeCompare(b.name));
+                console.log(gamesSortedAlphabetically);
+                setSortedWishlistGames(gamesSortedAlphabetically);
                 break;
 
             case "Price: Low to High":
-                const gamesSortedByPriceLowToHigh = wishlist.sort((a, b) => +a.price - +b.price);
-                setWishlistedGames(gamesSortedByPriceLowToHigh);
+                const gamesSortedByPriceLowToHigh = account.wishlist.sort((a, b) => +a.price - +b.price);
+                setSortedWishlistGames(gamesSortedByPriceLowToHigh);
 
                 break;
 
             case "Price: High to Low":
-                const gamesSortedByPriceHighToLow = wishlist.sort((a, b) => +b.price + +a.price);
-                setWishlistedGames(gamesSortedByPriceHighToLow);
+                const gamesSortedByPriceHighToLow = account.wishlist.sort((a, b) => +b.price + +a.price);
+                setSortedWishlistGames(gamesSortedByPriceHighToLow);
                 break;
 
             default:
-                setWishlistedGames(account.wishlist);
+                setSortedWishlistGames([]);
                 break;
         }
     };
-
-    useEffect(() => {
-        setWishlistedGames(account.wishlist);
-    }, [account.wishlist]);
-
-    useEffect(() => {
-        if (priceFilter === "" && activeFilters.length === 0) {
-            setWishlistedGames(account.wishlist);
-            return;
-        }
-
-        const filteredGames = account.wishlist.filter((game) => {
-            if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
-        });
-
-        setWishlistedGames(filteredGames);
-    }, [activeFilters, priceFilter]);
 
     return (
         <div className="wishlist">
@@ -140,17 +101,16 @@ const Wishlist = () => {
                     </div>
 
                     <div>
-                        {wishlistedGames.map((game) => (
-                            <WishlistItem key={game.name} game={game} />
-                        ))}
+                        {sortedWishlistGames.length === 0
+                            ? account.wishlist.map((game) => <WishlistItem key={game.name} game={game} />)
+                            : sortedWishlistGames.wishlist.map((game) => <WishlistItem key={game.name} game={game} />)}
                     </div>
                 </div>
             </div>
 
-            {/* different filter for wishlist games */}
             <div className="wishlist-right">
                 <WishlistFilters
-                    games={wishlistedGames}
+                    wishlistGenres={account.wishlist}
                     addGenreToActiveFilters={addGenreToActiveFilters}
                     activeFilters={activeFilters}
                     resetActiveFilters={resetActiveFilters}

@@ -17,7 +17,7 @@ function App() {
     useEffect(() => {
         if (!isAccountLoggedIn) return;
 
-        (() => async () => {
+        const addWishlistedGamesToAccount = async () => {
             try {
                 const response = fetch(`${API_URL}/accounts/${account.accountId}.json`, {
                     method: "PATCH",
@@ -27,7 +27,9 @@ function App() {
                     },
                 });
             } catch (error) {}
-        })();
+        };
+
+        addWishlistedGamesToAccount();
     }, [account.wishlist]);
 
     return (

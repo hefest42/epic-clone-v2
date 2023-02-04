@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import PageContainer from "../../UI/PageContainer";
 import Wishlist from "./Wishlist";
@@ -10,21 +10,16 @@ import { useSelector } from "react-redux";
 
 const WishlistContainer = () => {
     const navigate = useNavigate();
-    const isAccountLoggedIn = useSelector((state) => state.account.isAccountLoggedIn);
-    const loggedInAccount = useSelector((state) => state.account.account);
-    const [wishlist, setWishlist] = useState([]);
+    const { isAccountLoggedIn, account } = useSelector((state) => state.account);
 
     useEffect(() => {
         if (!isAccountLoggedIn) {
             navigate("/log-in");
             return;
         }
+    }, [isAccountLoggedIn]);
 
-        const accountWishlist = loggedInAccount.wishlist ? loggedInAccount.wishlist : [];
-        setWishlist(accountWishlist);
-    }, [loggedInAccount.wishlist, isAccountLoggedIn]);
-
-    return <PageContainer>{wishlist.length === 0 ? <WishlistEmpty /> : <Wishlist />}</PageContainer>;
+    return <PageContainer>{account.wishlist.length === 0 ? <WishlistEmpty /> : <Wishlist />}</PageContainer>;
 };
 
 export default WishlistContainer;
