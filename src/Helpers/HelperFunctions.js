@@ -1,7 +1,10 @@
 export const API_URL = `https://epic-clone-5fa09-default-rtdb.europe-west1.firebasedatabase.app`;
 
-export const calculateDiscount = (price, discount) => {
-    return (price - price * (discount / 100)).toFixed(2);
+export const calculateDiscount = (price, discount = 0, isGameOnSale) => {
+    if (price === 0 || price === "0") return 0;
+    if (!discount || !isGameOnSale) return +price;
+
+    return +(price - price * (discount / 100)).toFixed(2);
 };
 
 export const gamePriceHandler = (isGameOnSale, gamePrice, gameDiscount) => {

@@ -34,21 +34,34 @@ const Wishlist = () => {
     const sortWishlistItems = (type) => {
         setSortByText(type);
 
+        const wishlistedGames = [...account.wishlist];
+
+        console.log(
+            wishlistedGames.sort(
+                (a, b) => calculateDiscount(b.price, b.discount) - calculateDiscount(a.price, a.discount)
+            )
+        );
+
         switch (type) {
             case "Alphabetical":
-                const gamesSortedAlphabetically = account.wishlist.sort((a, b) => a.name.localeCompare(b.name));
-                console.log(gamesSortedAlphabetically);
+                const gamesSortedAlphabetically = wishlistedGames.sort((a, b) => a.name.localeCompare(b.name));
                 setSortedWishlistGames(gamesSortedAlphabetically);
                 break;
 
             case "Price: Low to High":
-                const gamesSortedByPriceLowToHigh = account.wishlist.sort((a, b) => +a.price - +b.price);
+                const gamesSortedByPriceLowToHigh = wishlistedGames.sort(
+                    (a, b) =>
+                        calculateDiscount(a.price, a.discount, a.gameOnSale) -
+                        calculateDiscount(b.price, b.discount, b.gameOnSale)
+                );
                 setSortedWishlistGames(gamesSortedByPriceLowToHigh);
 
                 break;
 
             case "Price: High to Low":
-                const gamesSortedByPriceHighToLow = account.wishlist.sort((a, b) => +b.price + +a.price);
+                const gamesSortedByPriceHighToLow = wishlistedGames.sort(
+                    (a, b) => calculateDiscount(b.price, b.discount) - calculateDiscount(a.price, a.discount)
+                );
                 setSortedWishlistGames(gamesSortedByPriceHighToLow);
                 break;
 
@@ -103,7 +116,7 @@ const Wishlist = () => {
                     <div>
                         {sortedWishlistGames.length === 0
                             ? account.wishlist.map((game) => <WishlistItem key={game.name} game={game} />)
-                            : sortedWishlistGames.wishlist.map((game) => <WishlistItem key={game.name} game={game} />)}
+                            : sortedWishlistGames.map((game) => <WishlistItem key={game.name} game={game} />)}
                     </div>
                 </div>
             </div>
