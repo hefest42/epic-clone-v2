@@ -15,7 +15,10 @@ const WishlistFilters = ({
     const [showGenreList, setShowGenreList] = useState(true);
     const [showPriceRangesList, setShowPriceRangesList] = useState(true);
 
-    const gamesGenres = useMemo(() => [...new Set(wishlistGenres.map((game) => game.genres).flat())], [wishlistGenres]);
+    const gamesGenres = useMemo(
+        () => [...new Set(wishlistGenres.map((game) => game.genres).flat())].sort((a, b) => a.localeCompare(b)),
+        [wishlistGenres]
+    );
 
     return (
         <div className="filter-browser">
@@ -86,7 +89,7 @@ const WishlistFilters = ({
                                             ? "filter-browser__item filter-browser__item-active"
                                             : "filter-browser__item filter-browser__item"
                                     }
-                                    onClick={() => addGenreToActiveFilters(genre)}
+                                    onClick={() => addGenreToActiveFilters("genre", genre)}
                                 >
                                     <div className="filter-browser__item-inner space-between">
                                         <div>{genre}</div>
