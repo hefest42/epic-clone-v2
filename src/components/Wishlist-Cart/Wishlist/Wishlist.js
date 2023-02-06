@@ -5,6 +5,7 @@ import WishlistFilters from "./WishlistFilters";
 import WishlistSortDropdownMenu from "./WishlistSortDropdownMenu";
 
 import { useSelector } from "react-redux";
+import { compareTwoArrays } from "../../../Helpers/HelperFunctions";
 
 //TODO not happy with solution, try again tomorrow
 const Wishlist = () => {
@@ -15,8 +16,29 @@ const Wishlist = () => {
     const [priceFilter, setPriceFilter] = useState("");
 
     const addGenreToActiveFilters = (typeOfFilter, filter) => {
-        if (activeFilters.includes(filter)) setActiveFilters((state) => state.filter((gnr) => gnr !== filter));
-        else setActiveFilters((state) => [filter, ...state]);
+        let genres = [...activeFilters];
+
+        if (activeFilters.includes(filter)) {
+            setActiveFilters((state) => state.filter((gnr) => gnr !== filter));
+            genres = genres.filter((gnr) => gnr !== filter);
+        } else {
+            setActiveFilters((state) => [filter, ...state]);
+            genres = [...activeFilters, filter];
+        }
+
+        switch (typeOfFilter) {
+            case "genre":
+                const wishlistedGamesSortedByGenre = account.wishlist.filter((game) =>
+                    compareTwoArrays(game.genres, genres)
+                );
+                setSortedWishlistGames(wishlistedGamesSortedByGenre);
+                break;
+
+            case "price":
+                break;
+        }
+
+        console.log(genres);
     };
 
     const resetActiveFilters = () => {
