@@ -20,6 +20,13 @@ const WishlistFilters = ({
         [wishlistGenres]
     );
 
+    const priceFilterHandler = ({ price }) => {
+        if (priceFilter === price) setPriceFilter("");
+        else setPriceFilter(price);
+
+        addGenreToActiveFilters("price", price);
+    };
+
     return (
         <div className="filter-browser">
             <div className="filter-browser__title space-bewteen">
@@ -52,10 +59,7 @@ const WishlistFilters = ({
                                         ? "filter-browser__item filter-browser__item-active"
                                         : "filter-browser__item filter-browser__item"
                                 }
-                                onClick={() => {
-                                    if (priceFilter === price) setPriceFilter("");
-                                    else setPriceFilter(price);
-                                }}
+                                onClick={() => priceFilterHandler(price)}
                             >
                                 <div className="filter-browser__item-inner space-between">
                                     <div>{price}</div>

@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { compareTwoArrays } from "../../../Helpers/HelperFunctions";
 
 //TODO not happy with solution, try again tomorrow
+//TODO try to seperate genre from price filtering
 const Wishlist = () => {
     const account = useSelector((state) => state.account.account);
     const [sortedWishlistGames, setSortedWishlistGames] = useState([]);
@@ -35,6 +36,8 @@ const Wishlist = () => {
                 break;
 
             case "price":
+                const wishlistedGamesSortedByPrice = account.wishlist.filter((game) => +game.price < +priceFilter);
+                setSortedWishlistGames(wishlistedGamesSortedByPrice);
                 break;
         }
 
