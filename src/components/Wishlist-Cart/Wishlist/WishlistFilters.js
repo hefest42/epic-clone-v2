@@ -5,7 +5,7 @@ import { AiOutlineDown, AiOutlineCheck } from "react-icons/ai";
 const PRICE_RANGES = ["Free", "Under $5.00", "Under $10.00", "Under $20.00", "Under $30.00", "$14.99 and above"];
 
 const WishlistFilters = ({
-    wishlistGenres,
+    account,
     addGenreToActiveFilters,
     activeFilters,
     resetActiveFilters,
@@ -16,15 +16,13 @@ const WishlistFilters = ({
     const [showPriceRangesList, setShowPriceRangesList] = useState(true);
 
     const gamesGenres = useMemo(
-        () => [...new Set(wishlistGenres.map((game) => game.genres).flat())].sort((a, b) => a.localeCompare(b)),
-        [wishlistGenres]
+        () => [...new Set(account.wishlist.map((game) => game.genres).flat())].sort((a, b) => a.localeCompare(b)),
+        [account.wishlist]
     );
 
-    const priceFilterHandler = ({ price }) => {
+    const priceFilterHandler = (price) => {
         if (priceFilter === price) setPriceFilter("");
         else setPriceFilter(price);
-
-        addGenreToActiveFilters("price", price);
     };
 
     return (
@@ -93,7 +91,7 @@ const WishlistFilters = ({
                                             ? "filter-browser__item filter-browser__item-active"
                                             : "filter-browser__item filter-browser__item"
                                     }
-                                    onClick={() => addGenreToActiveFilters("genre", genre)}
+                                    onClick={() => addGenreToActiveFilters(genre)}
                                 >
                                     <div className="filter-browser__item-inner space-between">
                                         <div>{genre}</div>

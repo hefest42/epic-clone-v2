@@ -16,7 +16,11 @@ export const gamePriceHandler = (isGameOnSale, gamePrice, gameDiscount) => {
             <>
                 <span className="game-info__price-discount">{`-${gameDiscount}%`}</span>
                 <span className="game-info__price-old">{`$${gamePrice}`}</span>
-                <span className="game-info__price-new">{`$${calculateDiscount(gamePrice, gameDiscount)}`}</span>
+                <span className="game-info__price-new">{`$${calculateDiscount(
+                    gamePrice,
+                    gameDiscount,
+                    isGameOnSale
+                )}`}</span>
             </>
         );
     }
