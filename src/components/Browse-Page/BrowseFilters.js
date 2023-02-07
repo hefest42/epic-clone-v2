@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 
 import { AiOutlineDown, AiOutlineCheck } from "react-icons/ai";
+import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
 const PRICE_RANGES = ["Free", "Under $5.00", "Under $10.00", "Under $20.00", "Under $30.00", "$14.99 and above"];
 
@@ -15,7 +16,10 @@ const BrowseFilters = ({
     const [showGenreList, setShowGenreList] = useState(true);
     const [showPriceRangesList, setShowPriceRangesList] = useState(true);
 
-    const gamesGenres = useMemo(() => [...new Set(games.map((game) => game.genres).flat())], [games]);
+    const gamesGenres = useMemo(
+        () => [...new Set(DUMMY_CAROUSEL_GAMES.map((game) => game.genres).flat())],
+        [DUMMY_CAROUSEL_GAMES]
+    );
 
     return (
         <div className="filter-browser">
