@@ -28,7 +28,7 @@ const Wishlist = () => {
 
     useEffect(() => {
         setSortedWishlistGames(account.wishlist);
-    }, []);
+    }, [account.wishlist]);
 
     useEffect(() => {
         if (activeFilters.length === 0 && priceFilter === "") setSortedWishlistGames(account.wishlist);
