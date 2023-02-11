@@ -233,6 +233,17 @@
                 margin-left: 0.5rem;
             }
         }
+
+        &-loading {
+            background-color: var(--light-gray);
+            width: calc(100% / 3 - 1rem);
+            height: 24rem;
+            padding: 1rem 0.5rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }
 

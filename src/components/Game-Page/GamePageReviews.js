@@ -1,7 +1,5 @@
 import React, { useEffect, useState, Suspense } from "react";
 
-import LoadingSpinner from "../UI/LoadingSpinner";
-
 import { useLocation } from "react-router-dom";
 import { FiExternalLink } from "react-icons/fi";
 
@@ -10,6 +8,7 @@ const GamePageReviews = () => {
     const [gameReviews, setGameReviews] = useState([]);
 
     const gameScoreHandler = (type, score) => {
+        console.log(gameReviews);
         if (type === "No Verdict") return `No Verdict`;
 
         if (type === "0 to 100, whole numbers") return `${score}/100`;
@@ -57,33 +56,31 @@ const GamePageReviews = () => {
     }, [location.pathname]);
 
     return (
-        <div className="game-page__info-reviews">
-            <Suspense fallback={<div style={{ color: "red" }}>LOADING</div>}>
-                {gameReviews.map((review, i) => (
-                    <div key={i} className="game-page__info-reviews-review">
-                        <div className="game-page__info-reviews-author">
-                            <div>{review.Outlet.name}</div>
-                            {review.Authors[0] ? (
-                                <div>{`by ${review.Authors[0].name}`}</div>
-                            ) : (
-                                <div className="game-page__info-reviews-author-empty"></div>
-                            )}
-                        </div>
-                        <div className="game-page__info-reviews-score">
-                            <div>{gameScoreHandler(review.ScoreFormat.name, review.score)}</div>
-                            <p>{`"${review.snippet.split(".")[0]}."`}</p>
-                        </div>
-
-                        <div className="game-page__info-reviews-link center">
-                            <a href={review.externalUrl} target="_blank" rel="noreferrer">
-                                READ THE FULL REVIEW
-                            </a>
-                            <FiExternalLink />
-                        </div>
+        <>
+            {gameReviews.map((review, i) => (
+                <div key={i} className="game-page__info-reviews-review">
+                    <div className="game-page__info-reviews-author">
+                        <div>{review.Outlet.name}</div>
+                        {review.Authors[0] ? (
+                            <div>{`by ${review.Authors[0].name}`}</div>
+                        ) : (
+                            <div className="game-page__info-reviews-author-empty"></div>
+                        )}
                     </div>
-                ))}
-            </Suspense>
-        </div>
+                    <div className="game-page__info-reviews-score">
+                        <div>{gameScoreHandler(review.ScoreFormat.name, review.score)}</div>
+                        <p>{`"${review.snippet.split(".")[0]}."`}</p>
+                    </div>
+
+                    <div className="game-page__info-reviews-link center">
+                        <a href={review.externalUrl} target="_blank" rel="noreferrer">
+                            READ THE FULL REVIEW
+                        </a>
+                        <FiExternalLink />
+                    </div>
+                </div>
+            ))}
+        </>
     );
 };
 

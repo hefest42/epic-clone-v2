@@ -1,8 +1,9 @@
-import React from "react";
-
-import GamePageReviews from "./GamePageReviews";
+import React, { lazy, Suspense } from "react";
 
 import { Link } from "react-router-dom";
+
+import LoadingSpinner from "../UI/LoadingSpinner";
+const GamePageReviews = lazy(() => import("./GamePageReviews"));
 
 const GamePageLeft = ({ game }) => {
     return (
@@ -28,7 +29,17 @@ const GamePageLeft = ({ game }) => {
                         </div>
                     )}
                 </div>
-                <GamePageReviews />
+                <div className="game-page__info-reviews">
+                    <Suspense
+                        fallback={["0", "1", "2"].map((_, i) => (
+                            <div key={i} className="game-page__info-reviews-loading">
+                                <LoadingSpinner />
+                            </div>
+                        ))}
+                    >
+                        <GamePageReviews />
+                    </Suspense>
+                </div>
             </div>
         </div>
     );
