@@ -7,7 +7,6 @@ const GamePage = ({ game, setShowConfirmGamePurchase }) => {
     return (
         <div className="game-page">
             <GamePageLeft game={game} />
-
             <GamePagePrice game={game} setShowConfirmGamePurchase={setShowConfirmGamePurchase} />
         </div>
     );
