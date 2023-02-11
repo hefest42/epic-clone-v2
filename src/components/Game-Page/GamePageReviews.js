@@ -11,7 +11,9 @@ const GamePageReviews = () => {
         console.log(gameReviews);
         if (type === "No Verdict") return `No Verdict`;
 
-        if (type === "0 to 100, whole numbers") return `${score}/100`;
+        if (type === "0 to 100, whole numbers") return `${score} / 100`;
+
+        if (type === "0 to 20, whole numbers") return `${score / 5} / 20`;
 
         if (type === "0 to 10 incl decimals" || type === "0 to 10, whole numbers") return `${score / 10} / 10`;
 
