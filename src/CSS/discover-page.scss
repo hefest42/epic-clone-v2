@@ -504,7 +504,7 @@
 
         &-cover {
             &__info {
-                top: 25%;
+                bottom: 10%;
 
                 &-logo {
                     width: 8rem;
@@ -542,6 +542,15 @@
 
         &-item {
             height: 4rem;
+
+            &__image {
+                margin-left: 0.3rem;
+            }
+
+            &__text {
+                width: 70%;
+                font-size: 0.7rem;
+            }
         }
     }
 
