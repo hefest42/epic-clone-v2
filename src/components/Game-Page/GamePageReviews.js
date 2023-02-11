@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useLocation } from "react-router-dom";
 import { FiExternalLink } from "react-icons/fi";
@@ -54,7 +54,7 @@ const GamePageReviews = () => {
         };
 
         fetchGameReviews();
-    }, [location.pathname]);
+    }, [location.pathname, location.state]);
 
     return (
         <>

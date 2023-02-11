@@ -14,7 +14,7 @@ const GamePageContainer = () => {
 
     useEffect(() => {
         setGame(location.state);
-    }, [location.pathname]);
+    }, [location.state]);
 
     return (
         <PageContainer>
