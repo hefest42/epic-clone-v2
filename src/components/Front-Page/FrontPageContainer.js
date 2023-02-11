@@ -11,6 +11,7 @@ import BrowseContainer from "../Browse-Page/BrowseContainer";
 import WishlistContainer from "../Wishlist-Cart/Wishlist/WishlistContainer";
 import CartContainer from "../Wishlist-Cart/Cart/CartContainer";
 import GamePageContainer from "../Game-Page/GamePageContainer";
+import TemporaryPage from "../UI/TemporaryPage";
 
 const FrontPageContainer = () => {
     return (
@@ -22,6 +23,7 @@ const FrontPageContainer = () => {
                 {/* Browse, Wishlist, an Cart page containers/links go here */}
                 <Route path="/" element={<DiscoverContainer />} />
                 <Route path="browse/*" element={<BrowseContainer />} />
+                <Route path="news" element={<TemporaryPage />} />
                 <Route path="wishlist" element={<WishlistContainer />} />
                 <Route path="cart" element={<CartContainer />} />
                 <Route path="game/*" element={<GamePageContainer />} />

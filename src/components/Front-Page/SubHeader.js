@@ -89,7 +89,7 @@ const SubHeader = () => {
                     Browse
                 </NavLink>
                 <NavLink
-                    to="/news"
+                    to="news"
                     className={({ isActive }) =>
                         isActive ? "subHeader-left__item subHeader-active" : "subHeader-left__item"
                     }
