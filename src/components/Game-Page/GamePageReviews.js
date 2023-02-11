@@ -8,7 +8,6 @@ const GamePageReviews = () => {
     const [gameReviews, setGameReviews] = useState([]);
 
     const gameScoreHandler = (type, score) => {
-        console.log(gameReviews);
         if (type === "No Verdict") return `No Verdict`;
 
         if (type === "0 to 100, whole numbers") return `${score} / 100`;
@@ -23,7 +22,7 @@ const GamePageReviews = () => {
     useEffect(() => {
         const { name } = location.state;
 
-        const fetchTest = async () => {
+        const fetchGameReviews = async () => {
             try {
                 const response = await fetch(`https://opencritic-api.p.rapidapi.com/game/search?criteria=${name}`, {
                     method: "GET",
@@ -54,7 +53,7 @@ const GamePageReviews = () => {
             }
         };
 
-        fetchTest();
+        fetchGameReviews();
     }, [location.pathname]);
 
     return (
