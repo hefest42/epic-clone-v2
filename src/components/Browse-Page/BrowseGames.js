@@ -57,6 +57,14 @@ const BrowseGames = () => {
         setGames(gamesFilteredByGenreAndByPrice);
     }, [activeFilters, priceFilter]);
 
+    useEffect(() => {
+        const genreParams = params.getAll("genres") ? params.getAll("genres") : [];
+        const priceParams = params.getAll("price") ? params.get("price") : "";
+
+        setActiveFilters(genreParams);
+        setPriceFilter(priceParams);
+    }, []);
+
     return (
         <div className="browse">
             <div className="browse-left">
