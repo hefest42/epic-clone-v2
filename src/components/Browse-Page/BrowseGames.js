@@ -11,8 +11,6 @@ import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
 const BrowseGames = () => {
     const [params, setSearchParams] = useSearchParams();
-    const navigate = useNavigate();
-    const location = useLocation();
     const [games, setGames] = useState(DUMMY_CAROUSEL_GAMES);
     const [activeFilters, setActiveFilters] = useState([]);
     const [priceFilter, setPriceFilter] = useState("");
