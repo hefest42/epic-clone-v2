@@ -3,13 +3,14 @@ import React, { useState, useEffect } from "react";
 import GameItem from "../UI/GameItem";
 import BrowseFilters from "./BrowseFilters";
 
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useQueryParams, useSearchParams } from "react-router-dom";
 
 import { calculateDiscount, compareTwoArrays } from "../../Helpers/HelperFunctions";
 
 import { DUMMY_CAROUSEL_GAMES } from "../../Helpers/DummyGames";
 
 const BrowseGames = () => {
+    const [params, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
     const location = useLocation();
     const [games, setGames] = useState(DUMMY_CAROUSEL_GAMES);
@@ -47,75 +48,14 @@ const BrowseGames = () => {
     };
 
     useEffect(() => {
-        const searchParams = activeFilters.map((value) => `genre=${value}`).join("&");
+        setSearchParams({ genres: activeFilters, price: priceFilter });
 
-        navigate(`/store/browse?${searchParams}${priceFilter === "" ? "" : `-price=${priceFilter}`}`);
+        const gamesFilteredByGenreAndByPrice = DUMMY_CAROUSEL_GAMES.filter((game) => {
+            if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
+        });
+
+        setGames(gamesFilteredByGenreAndByPrice);
     }, [activeFilters, priceFilter]);
-
-    useEffect(() => {
-        // checks for both genres & price in the url
-        if (location.search.includes("genre=") && location.search.includes("-price=")) {
-            const [genres, price] = location.search.split("-");
-
-            const genreFilters = genres
-                .split("&")
-                .map((item) => item.replace("genre=", ""))
-                .map((item) => item.replace("?", ""))
-                .map((item) => item.replace("%20", " "));
-
-            const priceFilters = price.replaceAll("%20", " ").split("=")[1];
-
-            console.log(genreFilters, priceFilters);
-
-            const gamesFilteredByGenreAndByPrice = DUMMY_CAROUSEL_GAMES.filter((game) => {
-                if (compareTwoArrays(game.genres, activeFilters) && filterGameByPrice(game)) return game;
-            });
-
-            setGames(gamesFilteredByGenreAndByPrice);
-
-            if (activeFilters.length === 0 && priceFilter === "") {
-                setActiveFilters(genreFilters);
-                setPriceFilter(priceFilters);
-            }
-
-            return;
-        }
-
-        // just price
-        if (!location.search.includes("genre") && location.search.includes("-price=")) {
-            const price = location.search.split("-")[1].replaceAll("%20", " ").split("=")[1];
-
-            const gamesFilteredByPrice = DUMMY_CAROUSEL_GAMES.filter((game) => filterGameByPrice(game));
-            setGames(gamesFilteredByPrice);
-
-            if (priceFilter === "") setPriceFilter(price);
-
-            return;
-        }
-
-        // just genres
-        if (location.search.includes("genre=") && !location.search.includes("-price=")) {
-            const genreFilters = location.search
-                .split("-")[0]
-                .split("&")
-                .map((item) => item.replace("genre=", ""))
-                .map((item) => item.replace("?", ""))
-                .map((item) => item.replace("%20", " "));
-
-            const gamesFilteredByGenre = DUMMY_CAROUSEL_GAMES.filter((game) =>
-                compareTwoArrays(game.genres, genreFilters)
-            );
-
-            setGames(gamesFilteredByGenre);
-
-            if (activeFilters.length === 0) setActiveFilters(genreFilters);
-
-            return;
-        }
-
-        // neither
-        if (location.search === "") setGames(DUMMY_CAROUSEL_GAMES);
-    }, [location.search]);
 
     return (
         <div className="browse">
